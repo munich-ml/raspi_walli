@@ -17,6 +17,6 @@ The server and client have successfully been tested with [com0com Null Modem Emu
 
 ## Wallbox doesn't respond
 Although the [simple_modbus_rtu_client](simple_modbus_rtu_client.ipynb) works well with its [simple_modbus_rtu_server](simple_modbus_rtu_server.ipynb), there is no response, yet, wallbox:
-![Walli_not_responding_2021-17-11.png](imgs/Walli_not_responding_2021-17-11.png)
+![Walli_not_responding_2021-17-11.jpg](imgs/Walli_not_responding_2021-17-11.jpg)
 
 work in progress ...
