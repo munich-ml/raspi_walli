@@ -27,7 +27,7 @@ server_context = ModbusServerContext(slaves=slave_context, single=True)
 
 
 
-StartSerialServer(server_context, framer=ModbusRtuFramer, port='COM6', baudrate=19200, stopbits=1, bytesize=8, parity="E")
+StartSerialServer(server_context, framer=ModbusRtuFramer, port='/dev/ttyUSB0', baudrate=19200, stopbits=1, bytesize=8, parity="E")
 
 
 
