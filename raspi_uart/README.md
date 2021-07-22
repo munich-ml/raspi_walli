@@ -2,7 +2,7 @@
 This folder contains docs and scripts to get the serial port running on the Raspberry Pi.
 
 ## 1. Enable the serial port
-How to enable the serial port on your Raspberry Pi is described [here](https://www.raspberrypi.org/documentation/configuration/uart.md)
+In oder to enable the serial port on your Raspberry Pi follow the instructions given [here](https://www.raspberrypi.org/documentation/configuration/uart.md).
 
 ## 2. Hardware loopback Tx-->Rx
 ![uart-tx-rx-loopback.svg](https://github.com/munich-ml/raspi_walli/blob/main/raspi_uart/imgs/uart-tx-rx-loopback.svg)
