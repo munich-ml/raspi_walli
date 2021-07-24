@@ -66,6 +66,9 @@ class Wallbox():
         value = {True: 0, False: 4}[enabled]
         self.mb.write_register(258, value, unit=BUS_ID)
 
+    def set_max_current(self, value):
+        self.mb.write_register(261, value, unit=BUS_ID)
+
     @staticmethod
     def safe_regs_to_csv(regs):
         fn = os.path.join(os.getcwd(), "logs", "raw_{}.csv".format(dt.datetime.now().strftime("%Y-%m-%d")))
@@ -91,10 +94,9 @@ if __name__ == "__main__":
     
     w = Wallbox(port='/dev/ttyUSB0', verbose=True)
 
-    w.read_registers()    # initial read
     w.enable_standby(False)
-    w.read_registers()    # check read
-
+    w.set_max_current(120)
+    
     while True:
         with open("control.json", "r") as file:
             ctrl = json.load(file)    
