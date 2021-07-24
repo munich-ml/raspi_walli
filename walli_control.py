@@ -36,7 +36,6 @@ class Wallbox():
         self.mb.close()
 
     def read_registers(self):
-
         read_attempts = 0
         regs = [dt.datetime.now().strftime("%H:%M:%S")]
 
@@ -64,10 +63,17 @@ class Wallbox():
 
         return regs
 
+    def enable_standby(self, enabled=True):
+        value = {True: 0, False: 4}[enabled]
+        self.mb.write_register(258, value, unit=BUS_ID)
 
 
 
 w = Wallbox(port='/dev/ttyUSB0', verbose=True)
+
+w.read_registers()    # initial read
+w.enable_standby(False)
+w.read_registers()    # check read
 
 while True:
     with open("control.json", "r") as file:
