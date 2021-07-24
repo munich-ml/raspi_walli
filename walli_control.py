@@ -27,15 +27,15 @@ class Wallbox():
                                      bytesize=8,
                                      parity="E",
                                      timeout=10)
-        if self.mb.connect():
-            print("Connected to the wallbox")
-        else:
-            print("Error: Could not connect to the wallbox")
 
     def close(self):
         self.mb.close()
 
     def read_registers(self):
+        if not self.mb.connect():
+            print("Error: Could not connect to the wallbox")
+            raise ModbusReadError
+
         read_attempts = 0
         regs = [dt.datetime.now().strftime("%H:%M:%S")]
 
@@ -56,6 +56,8 @@ class Wallbox():
         if self.verbose:
             print(regs)
 
+        self.mb.close()
+
         return regs
 
 
@@ -75,5 +77,4 @@ while True:
         print(e)
         break
 
-w.close()
 
