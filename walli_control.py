@@ -68,12 +68,12 @@ class Wallbox():
 
     @staticmethod
     def safe_regs_to_csv(regs):
-        fn = os.path.join(os.getcwd(), "logs", dt.datetime.now().strftime("%Y-%m-%d") + "csv")
+        fn = os.path.join(os.getcwd(), "logs", "raw_{}.csv".format(dt.datetime.now().strftime("%Y-%m-%d")))
         
         if not os.path.isfile(fn):  # create a new csv file incl. header
-            header = "Version,charge_state,I_L1,I_L2,I_L3,Temp,V_L1,V_L2,V_L3,ext_lock,"
-            header+= "P,E_cyc_hb,E_cyc_lb,E_hb,E_lb,I_max,I_min,watchdog,standby,"
-            header+= "remote_lock,max_I_cmd,FailSafe_I\n"
+            header = "time,ver,charge_state,I_L1,I_L2,I_L3,Temp,V_L1,V_L2,V_L3,"
+            header+= "ext_lock,P,E_cyc_hb,E_cyc_lb,E_hb,E_lb,I_max,I_min,watchdog,"
+            header+= "standby,remote_lock,max_I_cmd,FailSafe_I\n"
             with open(fn, "w") as file:
                 file.write(header)
 
