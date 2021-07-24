@@ -1,7 +1,7 @@
 from pymodbus.client.sync import ModbusSerialClient
 import datetime as dt
 from time import sleep
-import json
+import json, os
 """
 import serial
 import RPi.GPIO as GPIO
@@ -39,12 +39,12 @@ class Wallbox():
         read_attempts = 0
         regs = [dt.datetime.now().strftime("%H:%M:%S")]
 
-        funcs = {"mon":   lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
-                 "HW":    lambda: self.mb.read_input_registers(100, count=2, unit=BUS_ID),
-                 "WD":    lambda: self.mb.read_holding_registers(257, count=3, unit=BUS_ID),
-                 "FS":    lambda: self.mb.read_holding_registers(261, count=2, unit=BUS_ID),
-                 }
-        for label, func in funcs.items():
+        funcs = [lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
+                 lambda: self.mb.read_input_registers(100, count=2, unit=BUS_ID),
+                 lambda: self.mb.read_holding_registers(257, count=3, unit=BUS_ID),
+                 lambda: self.mb.read_holding_registers(261, count=2, unit=BUS_ID),
+                ]
+        for func in funcs:
             while True:
                 r = func()
                 if r.isError():
@@ -54,7 +54,6 @@ class Wallbox():
                     if read_attempts > MAX_READ_ATTEMPTS:
                         raise ModbusReadError
                 else:
-                    regs.extend([label])
                     regs.extend(r.registers)
                     break
         
@@ -67,24 +66,47 @@ class Wallbox():
         value = {True: 0, False: 4}[enabled]
         self.mb.write_register(258, value, unit=BUS_ID)
 
+    @staticmethod
+    def safe_regs_to_csv(regs):
+        fn = os.path.join(os.getcwd(), "logs", dt.datetime.now().strftime("%Y-%m-%d") + "csv")
+        
+        if not os.path.isfile(fn):  # create a new csv file incl. header
+            header = "Version,charge_state,I_L1,I_L2,I_L3,Temp,V_L1,V_L2,V_L3,ext_lock,"
+            header+= "P,E_cyc_hb,E_cyc_lb,E_hb,E_lb,I_max,I_min,watchdog,standby,"
+            header+= "remote_lock,max_I_cmd,FailSafe_I\n"
+            with open(fn, "w") as file:
+                file.write(header)
+
+        # make str line from list
+        s = ""
+        for element in regs:
+            s += "{},".format(element)
+        s = s[:-2] + "\n"
+
+        with open(fn, "a") as file:
+            file.write(s)
 
 
-w = Wallbox(port='/dev/ttyUSB0', verbose=True)
+if __name__ == "__main__":
+    
+    w = Wallbox(port='/dev/ttyUSB0', verbose=True)
 
-w.read_registers()    # initial read
-w.enable_standby(False)
-w.read_registers()    # check read
+    w.read_registers()    # initial read
+    w.enable_standby(False)
+    w.read_registers()    # check read
 
-while True:
-    with open("control.json", "r") as file:
-        ctrl = json.load(file)    
+    while True:
+        with open("control.json", "r") as file:
+            ctrl = json.load(file)    
 
-    w.read_registers()
+        regs = w.read_registers()
+        if ctrl["safe_as_csv"]:
+            w.safe_regs_to_csv(regs)
 
-    try:
-        sleep(ctrl["polling_interval"])
-    except KeyboardInterrupt as e:
-        print(e)
-        break
+        try:
+            sleep(ctrl["polling_interval"])
+        except KeyboardInterrupt as e:
+            print(e)
+            break
 
-w.close
+    w.close

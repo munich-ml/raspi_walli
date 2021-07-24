@@ -1,1 +1,1 @@
-{"polling_interval": 5, "max_current": 64}
+{"polling_interval": 5, "safe_as_csv": true, "max_current": 64}
