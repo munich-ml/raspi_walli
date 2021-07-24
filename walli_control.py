@@ -28,19 +28,24 @@ class Wallbox():
                                      parity="E",
                                      timeout=10)
 
-    def close(self):
-        self.mb.close()
-
-    def read_registers(self):
         if not self.mb.connect():
             print("Error: Could not connect to the wallbox")
             raise ModbusReadError
 
+    def close(self):
+        self.mb.close()
+
+    def read_registers(self):
+
         read_attempts = 0
         regs = [dt.datetime.now().strftime("%H:%M:%S")]
 
-        for func in [lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
-                     lambda: self.mb.read_holding_registers(261, count=2, unit=BUS_ID)]:
+        funcs = {"mon":   lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
+                 "HW":    lambda: self.mb.read_input_registers(100, count=2, unit=BUS_ID),
+                 "WD":    lambda: self.mb.read_holding_registers(257, count=3, unit=BUS_ID),
+                 "FS":    lambda: self.mb.read_holding_registers(261, count=2, unit=BUS_ID),
+                 }
+        for label, func in funcs.items():
             while True:
                 r = func()
                 if r.isError():
@@ -50,13 +55,12 @@ class Wallbox():
                     if read_attempts > MAX_READ_ATTEMPTS:
                         raise ModbusReadError
                 else:
+                    regs.extend([label])
                     regs.extend(r.registers)
                     break
         
         if self.verbose:
             print(regs)
-
-        self.mb.close()
 
         return regs
 
@@ -77,4 +81,4 @@ while True:
         print(e)
         break
 
-
+w.close
