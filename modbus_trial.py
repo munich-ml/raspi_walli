@@ -1,4 +1,5 @@
 from pymodbus.client.sync import ModbusSerialClient
+from time import sleep
 """
 import serial
 import RPi.GPIO as GPIO
@@ -15,19 +16,24 @@ walli = ModbusSerialClient(method="rtu",
                            parity="E",
                            timeout=10)
 
+print(walli)
 walli.connect()
+
+print(walli)
 
 while True:
     try:
         r = walli.read_input_registers(4, count=15, unit=1)
         if r.isError():
             print("Error")
+            print(r)
         else:
             print(r.registers)
 
     except KeyboardInterrupt as e:
         print(e)
         break
+    sleep(2)
 
 walli.close()
 
