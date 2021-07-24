@@ -20,8 +20,13 @@ walli = ModbusSerialClient(method="rtu",
 walli.connect()
 print("after connect:", walli)
 
-r = walli.read_input_registers(4, count=15, unit=1)
-print("initial read:", r.registers)
+print("initial read")
+r = walli.read_holding_registers(261, count=2, unit=1)
+if r.isError():
+    print("Error")
+    print(r)
+else:
+    print(r.registers)
 
 sleep(0.1)
 
@@ -30,8 +35,13 @@ walli.write_register(262, 120, unit=1)
 
 sleep(0.1)
 
-r = walli.read_input_registers(4, count=15, unit=1)
-print("final read:", r.registers)
+print("final read")
+r = walli.read_holding_registers(261, count=2, unit=1)
+if r.isError():
+    print("Error")
+    print(r)
+else:
+    print(r.registers)
 
 walli.close()
 

@@ -30,6 +30,12 @@ while True:
         else:
             print(r.registers)
 
+        r = walli.read_holding_registers(261, count=2, unit=1)
+        if r.isError():
+            print("Error")
+        else:
+            print(r.registers)    
+
     except KeyboardInterrupt as e:
         print(e)
         break
