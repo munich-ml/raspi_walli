@@ -9,9 +9,9 @@ GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_OFF)
 """
 
 walli = ModbusSerialClient(method="rtu",
-                           port='COM9',
+                           #port='COM9',
                            port='/dev/ttyUSB0',
-                           #baudrate=19200,
+                           baudrate=19200,
                            stopbits=1,
                            bytesize=8,
                            parity="E",
