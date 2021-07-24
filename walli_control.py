@@ -1,5 +1,6 @@
 from pymodbus.client.sync import ModbusSerialClient
 from time import sleep
+import json
 """
 import serial
 import RPi.GPIO as GPIO
@@ -62,12 +63,16 @@ class Wallbox():
 w = Wallbox(port='/dev/ttyUSB0', verbose=True)
 
 while True:
+    with open("control.json", "r") as file:
+        ctrl = json.load(file)    
+
+    w.read_registers()
+
     try:
-        w.read_registers()
+        sleep(ctrl["polling_interval"])
     except KeyboardInterrupt as e:
         print(e)
         break
-    sleep(2)
 
 w.close()
 
