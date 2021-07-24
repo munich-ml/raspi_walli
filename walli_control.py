@@ -1,4 +1,5 @@
 from pymodbus.client.sync import ModbusSerialClient
+import datetime as dt
 from time import sleep
 import json
 """
@@ -36,7 +37,7 @@ class Wallbox():
 
     def read_registers(self):
         read_attempts = 0
-        regs = []
+        regs = [dt.datetime.now().strftime("%H:%M:%S")]
 
         for func in [lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
                      lambda: self.mb.read_holding_registers(261, count=2, unit=BUS_ID)]:
