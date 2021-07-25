@@ -19,7 +19,8 @@ The server and client have successfully been tested with [com0com Null Modem Emu
 It took me quite some trial-and-error, to get the communication running. In summary, the following items need to be configured:
 - ``Follower``: If the wallbox is configured as ``Leader``, it sends out reads but doesn't respond. Thus, the wallbox must be configured as ``Follower``.
 - ``Bus-ID`` must be 1..15, not 0. By default, the ``Bus-ID`` is 0 and its ``Follower``. Apparantly, that combination puts the wallbox in some kind of stand-alone mode. 
-- Set ``holding_registers`` 261, 262 to the desired current limit. Otherwise, 262 is set to 0, meaning ``error state``. The current limt can't be set higher than the hardware switch current. 
+- Set ``holding_register 261`` to the desired current limit. Otherwise ``262`` shows ``error state``. The current limt can't be set higher than the hardware switch current. 
+- Disable the Standby function by writing at ``4`` to the ``holding_register 258``. Otherwise the wallbox stops responding after about 12 minutes.  
 
 The notebook [read_from_walli.ipynb](read_from_walli.ipynb) demonstrates successful communication and this is how it looks like
 ![Walli_not_responding_2021-17-11.jpg](imgs/successful_wallbox_read_2021-07-18.png)
