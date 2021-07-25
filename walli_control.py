@@ -84,7 +84,7 @@ class Wallbox():
         s = ""
         for element in regs:
             s += "{},".format(element)
-        s = s[:-2] + "\n"
+        s = s[:-1] + "\n"
 
         with open(fn, "a") as file:
             file.write(s)
@@ -96,7 +96,7 @@ if __name__ == "__main__":
 
     w.enable_standby(False)
     w.set_max_current(120)
-    
+
     while True:
         with open("control.json", "r") as file:
             ctrl = json.load(file)    
