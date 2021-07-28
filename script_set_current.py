@@ -20,6 +20,7 @@ walli = ModbusSerialClient(method="rtu",
 walli.connect()
 print("after connect:", walli)
 
+"""
 print("initial read")
 r = walli.read_holding_registers(261, count=2, unit=1)
 if r.isError():
@@ -29,7 +30,7 @@ else:
     print(r.registers)
 
 sleep(0.1)
-
+"""
 walli.write_register(261, 120, unit=1)
 walli.write_register(262, 120, unit=1)
 
