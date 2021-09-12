@@ -2,13 +2,8 @@ from pymodbus.client.sync import ModbusSerialClient
 import datetime as dt
 from time import sleep
 import json, os
-"""
-import serial
-import RPi.GPIO as GPIO
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(14, GPIO.OUT)
-GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_OFF)
-"""
+    
+
 
 MAX_READ_ATTEMPTS = 8
 BUS_ID = 1
@@ -92,7 +87,20 @@ class Wallbox():
 
 if __name__ == "__main__":
     
-    w = Wallbox(port='/dev/ttyUSB0', verbose=True)
+    def _debug_serial():
+        import serial
+        import RPi.GPIO as GPIO
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(14, GPIO.OUT)
+        GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_OFF)
+        while True:
+            GPIO.output(14, GPIO.HIGH)
+            sleep(0.1)
+            GPIO.output(14, GPIO.LOW)
+            sleep(0.1)
+    
+    
+    w = Wallbox(port='/dev/ttyAMA0', verbose=True)
 
     w.enable_standby(False)
     w.set_max_current(120)
