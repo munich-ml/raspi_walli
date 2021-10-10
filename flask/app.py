@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 
+import os, json
+import pandas as pd
 from flask import Flask, render_template, flash, redirect, url_for, request, send_from_directory, session
 
 app = Flask(__name__)
@@ -15,5 +17,13 @@ def history():
 
 @app.route('/config/')
 def config():
-    return render_template('config.html')
+    p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
+    with open(p, "r") as file:
+        regs = json.load(file)
+
+    df = pd.DataFrame(columns=regs["columns"], data=regs["data"])
+    desired_cols = ['Bus-Adr.', 'R/W', 'Description', 'Range', 'Values / examples', 'Default Value']
+    df = df[desired_cols]
+
+    return render_template('config.html', column_names=df.columns.values, row_data=list(df.values.tolist()), zip=zip)
 
