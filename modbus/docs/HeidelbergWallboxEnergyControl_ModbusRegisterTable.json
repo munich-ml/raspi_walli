@@ -201,7 +201,7 @@
         [
             "257",
             "R / W",
-            "03 - readHoldingRegister\n06 - writeHoldingRegister",
+            "03 - readHoldingRegister, 06 - writeHoldingRegister",
             "uint16",
             "ModBus-Master WatchDog Timeout in ms",
             "0\u202665536",
@@ -216,7 +216,7 @@
             "uint16",
             "Standby Function Control (Power Saving if no car plugged)",
             "0\u202665536",
-            "0-> enable StandBy Funktion\n4-> disable StandBy Funktion\nx -> reserved development",
+            "0-> enable StandBy Funktion, 4-> disable StandBy Funktion, x -> reserved development",
             "0 = enable",
             "V1.0.4"
         ],
@@ -234,7 +234,7 @@
         [
             "261",
             "R / W",
-            "03 - readHoldingRegister\n06 - writeHoldingRegister",
+            "03 - readHoldingRegister, 06 - writeHoldingRegister",
             "uint16",
             "Maximal current command",
             "[0; 60 to 160]",
@@ -245,11 +245,11 @@
         [
             "262",
             "R / W",
-            "03 - readHoldingRegister\n06 - writeHoldingRegister",
+            "03 - readHoldingRegister, 06 - writeHoldingRegister",
             "uint16",
-            "FailSafe Current configuration \n(in case loss of Modbus communication)",
+            "FailSafe Current configuration , (in case loss of Modbus communication)",
             "[0; 60 to 160]",
-            "0 = error state\n60 = 6 A",
+            "0 = error state, 60 = 6 A",
             "0",
             "V1.0.7"
         ]
