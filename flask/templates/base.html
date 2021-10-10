@@ -26,9 +26,7 @@
 
 <main>
     {% for message in get_flashed_messages() %}
-        <div class="alert">
-            {{ message }}
-        </div>
+        <div class="alert">{{ message }}</div>
     {% endfor %}
     {% block content %}{% endblock %}
 </main>

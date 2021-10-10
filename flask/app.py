@@ -17,6 +17,7 @@ def history():
 
 @app.route('/config/')
 def config():
+    # load register table from .json file and create a pandas DataFrame from it
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
         regs = json.load(file)
