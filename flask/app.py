@@ -26,5 +26,5 @@ def config():
     desired_cols = ['Bus-Adr.', 'R/W', 'Description', 'Range', 'Values / examples']
     df = df[desired_cols]
 
-    return render_template('config.html', column_names=df.columns.values, row_data=list(df.values.tolist()), zip=zip)
+    return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
