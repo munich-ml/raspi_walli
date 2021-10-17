@@ -16,9 +16,13 @@ class WalliStat(db.Model):
 
 class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(120), nullable=False, unique=False)
+    is_active = db.Column(db.Boolean, default=True)
     start = db.Column(db.DateTime, nullable=False, unique=False)
     end = db.Column(db.DateTime, nullable=True, unique=False)
     interval = db.Column(db.Interval, nullable=False, unique=False)
+    measure_walli = db.Column(db.Boolean, default=True)
+    measure_light = db.Column(db.Boolean, default=True)
 
     def __repr__(self):
-        return f"Campaign(id:{self.id}, start={self.start}, end={self.end}, interval={self.interval}"
+        return f"Campaign(id:{self.id}, '{self.title}' is active:{self.is_active}, start:{self.start}, end:{self.end}, interval:{self.interval})"
