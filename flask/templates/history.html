@@ -1,5 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>History</h1>
+<h1>Campaigns</h1>
+<table>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>active</th>
+            <th>start</th>
+            <th>end</th>
+            <th>interval</th>
+            <th>measure walli</th>
+            <th>measure light</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cpn in campaigns %}
+        <tr>
+            <td>{{cpn.id}}</td>
+            <td>{{cpn.title}}</td>
+            <td>{{cpn.is_active}}</td>
+            <td>{{cpn.start}}</td>
+            <td>{{cpn.end}}</td>
+            <td>{{cpn.interval}}</td>
+            <td>{{cpn.measure_walli}}</td>
+            <td>{{cpn.measure_light}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
