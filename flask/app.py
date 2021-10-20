@@ -5,8 +5,12 @@ import os, json
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'super secure'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trial.db'
 db = SQLAlchemy(app)
 
@@ -36,9 +40,16 @@ class WalliStat(db.Model):
         return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.Temp}°C, {self.Power}W)"
 
 
-@app.route('/')
+class CampaignForm(FlaskForm):
+    title = StringField('title', validators=[DataRequired()])
+
+
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        print("POST")
     return render_template('index.html')
+
 
 @app.route('/history/')
 def history():
@@ -62,3 +73,12 @@ def config():
 
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
+
+@app.route('/modify_campaign/', methods=['GET', 'POST'])
+def modify_campaign():
+    form = CampaignForm()
+    if form.validate_on_submit():
+        print("all good")
+        print(form.title)
+        return redirect('/')
+    return render_template('modify_campaign.html', form=form)
