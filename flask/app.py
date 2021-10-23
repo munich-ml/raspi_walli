@@ -8,8 +8,8 @@ import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.fields.html5 import DateField, DateTimeField
+from wtforms import StringField, TextField, TextAreaField
+from wtforms.fields.html5 import DateField, DateTimeField, TimeField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -44,12 +44,18 @@ class WalliStat(db.Model):
 
 
 class CampaignForm(FlaskForm):
-    title = StringField(validators=[DataRequired()])
-    start_date = DateField("Start date", format="%Y-%m-%d", validators=[DataRequired()])
+    title = TextAreaField(validators=[DataRequired()])
+    start_date = DateField(format="%Y-%m-%d", validators=[DataRequired()], default=dt.datetime.now().date())
+    start_time = TimeField(format="%H:%M", validators=[DataRequired()], default=dt.datetime.now().time())
+    end_date = DateField(format="%Y-%m-%d", validators=[DataRequired()], default=dt.datetime.now().date())
+    end_time = TimeField(format="%H:%M", validators=[DataRequired()], default=dt.datetime.now().time())
 
     def populate(self, cpn):
         self.title.data = cpn.title
         self.start_date.data = cpn.start.date()
+        self.start_time.data = cpn.start.time()
+        self.end_date.data = cpn.end.date()
+        self.end_time.data = cpn.end.time()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -80,15 +86,20 @@ def history():
 @app.route('/history/edit/', methods=['GET', 'POST'], defaults={"id": None})
 @app.route('/history/edit/<id>/', methods=['GET', 'POST'])
 def edit(id=None):
-    if request.method == "GET":
-        form = CampaignForm()
-        if id is not None:
-            cpn = Campaign.query.get(id)
-            form.populate(cpn)
-        return render_template('edit.html', form=form)
-    
-    print("in modify, method=", request.method)
-    for key, value in request.form.items():
-        print(key, value, type(value))
+    form = CampaignForm()    
+    if form.validate_on_submit():    
+        print("in modify, method=", request.method)
+        for key, value in request.form.items():
+            print(key, value, type(value))
 
-    return redirect('/history/')
+        return redirect('/history/')
+
+    if id is not None:
+        cpn = Campaign.query.get(id)
+        form.populate(cpn)
+
+    return render_template('edit.html', form=form)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
