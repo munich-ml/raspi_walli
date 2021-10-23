@@ -5,11 +5,11 @@ import os, json
 from numpy import tile
 import datetime as dt
 import pandas as pd
-from flask import Flask, render_template, flash, redirect, url_for, request, session
+from flask import Flask, render_template, flash, redirect, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.fields.html5 import DateField
+from wtforms.fields.html5 import DateField, DateTimeField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -54,17 +54,7 @@ class CampaignForm(FlaskForm):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    print("at home")
     return render_template('index.html')
-
-
-@app.route('/history/')
-def history():
-    campaigns = Campaign.query.all()
-    for campaign in campaigns:
-        print(campaign)
-
-    return render_template('history.html', campaigns=campaigns)
 
 
 @app.route('/config/')
@@ -81,10 +71,15 @@ def config():
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
 
+@app.route('/history/')
+def history():
+    campaigns = Campaign.query.all()
+    return render_template('history.html', campaigns=campaigns)
+
+
 @app.route('/history/edit/', methods=['GET', 'POST'], defaults={"id": None})
 @app.route('/history/edit/<id>/', methods=['GET', 'POST'])
 def edit(id=None):
-    print("edit", id)
     if request.method == "GET":
         form = CampaignForm()
         if id is not None:
