@@ -2,11 +2,14 @@
 
 
 import os, json
+from numpy import tile
+import datetime as dt
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField
+from wtforms.fields.html5 import DateField
 from wtforms.validators import DataRequired
 
 app = Flask(__name__)
@@ -41,11 +44,17 @@ class WalliStat(db.Model):
 
 
 class CampaignForm(FlaskForm):
-    title = StringField('title', validators=[DataRequired()])
+    title = StringField(validators=[DataRequired()])
+    start_date = DateField("Start date", format="%Y-%m-%d", validators=[DataRequired()])
+
+    def pre_populate(self):
+        self.title.data = "Esmiralda"
+        self.start_date.data = dt.datetime.today().date()
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    print("at home")
     return render_template('index.html')
 
 
@@ -75,10 +84,12 @@ def config():
 @app.route('/modify_campaign/', methods=['GET', 'POST'])
 def modify_campaign():
     if request.method == "GET":
-        return render_template('modify_campaign.html', form=CampaignForm())
+        form=CampaignForm()
+        form.pre_populate()
+        return render_template('modify_campaign.html', form=form)
     
     print("in modify, method=", request.method)
-    for item in request.form.items():
-        print(item)
+    for key, value in request.form.items():
+        print(key, value, type(value))
 
     return redirect('/')

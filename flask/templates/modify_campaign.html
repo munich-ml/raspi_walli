@@ -5,6 +5,7 @@
 
 <form method="POST" action="">
     <p>{{ form.title.label }} {{ form.title(size=20) }}</p>
+    <p>Start {{ form.start_date(class='datepicker')}} {{form.hidden_tag()}}</p>
     <p><input type="submit" value="Go"></p>
 </form>
 {% endblock %}
