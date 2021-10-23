@@ -46,8 +46,6 @@ class CampaignForm(FlaskForm):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        print("POST")
     return render_template('index.html')
 
 
@@ -76,9 +74,11 @@ def config():
 
 @app.route('/modify_campaign/', methods=['GET', 'POST'])
 def modify_campaign():
-    form = CampaignForm()
-    if form.validate_on_submit():
-        print("all good")
-        print(form.title)
-        return redirect('/')
-    return render_template('modify_campaign.html', form=form)
+    if request.method == "GET":
+        return render_template('modify_campaign.html', form=CampaignForm())
+    
+    print("in modify, method=", request.method)
+    for item in request.form.items():
+        print(item)
+
+    return redirect('/')
