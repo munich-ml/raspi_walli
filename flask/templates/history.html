@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Campaigns</h1>
+<h2>Campaigns</h2>
 <table>
     <thead>
         <tr>
@@ -18,7 +18,11 @@
     <tbody>
         {% for cpn in campaigns %}
         <tr>
-            <td>{{cpn.id}}</td>
+            <td>
+                <a href="edit/{{cpn.id}}/">
+                    <button type="button">{{cpn.id}}</button>
+                </a>
+            </td>
             <td>{{cpn.title}}</td>
             <td>{{cpn.is_active}}</td>
             <td>{{cpn.start}}</td>
@@ -30,4 +34,7 @@
         {% endfor %}
     </tbody>
 </table>
+<a href="edit">
+    <button type="button">create a new campaign</button>
+</a>
 {% endblock %}

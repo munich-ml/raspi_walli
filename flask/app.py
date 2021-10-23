@@ -47,9 +47,9 @@ class CampaignForm(FlaskForm):
     title = StringField(validators=[DataRequired()])
     start_date = DateField("Start date", format="%Y-%m-%d", validators=[DataRequired()])
 
-    def pre_populate(self):
-        self.title.data = "Esmiralda"
-        self.start_date.data = dt.datetime.today().date()
+    def populate(self, cpn):
+        self.title.data = cpn.title
+        self.start_date.data = cpn.start.date()
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -81,15 +81,19 @@ def config():
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
 
-@app.route('/modify_campaign/', methods=['GET', 'POST'])
-def modify_campaign():
+@app.route('/history/edit/', methods=['GET', 'POST'], defaults={"id": None})
+@app.route('/history/edit/<id>/', methods=['GET', 'POST'])
+def edit(id=None):
+    print("edit", id)
     if request.method == "GET":
-        form=CampaignForm()
-        form.pre_populate()
-        return render_template('modify_campaign.html', form=form)
+        form = CampaignForm()
+        if id is not None:
+            cpn = Campaign.query.get(id)
+            form.populate(cpn)
+        return render_template('edit.html', form=form)
     
     print("in modify, method=", request.method)
     for key, value in request.form.items():
         print(key, value, type(value))
 
-    return redirect('/')
+    return redirect('/history/')
