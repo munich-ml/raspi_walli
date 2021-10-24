@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Campaigns</h2>
+<h2>Measurement campaigns</h2>
 <table>
     <thead>
         <tr>
@@ -34,7 +34,9 @@
         {% endfor %}
     </tbody>
 </table>
-<a href="edit">
-    <button type="button">create a new campaign</button>
-</a>
+<p>
+    <a href="edit">
+        <button type="button" title="create a new campaign">new</button>
+    </a>
+</p>
 {% endblock %}
