@@ -105,6 +105,11 @@ def edit(id=None):
         return render_template('edit.html', form=form)    
     
     elif request.method == "POST":    
+        print("### edit POST ###")
+        print("method:", request.method, ", todo:", request.form["todo"])
+        for key, value in request.form.items():
+            print("-", key, value, type(value))
+
         if request.form["todo"] == "save":
             f = request.form
             cmp = Campaign(title = f["title"], 
@@ -118,8 +123,10 @@ def edit(id=None):
             db.session.commit()
         
         elif request.form["todo"] == "delete":
-            id = int(request.form["id"])
-            if id == 0:
+            id = request.form["id"]
+            if id == "":
+                pass  # in case of a new campaign, there is no id, yet
+            elif id == "0":
                 flash("id=0 can't be deleted!")
             else: 
                 cmp = Campaign.query.get(id)
