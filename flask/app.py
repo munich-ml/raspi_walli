@@ -2,6 +2,8 @@
 
 
 import os, json
+import re
+from matplotlib.pyplot import title
 from numpy import tile
 import datetime as dt
 import pandas as pd
@@ -40,6 +42,7 @@ class CampaignForm(FlaskForm):
     start_time = TimeField(format="%H:%M", validators=[DataRequired()], default=dt.datetime.now().time())
     end_date = DateField(format="%Y-%m-%d", validators=[DataRequired()], default=dt.datetime.now().date())
     end_time = TimeField(format="%H:%M", validators=[DataRequired()], default=dt.datetime.now().time())
+    interval = IntegerField(validators=[DataRequired()], default=3600)
     measure_walli = BooleanField(default=True)
     measure_light = BooleanField(default=True)
         
@@ -53,7 +56,6 @@ class CampaignForm(FlaskForm):
         self.end_time.data = cpn.end.time()
         self.measure_walli.data = cpn.measure_walli
         self.measure_light.data = cpn.measure_light
-
         
 
 class WalliStat(db.Model):
@@ -67,9 +69,7 @@ class WalliStat(db.Model):
         return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.Temp}°C, {self.Power}W)"
 
 
-
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -109,6 +109,18 @@ def edit(id=None):
         print("method:", request.method, ", todo:", request.form["todo"])
         for key, value in request.form.items():
             print("-", key, value, type(value))
+
+        f = request.form
+        if f["todo"] == "save":
+            cmp = Campaign(title = f["title"], 
+                        is_active = "active" in f,
+                        start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M"),
+                        end = dt.datetime.strptime(f["end_date"]+f["end_time"], "%Y-%m-%d%H:%M"),
+                        interval = dt.timedelta(seconds=int(f["interval"])),
+                        measure_walli = "measure_walli" in f,
+                        measure_light = "measure_light" in f)
+            db.session.add(cmp)
+            db.session.commit()
 
         return redirect('/history/')
 
