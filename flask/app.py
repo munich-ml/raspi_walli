@@ -100,18 +100,13 @@ def edit(id=None):
     if request.method == "GET": 
         form = CampaignForm()    
         if id is not None:
-            cpn = Campaign.query.get(id)
-            form.populate(cpn)
+            cmp = Campaign.query.get(id)
+            form.populate(cmp)
         return render_template('edit.html', form=form)    
     
     elif request.method == "POST":    
-        print("### edit POST ###")
-        print("method:", request.method, ", todo:", request.form["todo"])
-        for key, value in request.form.items():
-            print("-", key, value, type(value))
-
-        f = request.form
-        if f["todo"] == "save":
+        if request.form["todo"] == "save":
+            f = request.form
             cmp = Campaign(title = f["title"], 
                         is_active = "active" in f,
                         start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M"),
@@ -121,6 +116,15 @@ def edit(id=None):
                         measure_light = "measure_light" in f)
             db.session.add(cmp)
             db.session.commit()
+        
+        elif request.form["todo"] == "delete":
+            id = int(request.form["id"])
+            if id == 0:
+                flash("id=0 can't be deleted!")
+            else: 
+                cmp = Campaign.query.get(id)
+                db.session.delete(cmp)
+                db.session.commit()
 
         return redirect('/history/')
 
