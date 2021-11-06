@@ -112,15 +112,18 @@ def edit(id=None):
 
         if request.form["todo"] == "save":
             f = request.form
-            cmp = Campaign(title = f["title"], 
-                        is_active = "active" in f,
-                        start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M"),
-                        end = dt.datetime.strptime(f["end_date"]+f["end_time"], "%Y-%m-%d%H:%M"),
-                        interval = dt.timedelta(seconds=int(f["interval"])),
-                        measure_walli = "measure_walli" in f,
-                        measure_light = "measure_light" in f)
-            db.session.add(cmp)
-            db.session.commit()
+            if f["id"] == "":  # create a mew campaign
+                cmp = Campaign(title = f["title"], 
+                            is_active = "active" in f,
+                            start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M"),
+                            end = dt.datetime.strptime(f["end_date"]+f["end_time"], "%Y-%m-%d%H:%M"),
+                            interval = dt.timedelta(seconds=int(f["interval"])),
+                            measure_walli = "measure_walli" in f,
+                            measure_light = "measure_light" in f)
+                db.session.add(cmp)
+                db.session.commit()
+            else:
+                print("to do: Modify campaign")
         
         elif request.form["todo"] == "delete":
             id = request.form["id"]
