@@ -2,15 +2,12 @@
 
 
 import os, json
-import re
-from matplotlib.pyplot import title
-from numpy import tile
 import datetime as dt
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextField, TextAreaField, BooleanField
+from wtforms import TextAreaField, BooleanField
 from wtforms.fields.html5 import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
 
@@ -69,7 +66,7 @@ class WalliStat(db.Model):
         return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.Temp}°C, {self.Power}W)"
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
@@ -105,42 +102,38 @@ def edit(id=None):
         return render_template('edit.html', form=form)    
     
     elif request.method == "POST":    
-        print("### edit POST ###")
-        print("method:", request.method, ", todo:", request.form["todo"])
-        for key, value in request.form.items():
-            print("-", key, value, type(value))
+        id = request.form["id"]
+        if id == "0":
+            flash("Campaign(id=0) can't be modified!")
 
-        if request.form["todo"] == "save":
-            f = request.form
-            if f["id"] == "":  # create a mew campaign
-                cmp = Campaign(title = f["title"], 
-                            is_active = "active" in f,
-                            start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M"),
-                            end = dt.datetime.strptime(f["end_date"]+f["end_time"], "%Y-%m-%d%H:%M"),
-                            interval = dt.timedelta(seconds=int(f["interval"])),
-                            measure_walli = "measure_walli" in f,
-                            measure_light = "measure_light" in f)
-                db.session.add(cmp)
-                db.session.commit()
-            else:
-                print("to do: Modify campaign")
-        
-        elif request.form["todo"] == "delete":
-            id = request.form["id"]
+        elif request.form["todo"] == "save":
             if id == "":
-                pass  # in case of a new campaign, there is no id, yet
-            elif id == "0":
-                flash("id=0 can't be deleted!")
-            else: 
-                cmp = Campaign.query.get(id)
-                db.session.delete(cmp)
-                db.session.commit()
+                cmp = Campaign()   # create a new campaign
+            else:   
+                cmp = Campaign.query.get(int(id))
+
+            # do all the modifications
+            f = request.form
+            cmp.is_active = "active" in f
+            cmp.title = f["title"]
+            cmp.start = dt.datetime.strptime(f["start_date"]+f["start_time"], "%Y-%m-%d%H:%M")
+            cmp.end = dt.datetime.strptime(f["end_date"]+f["end_time"], "%Y-%m-%d%H:%M")
+            cmp.interval = dt.timedelta(seconds=int(f["interval"]))
+            cmp.measure_walli = "measure_walli" in f
+            cmp.measure_light = "measure_light" in f
+
+            db.session.add(cmp)
+            db.session.commit()
+
+        elif request.form["todo"] == "delete" and id != "": 
+            cmp = Campaign.query.get(id)
+            db.session.delete(cmp)
+            db.session.commit()
 
         return redirect('/history/')
 
     else:
         print(f"Warning: Unsupported request.method '{request.method}'!")
-
 
 
 if __name__ == "__main__":
