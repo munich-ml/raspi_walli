@@ -5,7 +5,7 @@ from queue import Queue
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s | %(threadName)-10s | %(message)s',)
 
-SIMULATION = True
+SIMULATION = False
 
 class SensorBaseClass(threading.Thread):
     def __init__(self, *args, **kwargs):
@@ -15,11 +15,11 @@ class SensorBaseClass(threading.Thread):
         self.task_queue = Queue(maxsize=10)
         
     def connect(self):
-        """capture function to be implemented in sensor subclass"""
+        """ connect function to be implemented in sensor subclass """
         raise NotImplementedError()
         
     def capture(self):
-        """capture function to be implemented in sensor subclass"""
+        """ capture function to be implemented in sensor subclass """
         raise NotImplementedError()
     
     def exit(self):
@@ -59,7 +59,7 @@ class LightSensor(SensorBaseClass):
         if not SIMULATION:
             from smbus import SMBus
             self.sensor = SMBus(1)  # Rev 2 Pi uses 1
-        logging.debug("connected")
+        logging.debug("LightSensor BH1570 connected")
         
     def capture(self):
         """Returns light level in Lux"""
@@ -74,13 +74,12 @@ class LightSensor(SensorBaseClass):
             lux = (d[1] + (256 * d[0])) / 1.2
             return {"result": lux}
 
-
     
 if __name__ == '__main__':
     def process_return_data(data):
-        logging.info(f"print_data: {data}")
+        logging.info(f"process_return_data: {data}")
 
-    sensor = LightSensor(name="Sensor1")
+    sensor = LightSensor()
     sensor.start()
     sensor.task_queue.put({"func": "connect"})
     for i in range(6):
@@ -88,6 +87,7 @@ if __name__ == '__main__':
                  "started": dt.datetime.now(),
                  "callback": process_return_data})
         sensor.task_queue.put(task)
+        time.sleep(1)
     sensor.task_queue.put({"func": "exit"})
     sensor.join()
     logging.debug("finished")
