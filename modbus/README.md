@@ -1,6 +1,6 @@
 # Modbus
 Within this project, a Raspberry Pi will be connected to a **Heidelbert Wallbox Energy Control** via **Modbus RTU**. Here is how the wallbox looks like: 
-![Heidelbert Wallbox Energy Control image](imgs/Heidelberg-Wallbox-Energy-Control.jpg)
+![Heidelberg Wallbox Energy Control image](imgs/Heidelberg-Wallbox-Energy-Control.jpg)
 
 Thus, this folder is dedicated to the **Modbus RTU**. **RTU** stands for *Remote Terminal Unit* and is serial communication over RS485 (or even RS232) in contrast to **Modbus TCP** over Ethernet.
 

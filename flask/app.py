@@ -10,7 +10,7 @@ from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
 from wtforms.fields.html5 import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
-from sensors.sensors import LightSensor
+from sensors.sensors import SensorInterface
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(threadName)-10s | %(funcName)-10s | %(message)s',)
 
@@ -20,7 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trial.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False   # https://stackoverflow.com/questions/33738467/how-do-i-know-if-i-can-disable-sqlalchemy-track-modifications
 db = SQLAlchemy(app)
 
-    
 
 class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -98,12 +97,11 @@ def commit_lux_to_db(dct):
 
 @app.route('/')
 def index():
-    
-    task = ({"func": "capture",
+    task = ({"sensor": "light",
+             "func": "capture",
              "campaign_id": 42, 
              "callback": commit_lux_to_db})
-    global_sensors["light"].task_queue.put(task)
-    
+    sensor_interface.do_task(task)
 
     return render_template('index.html')
 
@@ -174,12 +172,6 @@ def edit(id=None):
 
 
 if __name__ == "__main__":
-    global_sensors = {"light": LightSensor()}
-    for sensor in global_sensors.values():
-        sensor.task_queue.put({"func": "connect"})
-        
-    logging.info("'global_sensors' initialized")
-    for key, value in global_sensors.items():
-        logging.info(f"- '{key}': {value}")
+    sensor_interface = SensorInterface()
                
     app.run(debug=False)

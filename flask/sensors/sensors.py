@@ -19,11 +19,11 @@ class SensorBaseClass(threading.Thread):
         connected = {True: "connected", False: "not connected"}[self.connected]
         return f"{self.type}, {connected}"
         
-    def connect(self):
+    def _connect(self):
         """ connect function to be implemented in sensor subclass """
         raise NotImplementedError()
         
-    def capture(self):
+    def _capture(self):
         """ capture function to be implemented in sensor subclass """
         raise NotImplementedError()
     
@@ -31,13 +31,13 @@ class SensorBaseClass(threading.Thread):
         self.exiting = True
     
     def run(self):
-        TASK_FUNCS = {"connect": self.connect,
-                      "capture": self.capture,
+        TASK_FUNCS = {"connect": self._connect,
+                      "capture": self._capture,
                       "exit": self.exit}
         
         logging.debug("starting thread")
         while not self.exiting:
-            time.sleep(0.01)
+            time.sleep(0.01)    # without this sleep, the processor goes busy
             while not self.task_queue.empty():
                 start_time = time.time()
                 task = self.task_queue.get()
@@ -67,14 +67,14 @@ class LightSensor(SensorBaseClass):
         super().__init__(*args, **kwargs)
         self.type = "LightSensor BH1570"
         
-    def connect(self):
+    def _connect(self):
         if not SIMULATION:
             from smbus import SMBus
             self.sensor = SMBus(1)  # Rev 2 Pi uses 1
         self.connected = True
         logging.debug(f"{self.type} connected")
         
-    def capture(self):
+    def _capture(self):
         """Returns light level in Lux"""
         if SIMULATION:
             time.sleep(0.01)
@@ -89,6 +89,55 @@ class LightSensor(SensorBaseClass):
             lux = (d[1] + (256 * d[0])) / 1.2
             return {"lux": lux}
 
+
+class Wallbox(SensorBaseClass):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.type = "Heidelberg Wallbox Energy Control"
+
+    def _connect(self):
+        logging.warning(f"{self.type} has no 'connect' method, yet!")
+
+    def _capture(self):
+        logging.warning(f"{self.type} has no 'capture' method, yet!")
+        return {}
+                
+
+class Camera(SensorBaseClass):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.type = "Camera"
+
+
+class SensorInterface(dict):
+    """Container holding all sensors"""
+    def __init__(self):
+        self["light"] = LightSensor()
+        self["walli"] = Wallbox()
+        
+        # connect all sensors
+        for sensor in self.values():
+            sensor.task_queue.put({"func": "connect"})
+        time.sleep(0.01)  # wait for all sensor threads to connect
+        
+        logging.info("SensorInterface initialized")
+        for key, value in self.items():
+            logging.info(f"- '{key}': {value}")
+        
+    def do_task(self, task):
+        """
+        Executes a task 
+        
+        task is a <dict> with the items:
+            "sensor": <str> sensor key like "light", "walli" or "cam"
+            "func": <str> function key like "capture", "connect" or "exit"
+            "campaign_id": <int> e.g. 42
+            "callback": <func> callback function line process_return_data
+        """
+        sensor_key = task["sensor"]
+        sensor = self[sensor_key]
+        sensor.task_queue.put(task)
+        
     
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(threadName)-10s | %(funcName)-16s | %(message)s',)
@@ -100,9 +149,9 @@ if __name__ == '__main__':
     sensor.start()
     sensor.task_queue.put({"func": "connect"})
     for i in range(6):
-        task = ({"func": "capture",
-                 "campaign_id": 42, 
-                 "callback": process_return_data})
+        task = {"func": "capture",
+                "campaign_id": 42, 
+                "callback": process_return_data}
         sensor.task_queue.put(task)
         time.sleep(1)
     sensor.task_queue.put({"func": "exit"})
