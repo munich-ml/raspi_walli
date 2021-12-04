@@ -2,14 +2,14 @@ import logging, threading, time
 import time
 import datetime as dt
 from queue import Queue
+from constants import SIMULATION
 
+logger = logging.getLogger(__name__)
 
-SIMULATION = True
 
 class SensorBaseClass(threading.Thread):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.type = "unknown sensor"   # to be filled by sensor subclass
         self.connected = False
         self.exiting = False
         self.task_queue = Queue(maxsize=10)
@@ -35,7 +35,7 @@ class SensorBaseClass(threading.Thread):
                       "capture": self._capture,
                       "exit": self.exit}
         
-        logging.debug("starting thread")
+        logger.info(f"Sensor thread started for '{self.type}'")
         while not self.exiting:
             time.sleep(0.01)    # without this sleep, the processor goes busy
             while not self.task_queue.empty():
@@ -50,7 +50,7 @@ class SensorBaseClass(threading.Thread):
                 try:
                     return_dct = func(**kwargs)
                 except Exception as e:
-                    logging.error(f"task {task} caused {e}")
+                    logger.error(f"task {task} caused {e}")
                     continue
                 
                 if "callback" in task.keys():
@@ -58,21 +58,21 @@ class SensorBaseClass(threading.Thread):
                     return_dct["campaign_id"] = task["campaign_id"]   
                     task["callback"](return_dct)
                     
-        logging.debug("exiting thread")
+        logger.info(f"Sensor thread exiting for '{self.type}'")
 
 
 class LightSensor(SensorBaseClass):
     """ BH1750 digital light sensor """ 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
         self.type = "LightSensor BH1570"
+        super().__init__(*args, **kwargs)
         
     def _connect(self):
         if not SIMULATION:
             from smbus import SMBus
             self.sensor = SMBus(1)  # Rev 2 Pi uses 1
         self.connected = True
-        logging.debug(f"{self.type} connected")
+        logger.debug(f"{self.type} connected")
         
     def _capture(self):
         """Returns light level in Lux"""
@@ -92,14 +92,14 @@ class LightSensor(SensorBaseClass):
 
 class Wallbox(SensorBaseClass):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
         self.type = "Heidelberg Wallbox Energy Control"
-
+        super().__init__(*args, **kwargs)
+        
     def _connect(self):
-        logging.warning(f"{self.type} has no 'connect' method, yet!")
+        logger.warning(f"{self.type} has no 'connect' method, yet!")
 
     def _capture(self):
-        logging.warning(f"{self.type} has no 'capture' method, yet!")
+        logger.warning(f"{self.type} has no 'capture' method, yet!")
         return {}
                 
 
@@ -118,11 +118,10 @@ class SensorInterface(dict):
         # connect all sensors
         for sensor in self.values():
             sensor.task_queue.put({"func": "connect"})
-        time.sleep(0.01)  # wait for all sensor threads to connect
         
-        logging.info("SensorInterface initialized")
+        logger.info("SensorInterface initialized")
         for key, value in self.items():
-            logging.info(f"- '{key}': {value}")
+            logger.info(f"- '{key}': {value}")
         
     def do_task(self, task):
         """
@@ -136,14 +135,17 @@ class SensorInterface(dict):
         """
         sensor_key = task["sensor"]
         sensor = self[sensor_key]
-        sensor.task_queue.put(task)
+        if sensor.task_queue.full():
+            logger.warning(f"Queue is full! Sipping {task}")
+        else:    
+            sensor.task_queue.put(task, timeout=1)
         
     
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(threadName)-10s | %(funcName)-16s | %(message)s',)
-
+    """
+    
     def process_return_data(data):
-        logging.info(f"process_return_data: {data}")
+        logger.info(f"process_return_data: {data}")
 
     sensor = LightSensor()
     sensor.start()
@@ -156,4 +158,5 @@ if __name__ == '__main__':
         time.sleep(1)
     sensor.task_queue.put({"func": "exit"})
     sensor.join()
-    logging.debug("finished")
+    logger.debug("finished")
+    """

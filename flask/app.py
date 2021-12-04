@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 import json, logging, os
 import datetime as dt
 import pandas as pd
@@ -12,7 +11,9 @@ from wtforms.fields.html5 import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
 from sensors.sensors import SensorInterface
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(threadName)-10s | %(funcName)-10s | %(message)s',)
+logger = logging.getLogger(__name__)
+
+sensor_interface = SensorInterface()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secure'
@@ -90,17 +91,17 @@ def commit_lux_to_db(dct):
         dct["campaign_id"]: campaign_id <int> 
     """ 
     lv = LuxValue(datetime=dt.datetime.now(), lux=dct["lux"], campaign_id=dct["campaign_id"])
-    logging.info(f"Committing {lv}")
+    logger.info(f"Committing {lv}")
     db.session.add(lv)
     db.session.commit()
 
 
 @app.route('/')
 def index():
-    task = ({"sensor": "light",
-             "func": "capture",
-             "campaign_id": 42, 
-             "callback": commit_lux_to_db})
+    task = {"sensor": "light",
+            "func": "capture",
+            "campaign_id": 42, 
+            "callback": commit_lux_to_db}
     sensor_interface.do_task(task)
 
     return render_template('index.html')
@@ -168,10 +169,8 @@ def edit(id=None):
         return redirect('/history/')
 
     else:
-        print(f"Warning: Unsupported request.method '{request.method}'!")
+        logger.warning(f"Unsupported request.method '{request.method}'!")
 
 
-if __name__ == "__main__":
-    sensor_interface = SensorInterface()
-               
+if __name__ == "__main__":         
     app.run(debug=False)
