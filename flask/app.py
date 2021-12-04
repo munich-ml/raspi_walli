@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-import os, json
+import json, logging, os
 import datetime as dt
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
@@ -10,11 +10,17 @@ from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
 from wtforms.fields.html5 import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
+from sensors.sensors import LightSensor
+
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s | %(threadName)-10s | %(funcName)-10s | %(message)s',)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secure'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trial.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False   # https://stackoverflow.com/questions/33738467/how-do-i-know-if-i-can-disable-sqlalchemy-track-modifications
 db = SQLAlchemy(app)
+
+    
 
 class Campaign(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,6 +32,7 @@ class Campaign(db.Model):
     measure_walli = db.Column(db.Boolean, default=True)
     measure_light = db.Column(db.Boolean, default=True)
     walli_stats = db.relationship('WalliStat', backref='campaign', lazy=True)
+    lux_values = db.relationship('LuxValue', backref='campaign', lazy=True)
 
     def __repr__(self):
         return f"Campaign(id:{self.id}, '{self.title}' is active:{self.is_active}, start:{self.start}, end:{self.end}, interval:{self.interval})"
@@ -66,8 +73,38 @@ class WalliStat(db.Model):
         return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.Temp}°C, {self.Power}W)"
 
 
+class LuxValue(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    datetime = db.Column(db.DateTime)
+    lux = db.Column(db.Float)
+    campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
+    
+    def __repr__(self):
+        return f"LuxValue(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.lux} lux"
+
+
+def commit_lux_to_db(dct):
+    """
+    Commits lux value (from light sensor) to the database incl. campaign_id as reference.
+    input <dct> dct
+        dct["lux"]: light value in lux <float>
+        dct["campaign_id"]: campaign_id <int> 
+    """ 
+    lv = LuxValue(datetime=dt.datetime.now(), lux=dct["lux"], campaign_id=dct["campaign_id"])
+    logging.info(f"Committing {lv}")
+    db.session.add(lv)
+    db.session.commit()
+
+
 @app.route('/')
 def index():
+    
+    task = ({"func": "capture",
+             "campaign_id": 42, 
+             "callback": commit_lux_to_db})
+    global_sensors["light"].task_queue.put(task)
+    
+
     return render_template('index.html')
 
 
@@ -137,4 +174,12 @@ def edit(id=None):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    global_sensors = {"light": LightSensor()}
+    for sensor in global_sensors.values():
+        sensor.task_queue.put({"func": "connect"})
+        
+    logging.info("'global_sensors' initialized")
+    for key, value in global_sensors.items():
+        logging.info(f"- '{key}': {value}")
+               
+    app.run(debug=False)
