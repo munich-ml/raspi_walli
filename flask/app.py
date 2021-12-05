@@ -13,7 +13,6 @@ from sensors.sensors import SensorInterface
 
 logger = logging.getLogger(__name__)
 
-sensor_interface = SensorInterface()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secure'
@@ -96,6 +95,12 @@ def commit_lux_to_db(dct):
     db.session.commit()
 
 
+class CaptureTimer():
+    def get_time_until_next_capture(self):
+        
+        pass
+    
+    
 @app.route('/')
 def index():
     task = {"sensor": "light",
@@ -172,5 +177,6 @@ def edit(id=None):
         logger.warning(f"Unsupported request.method '{request.method}'!")
 
 
-if __name__ == "__main__":         
+if __name__ == "__main__":    
+    sensor_interface = SensorInterface()     
     app.run(debug=False)
