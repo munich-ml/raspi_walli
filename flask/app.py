@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secure'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///trial.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///walli.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False   # https://stackoverflow.com/questions/33738467/how-do-i-know-if-i-can-disable-sqlalchemy-track-modifications
 db = SQLAlchemy(app)
 
@@ -26,7 +26,8 @@ class Campaign(db.Model):
     title = db.Column(db.String(120), nullable=False)
     is_active = db.Column(db.Boolean, default=True)
     start = db.Column(db.DateTime, nullable=False)
-    end = db.Column(db.DateTime)
+    end = db.Column(db.DateTime, nullable=False)
+    previous = db.Column(db.DateTime)
     interval = db.Column(db.Interval, nullable=False)
     measure_walli = db.Column(db.Boolean, default=True)
     measure_light = db.Column(db.Boolean, default=True)

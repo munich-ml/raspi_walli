@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site42.db'
 db = SQLAlchemy(app)
 
 class Campaign(db.Model):
@@ -10,6 +10,7 @@ class Campaign(db.Model):
     title = db.Column(db.String(120), nullable=False)
     is_active = db.Column(db.Boolean, default=True)
     start = db.Column(db.DateTime, nullable=False)
+    previous = db.Column(db.DateTime)
     end = db.Column(db.DateTime)
     interval = db.Column(db.Interval, nullable=False)
     measure_walli = db.Column(db.Boolean, default=True)
