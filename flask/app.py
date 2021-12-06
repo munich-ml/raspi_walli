@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json, logging, os
+import json, logging, math, os, threading
 import datetime as dt
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
@@ -97,8 +97,63 @@ def commit_lux_to_db(dct):
 
 
 class CaptureTimer():
-    def get_time_until_next_capture(self):
+    def __init__(self, sensor_interface):
+        self.sensor_interface = sensor_interface
+        self.timer = threading.Timer(interval=0, function=lambda: logger.error("no Timer defined, yet"))
         
+    @staticmethod
+    def get_next_capture(campaigns=None):
+        """
+        Computes which campaign out of a list of campaigns is due to capture next.
+        
+        Returns <tuple> of for the next capture, with two items:
+            time <float> in seconds to sleep until this capture
+            campaign <Campaign> of the next captur
+
+        Args:
+            campaigns <list>: List of campaigns <Campaign>
+                if campaigns is None, a Campaign.query is conducted
+        """
+        pending = {}   # pending captures with sleeptime <float> as keys and <Campaign> values
+        now = dt.datetime.now()
+        
+        if campaigns is None:
+            campaigns = Campaign.query.filter(Campaign.is_active==True).filter(Campaign.end > now).all()
+            
+        for cmp in campaigns:
+            if now > cmp.start:  # Overdue detection for immidiate capture
+                if cmp.previous is None:   # Case 1: First capture of a campaign is overdue
+                    return 0, cmp  
+                else:
+                    next = cmp.previous + cmp.interval
+                    if now >= next:   # Case 2: A regular captuire within a campaign is overdue
+                        return 0, cmp
+                
+            if now <= cmp.start:   # Case 3: Wait for first capture in the future
+                seconds_until_capture = (cmp.start - now) / dt.timedelta(seconds=1.0)
+            else:   # Case 4: Ongoing campaign
+                # Round to the next complete interval. This avoids drifting over time
+                next_capture = cmp.start + math.ceil((now - cmp.start) / cmp.interval) * cmp.interval 
+                seconds_until_capture = (next_capture - now) / dt.timedelta(seconds=1.0)
+            pending[seconds_until_capture] = cmp
+                
+        min_seconds, next_cmp = sorted(pending.items())[0]
+        return min_seconds, next_cmp
+    
+    
+    def update(self):
+        """[summary]
+        """
+        self.timer.cancel()  # cancal current timer
+        sleeptime, campaign = self.get_next_capture()
+        self.timer = threading.Timer(sleeptime, lambda: self.capture(campaign))
+        self.timer.start()
+    
+           
+    def capture(self, campaign):
+        # set cmp.previous to now
+        # for sensor in active_sensors
+        #     self.sensor_interface[sensor].capture(campaign.id)
         pass
     
     
@@ -180,4 +235,5 @@ def edit(id=None):
 
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
+    capture_timer = CaptureTimer(sensor_interface)
     app.run(debug=False)
