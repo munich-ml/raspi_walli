@@ -35,7 +35,7 @@ class Campaign(db.Model):
     lux_values = db.relationship('LuxValue', backref='campaign', lazy=True)
 
     def __repr__(self):
-        return f"Campaign(id:{self.id}, '{self.title}' is active:{self.is_active}, start:{self.start}, end:{self.end}, interval:{self.interval})"
+        return f"Campaign(id:{self.id} '{self.title}' act={self.is_active} start={self.start}, end={self.end}, int={self.interval})"
 
 
 class CampaignForm(FlaskForm):
@@ -74,6 +74,7 @@ class WalliStat(db.Model):
 
 
 class LuxValue(db.Model):
+    """Database Model class for storing light sensor data"""
     id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.DateTime)
     lux = db.Column(db.Float)
@@ -91,15 +92,17 @@ def commit_lux_to_db(dct):
         dct["campaign_id"]: campaign_id <int> 
     """ 
     lv = LuxValue(datetime=dt.datetime.now(), lux=dct["lux"], campaign_id=dct["campaign_id"])
-    logger.info(f"Committing {lv}")
+    logger.debug(f"Committing {lv}")
     db.session.add(lv)
     db.session.commit()
 
 
 class CaptureTimer():
+    """Class to scheduling sensor captures based on campaigns within the Campaign database"""
     def __init__(self, sensor_interface):
         self.sensor_interface = sensor_interface
         self.timer = threading.Timer(interval=0, function=lambda: logger.error("no Timer defined, yet"))
+        self.update_timer()  # initial capturing kick-off
         
     @staticmethod
     def get_next_capture(campaigns=None):
@@ -141,20 +144,43 @@ class CaptureTimer():
         return min_seconds, next_cmp
     
     
-    def update(self):
-        """[summary]
+    def update_timer(self):
+        """
+        Schedules a timer to exetue the next due capture.
+        Cancels an ongoing timer, if there is one.
         """
         self.timer.cancel()  # cancal current timer
-        sleeptime, campaign = self.get_next_capture()
-        self.timer = threading.Timer(sleeptime, lambda: self.capture(campaign))
+        t, campaign = self.get_next_capture()
+        logger.debug(f"Scheduling a Timer in {t=:.1f}s for {campaign}")
+        self.timer = threading.Timer(interval=t, function=self.capture, kwargs={"campaign":campaign})
         self.timer.start()
     
            
     def capture(self, campaign):
-        # set cmp.previous to now
-        # for sensor in active_sensors
-        #     self.sensor_interface[sensor].capture(campaign.id)
-        pass
+        """
+        Generates capture tasks for the campaign and sends them to the appropriate sensors via
+        
+        Args:
+            campaign (Campaign): [description]
+        """
+        logger.debug(campaign)
+        # send task(s) to the sensor_interface for capturing        
+        task = {"func": "capture",
+                "campaign_id": campaign.id, 
+                "callback": commit_lux_to_db}
+        
+        if campaign.measure_light:
+            task["sensor"] = "light"
+            self.sensor_interface.do_task(task)
+            
+        # set campaign.previous to now
+        now = dt.datetime.now()
+        db.session.query(Campaign).filter(Campaign.id==campaign.id).update({"previous": now})
+        db.session.commit()
+        
+        # update capture_timer
+        capture_timer.update_timer()
+        
     
     
 @app.route('/')
@@ -230,7 +256,7 @@ def edit(id=None):
         return redirect('/history/')
 
     else:
-        logger.warning(f"Unsupported request.method '{request.method}'!")
+        logger.warning(f"Unsupported '{request.method=}'!")
 
 
 if __name__ == "__main__":    
