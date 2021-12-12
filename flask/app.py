@@ -244,14 +244,15 @@ def edit(id=None):
             cmp.interval = dt.timedelta(seconds=int(f["interval"]))
             cmp.measure_walli = "measure_walli" in f
             cmp.measure_light = "measure_light" in f
-
             db.session.add(cmp)
             db.session.commit()
+            capture_timer.update_timer()  # necessary, because a the new or modified campaign could be next to capture.   
 
         elif request.form["todo"] == "delete" and id != "": 
             cmp = Campaign.query.get(id)
             db.session.delete(cmp)
             db.session.commit()
+            capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
 
         return redirect('/history/')
 
