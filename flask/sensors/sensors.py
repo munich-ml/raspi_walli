@@ -7,7 +7,7 @@ from constants import SIMULATION
 logger = logging.getLogger(__name__)
 
 
-class SensorBaseClass(threading.Thread):
+class SensorBase(threading.Thread):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.connected = False
@@ -61,7 +61,7 @@ class SensorBaseClass(threading.Thread):
         logger.info(f"Sensor thread exiting for '{self.type}'")
 
 
-class LightSensor(SensorBaseClass):
+class LightSensor(SensorBase):
     """ BH1750 digital light sensor """ 
     def __init__(self, *args, **kwargs):
         self.type = "LightSensor BH1570"
@@ -90,7 +90,7 @@ class LightSensor(SensorBaseClass):
             return {"lux": lux}
 
 
-class Wallbox(SensorBaseClass):
+class Wallbox(SensorBase):
     def __init__(self, *args, **kwargs):
         self.type = "Heidelberg Wallbox Energy Control"
         super().__init__(*args, **kwargs)
@@ -103,7 +103,7 @@ class Wallbox(SensorBaseClass):
         return {}
                 
 
-class Camera(SensorBaseClass):
+class Camera(SensorBase):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.type = "Camera"

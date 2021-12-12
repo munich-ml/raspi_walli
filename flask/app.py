@@ -113,7 +113,7 @@ class CaptureTimer():
         self.update_timer()  # initial capturing kick-off
         
     @staticmethod
-    def get_next_capture(campaigns=None):
+    def _get_next_capture(campaigns=None):
         """
         Computes which campaign out of a list of campaigns is due to capture next.
         
@@ -158,7 +158,7 @@ class CaptureTimer():
         Cancels an ongoing timer, if there is one.
         """
         self.timer.cancel()  # cancal current timer
-        t, campaign = self.get_next_capture()
+        t, campaign = self._get_next_capture()
         logger.debug(f"Scheduling a Timer in {t=:.1f}s for {campaign}")
         self.timer = threading.Timer(interval=t, function=self.capture, kwargs={"campaign":campaign})
         self.timer.start()
