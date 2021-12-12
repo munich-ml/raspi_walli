@@ -83,18 +83,26 @@ class LuxValue(db.Model):
     def __repr__(self):
         return f"LuxValue(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.lux} lux"
 
-
-def commit_lux_to_db(dct):
-    """
-    Commits lux value (from light sensor) to the database incl. campaign_id as reference.
-    input <dct> dct
-        dct["lux"]: light value in lux <float>
-        dct["campaign_id"]: campaign_id <int> 
-    """ 
-    lv = LuxValue(datetime=dt.datetime.now(), lux=dct["lux"], campaign_id=dct["campaign_id"])
-    logger.debug(f"Committing {lv}")
-    db.session.add(lv)
-    db.session.commit()
+    @classmethod
+    def commit(cls, dct):
+        """
+        Commits lux value (from light sensor) to the database incl. campaign_id as reference.
+        input <dct> dct
+            dct["lux"]: light value in lux <float>
+            dct["campaign_id"]: campaign_id <int> 
+        """ 
+        # Create a new data-point of this class. Assuming the data-point was captured right now.
+        ndp = cls(datetime=dt.datetime.now())
+        
+        # Populate the new data-point with all common attributes of the class and the input dictionary.
+        common_keys = set(dir(cls)).intersection(set(dct.keys()))
+        for key in common_keys:
+            setattr(ndp, key, dct[key])
+        
+        # Commit new data-point to the (global) database 
+        logger.debug(f"Committing {ndp}")
+        db.session.add(ndp)   
+        db.session.commit()
 
 
 class CaptureTimer():
@@ -167,7 +175,7 @@ class CaptureTimer():
         # send task(s) to the sensor_interface for capturing        
         task = {"func": "capture",
                 "campaign_id": campaign.id, 
-                "callback": commit_lux_to_db}
+                "callback": LuxValue.commit}
         
         if campaign.measure_light:
             task["sensor"] = "light"
@@ -188,7 +196,7 @@ def index():
     task = {"sensor": "light",
             "func": "capture",
             "campaign_id": 42, 
-            "callback": commit_lux_to_db}
+            "callback": LuxValue.commit}
     sensor_interface.do_task(task)
 
     return render_template('index.html')
