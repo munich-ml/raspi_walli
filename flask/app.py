@@ -187,18 +187,12 @@ class CaptureTimer():
         db.session.commit()
         
         # update capture_timer
-        capture_timer.update_timer()
+        self.update_timer()
         
     
     
 @app.route('/')
 def index():
-    task = {"sensor": "light",
-            "func": "capture",
-            "campaign_id": 42, 
-            "callback": LuxValue.commit}
-    sensor_interface.do_task(task)
-
     return render_template('index.html')
 
 
