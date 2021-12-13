@@ -2,5 +2,5 @@
 Diagrams crated using [draw.io](https://app.diagrams.net/)
 
 ## Top level diagram
-![](sw_concept.svg)
+![](sw_concept.drawio.svg)
 
