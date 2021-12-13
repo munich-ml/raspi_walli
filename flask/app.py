@@ -58,6 +58,7 @@ class CampaignForm(FlaskForm):
         self.start_time.data = cpn.start.time()
         self.end_date.data = cpn.end.date()
         self.end_time.data = cpn.end.time()
+        self.interval.data = int(cpn.interval / dt.timedelta(seconds=1))
         self.measure_walli.data = cpn.measure_walli
         self.measure_light.data = cpn.measure_light
         
@@ -129,7 +130,7 @@ class CaptureTimer():
         now = dt.datetime.now()
         
         if campaigns is None:
-            campaigns = Campaign.query.filter(Campaign.is_active==True).filter(Campaign.end > now).all()
+            campaigns = db.session.query(Campaign).filter(Campaign.is_active==True).filter(Campaign.end > now).all()
             
         for cmp in campaigns:
             if now > cmp.start:  # Overdue detection for immidiate capture
@@ -212,7 +213,7 @@ def config():
 
 @app.route('/history/')
 def history():
-    campaigns = Campaign.query.all()
+    campaigns = db.session.query(Campaign).all()
     return render_template('history.html', campaigns=campaigns)
 
 
@@ -222,7 +223,8 @@ def edit(id=None):
     if request.method == "GET": 
         form = CampaignForm()    
         if id is not None:
-            cmp = Campaign.query.get(id)
+            cmp = db.session.query(Campaign).get(id)
+            print("history.GET", cmp)
             form.populate(cmp)
         return render_template('edit.html', form=form)    
     
@@ -235,7 +237,7 @@ def edit(id=None):
             if id == "":
                 cmp = Campaign()   # create a new campaign
             else:   
-                cmp = Campaign.query.get(int(id))
+                cmp = db.session.query(Campaign).get(int(id))
 
             # do all the modifications
             f = request.form
@@ -251,7 +253,7 @@ def edit(id=None):
             capture_timer.update_timer()  # necessary, because a the new or modified campaign could be next to capture.   
 
         elif request.form["todo"] == "delete" and id != "": 
-            cmp = Campaign.query.get(id)
+            cmp = db.session.query(Campaign).get(id)
             db.session.delete(cmp)
             db.session.commit()
             capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
