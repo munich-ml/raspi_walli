@@ -211,20 +211,20 @@ def config():
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
 
-@app.route('/history/')
-def history():
+@app.route('/campaigns/')
+def campaigns():
     campaigns = db.session.query(Campaign).all()
-    return render_template('history.html', campaigns=campaigns)
+    return render_template('campaigns.html', campaigns=campaigns)
 
 
-@app.route('/history/edit/', methods=['GET', 'POST'], defaults={"id": None})
-@app.route('/history/edit/<id>/', methods=['GET', 'POST'])
+@app.route('/campaigns/edit/', methods=['GET', 'POST'], defaults={"id": None})
+@app.route('/campaigns/edit/<id>/', methods=['GET', 'POST'])
 def edit(id=None):   
     if request.method == "GET": 
         form = CampaignForm()    
         if id is not None:
             cmp = db.session.query(Campaign).get(id)
-            print("history.GET", cmp)
+            print("campaigns.GET", cmp)
             form.populate(cmp)
         return render_template('edit.html', form=form)    
     
@@ -258,7 +258,7 @@ def edit(id=None):
             db.session.commit()
             capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
 
-        return redirect('/history/')
+        return redirect('/campaigns/')
 
     else:
         logger.warning(f"Unsupported '{request.method=}'!")
