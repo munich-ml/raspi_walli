@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 import json, logging, math, os, threading
+import plotly
+import plotly.express as px
 import datetime as dt
 import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
@@ -262,6 +264,22 @@ def edit(id=None):
 
     else:
         logger.warning(f"Unsupported '{request.method=}'!")
+
+
+@app.route('/data/')
+def data():
+    #return render_template('data.html')
+    df = pd.DataFrame({
+        'Fruit': ['Apples', 'Oranges', 'Bananas', 'Apples', 'Oranges', 
+        'Bananas'],
+        'Amount': [4, 1, 2, 2, 4, 5],
+        'City': ['SF', 'SF', 'SF', 'Montreal', 'Montreal', 'Montreal']
+    })
+    fig = px.bar(df, x='Fruit', y='Amount', color='City', 
+        barmode='group')
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return render_template('data.html', graphJSON=graphJSON)
+
 
 
 if __name__ == "__main__":    
