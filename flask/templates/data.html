@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>data page</h2>
-    <div id='chart42'></div>
+<div id='chart42'></div>
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type='text/javascript'>
     Plotly.plot('chart42', {{graphJSON | safe}}, {});
