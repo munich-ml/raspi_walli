@@ -73,16 +73,15 @@ class WalliStat(db.Model):
         return ws
     
     
-    @staticmethod
-    def to_series(ws):
+    def to_series(self):
         """ Converts a WalliStat object into a Pandas Series """
         keys = ["id", "datetime", "charging_state", "I_L1", "I_L2", "I_L3", "temperature", "V_L1", "V_L2", "V_L3", 
                 "extern_lock_state", "power", "energy_pwr_on", "energy_total", "I_max_cfg", "I_min_cfg", 
                 "modbus_watchdog_timeout", "remote_lock", "I_max_cmd", "I_fail_safe", "campaign_id"]       
-        return pd.Series({key: getattr(ws, key) for key in keys})
+        return pd.Series({key: getattr(self, key) for key in keys})
     
     
     @staticmethod
     def to_dataframe(list_of_wallistat):
         """ Converts a list of WalliStat objects into a Pandas DataFrame """
-        return pd.concat([WalliStat.to_series(ws) for ws in list_of_wallistat], axis=1).T
+        return pd.concat([WalliStat.to_series(ws) for ws in list_of_wallistat], axis=1).T.set_index("id")
