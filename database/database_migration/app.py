@@ -1,3 +1,4 @@
+import pandas as pd
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
@@ -48,6 +49,7 @@ class WalliStat(db.Model):
 
     @classmethod
     def from_series(cls, series):
+        """ Creates a WalliStat from a Pandas Series """
         ws = cls(datetime = series.datetime,
                  charging_state = int(series.charge_state), 
                  I_L1 = series.I_L1 / 10.,
@@ -69,3 +71,18 @@ class WalliStat(db.Model):
                  I_fail_safe = int(series.FailSafe_I), 
                  campaign_id = int(series.campaign_id))
         return ws
+    
+    
+    @staticmethod
+    def to_series(ws):
+        """ Converts a WalliStat object into a Pandas Series """
+        keys = ["id", "datetime", "charging_state", "I_L1", "I_L2", "I_L3", "temperature", "V_L1", "V_L2", "V_L3", 
+                "extern_lock_state", "power", "energy_pwr_on", "energy_total", "I_max_cfg", "I_min_cfg", 
+                "modbus_watchdog_timeout", "remote_lock", "I_max_cmd", "I_fail_safe", "campaign_id"]       
+        return pd.Series({key: getattr(ws, key) for key in keys})
+    
+    
+    @staticmethod
+    def to_dataframe(list_of_wallistat):
+        """ Converts a list of WalliStat objects into a Pandas DataFrame """
+        return pd.concat([WalliStat.to_series(ws) for ws in list_of_wallistat], axis=1).T
