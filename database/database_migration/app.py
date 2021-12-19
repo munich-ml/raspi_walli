@@ -33,19 +33,19 @@ class WalliStat(db.Model):
     V_L2 = db.Column(db.Integer)
     V_L3 = db.Column(db.Integer)
     extern_lock_state = db.Column(db.Integer)
-    power = db.Column(db.Integer)
-    energy_pwr_on = db.Column(db.Integer)
-    energy_total = db.Column(db.Integer)
+    power_kW = db.Column(db.Float)
+    energy_pwr_on = db.Column(db.Float)
+    energy_kWh = db.Column(db.Float)
     I_max_cfg = db.Column(db.Integer)
     I_min_cfg = db.Column(db.Integer)
     modbus_watchdog_timeout = db.Column(db.Integer)
     remote_lock = db.Column(db.Integer)
-    I_max_cmd = db.Column(db.Integer)
-    I_fail_safe = db.Column(db.Integer)
+    I_max_cmd = db.Column(db.Float)
+    I_fail_safe = db.Column(db.Float)
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'))
     
     def __repr__(self):
-        return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.temperature}°C, {self.power}W)"
+        return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.temperature}°C, {self.power_kW}kW)"
 
     @classmethod
     def from_series(cls, series):
@@ -61,28 +61,27 @@ class WalliStat(db.Model):
                     V_L2 = int(series.V_L2),
                     V_L3 = int(series.V_L3),
                     extern_lock_state = int(series.ext_lock),
-                    power = int(series.P),
-                    energy_pwr_on = int((int(series.E_cyc_hb) << 16) + series.E_cyc_lb),
-                    energy_total = int((int(series.E_hb) << 16) + series.E_lb),
+                    power_kW = series.P / 1000.,
+                    energy_pwr_on = ((int(series.E_cyc_hb) << 16) + series.E_cyc_lb) / 1000.,
+                    energy_kWh = ((int(series.E_hb) << 16) + series.E_lb) / 1000.,
                     I_max_cfg = int(series.I_max),
                     I_min_cfg = int(series.I_max),
                     modbus_watchdog_timeout = int(series.watchdog),
                     remote_lock = int(series.remote_lock),
-                    I_max_cmd = int(series.max_I_cmd),
-                    I_fail_safe = int(series.FailSafe_I), 
+                    I_max_cmd = series.max_I_cmd / 10.,
+                    I_fail_safe = series.FailSafe_I / 10., 
                     campaign_id = int(series.campaign_id))
             return ws
         
         except Exception as e:
-            print("Exception:", e)
-            print("arg 'series':", series)
+            print("Exception:", e, series.datetime)
             return cls(datetime = series.datetime)
     
     
     def to_series(self):
         """ Converts a WalliStat object into a Pandas Series """
         keys = ["id", "datetime", "charging_state", "I_L1", "I_L2", "I_L3", "temperature", "V_L1", "V_L2", "V_L3", 
-                "extern_lock_state", "power", "energy_pwr_on", "energy_total", "I_max_cfg", "I_min_cfg", 
+                "extern_lock_state", "power_kW", "energy_pwr_on", "energy_kWh", "I_max_cfg", "I_min_cfg", 
                 "modbus_watchdog_timeout", "remote_lock", "I_max_cmd", "I_fail_safe", "campaign_id"]       
         return pd.Series({key: getattr(self, key) for key in keys})
     
