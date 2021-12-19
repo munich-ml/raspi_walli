@@ -50,27 +50,33 @@ class WalliStat(db.Model):
     @classmethod
     def from_series(cls, series):
         """ Creates a WalliStat from a Pandas Series """
-        ws = cls(datetime = series.datetime,
-                 charging_state = int(series.charge_state), 
-                 I_L1 = series.I_L1 / 10.,
-                 I_L2 = series.I_L2 / 10.,
-                 I_L3 = series.I_L3 / 10.,
-                 temperature = series.Temp / 10.,
-                 V_L1 = int(series.V_L1),
-                 V_L2 = int(series.V_L2),
-                 V_L3 = int(series.V_L3),
-                 extern_lock_state = int(series.ext_lock),
-                 power = int(series.P),
-                 energy_pwr_on = int((series.E_cyc_hb << 16) + series.E_cyc_lb),
-                 energy_total = int((series.E_hb << 16) + series.E_lb),
-                 I_max_cfg = int(series.I_max),
-                 I_min_cfg = int(series.I_max),
-                 modbus_watchdog_timeout = int(series.watchdog),
-                 remote_lock = int(series.remote_lock),
-                 I_max_cmd = int(series.max_I_cmd),
-                 I_fail_safe = int(series.FailSafe_I), 
-                 campaign_id = int(series.campaign_id))
-        return ws
+        try:
+            ws = cls(datetime = series.datetime,
+                    charging_state = int(series.charge_state), 
+                    I_L1 = series.I_L1 / 10.,
+                    I_L2 = series.I_L2 / 10.,
+                    I_L3 = series.I_L3 / 10.,
+                    temperature = series.Temp / 10.,
+                    V_L1 = int(series.V_L1),
+                    V_L2 = int(series.V_L2),
+                    V_L3 = int(series.V_L3),
+                    extern_lock_state = int(series.ext_lock),
+                    power = int(series.P),
+                    energy_pwr_on = int((int(series.E_cyc_hb) << 16) + series.E_cyc_lb),
+                    energy_total = int((int(series.E_hb) << 16) + series.E_lb),
+                    I_max_cfg = int(series.I_max),
+                    I_min_cfg = int(series.I_max),
+                    modbus_watchdog_timeout = int(series.watchdog),
+                    remote_lock = int(series.remote_lock),
+                    I_max_cmd = int(series.max_I_cmd),
+                    I_fail_safe = int(series.FailSafe_I), 
+                    campaign_id = int(series.campaign_id))
+            return ws
+        
+        except Exception as e:
+            print("Exception:", e)
+            print("arg 'series':", series)
+            return cls(datetime = series.datetime)
     
     
     def to_series(self):
