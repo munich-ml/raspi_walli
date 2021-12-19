@@ -2,4 +2,20 @@
 
 {% block content %}
 <h2>Walli home</h2>
+<div id='wks_chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+    Plotly.plot('wks_chart', {{wks_json | safe}}, {});
+</script>
+<div id='kwh_chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+    Plotly.plot('kwh_chart', {{kwh_json | safe}}, {});
+</script>
+</script>
+<div id='tmp_chart'></div>
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+<script type='text/javascript'>
+    Plotly.plot('tmp_chart', {{tmp_json | safe}}, {});
+</script>
 {% endblock %}
