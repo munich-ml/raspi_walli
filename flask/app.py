@@ -263,8 +263,8 @@ def index():
                 'energy_pwr_on', 'I_max_cfg', 'I_min_cfg', 'modbus_watchdog_timeout', 'power_kW', 
                 'remote_lock', 'I_max_cmd', 'I_fail_safe', 'campaign_id']
         ws_list = db.session.query(WalliStat).filter(WalliStat.campaign_id==0,
-                                                WalliStat.datetime>=dt.date(year,1,1),
-                                                WalliStat.datetime< dt.date(year,12,31)).all()
+                                                     WalliStat.datetime>=dt.date(year,1,1),
+                                                     WalliStat.datetime< dt.date(year,12,31)).all()
         df = WalliStat.to_dataframe(ws_list).drop(UNUSED, axis=1).set_index("datetime") 
         df["charged_kWh"] = df["energy_kWh"].diff()
         df["date"] = [idx.date() for idx in df.index]
@@ -283,33 +283,42 @@ def index():
         
         return kwh, wks, temps
     
+    def generate_plotly_fig(df, **kwargs):
+        # Generate the plotly figure
+        fig = go.Figure()
+        for col in df.columns:
+            scatter_kwargs = dict(mode="lines")  # scatter defaults
+            if "scatter" in kwargs:
+                if col in kwargs["scatter"]:
+                    scatter_kwargs.update(kwargs["scatter"][col])
+            fig.add_trace(go.Scatter(x=df.index, y=df[col], name=col, **scatter_kwargs))
+        
+        # Layout modifications
+        layout_kwargs = dict(width=770, height=190, margin=dict(l=0, r=0, b=10, t=15)) # defaults
+        if "layout" in kwargs:
+            layout_kwargs.update(kwargs["layout"])    
+        fig.update_layout(**layout_kwargs)
+        
+        return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    
     kwh, wks, tmp = calc_walli_stats(dt.date.today().year)
 
-    fig_kwargs = {"width": 770, "height": 190, "margin": dict(l=0, r=0, b=0, t=15)} 
-
-    # kWh figure
-    kwh_fig = go.Figure()
-    kwh_fig.add_trace(go.Scatter(x=kwh.index, y=kwh.charged_kWh, mode="markers", name="charged_kWh"))
-    kwh_fig.add_trace(go.Scatter(x=kwh.index, y=kwh.rolling_mean, name="rolling_mean"))
-    kwh_fig.add_trace(go.Scatter(x=kwh.index, y=kwh["mean"], name="mean"))
-    kwh_fig.update_layout(**fig_kwargs)
-
-    # weeks figure
-    wks_fig = px.imshow(wks, labels={"x": "calender week", "y": "", "color": "charged_kWh"},
-                        color_continuous_scale='Greens')
-    wks_fig.update_layout(**fig_kwargs)
-    wks_fig.update_layout(yaxis={"tickmode": 'array',
-                                 "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
-                                 "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
     
-    tmp_fig = go.Figure()
-    for col in tmp.columns:
-        tmp_fig.add_trace(go.Scatter(x=tmp.index, y=tmp[col], name=col))
-    tmp_fig.update_layout(**fig_kwargs)
+    fig = px.imshow(wks, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
+    fig.update_layout(width=770, height=190, 
+                      margin=dict(l=0, r=0, b=0, t=0),
+                      xaxis={"title": "calender week"},
+                      yaxis={"tickmode": 'array',
+                             "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
+                             "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
     
-    return render_template('index.html', wks_json=json.dumps(wks_fig, cls=plotly.utils.PlotlyJSONEncoder),
-                                         kwh_json=json.dumps(kwh_fig, cls=plotly.utils.PlotlyJSONEncoder),
-                                         tmp_json=json.dumps(tmp_fig, cls=plotly.utils.PlotlyJSONEncoder))
+    render_kwargs = {"wks_json": json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)}
+
+    render_kwargs["kwh_json"] = generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
+                                                    scatter={"charged_kWh": {"mode":"markers"}})
+    render_kwargs["tmp_json"] = generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})
+
+    return render_template('index.html', **render_kwargs)
 
 
 @app.route('/config/')
