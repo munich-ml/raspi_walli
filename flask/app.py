@@ -312,13 +312,13 @@ def index():
                              "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
                              "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
     
-    render_kwargs = {"wks_json": json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)}
+    plots = {"wks_json": json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)}
 
-    render_kwargs["kwh_json"] = generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
-                                                    scatter={"charged_kWh": {"mode":"markers"}})
-    render_kwargs["tmp_json"] = generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})
+    plots["kwh_json"] = generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
+                                            scatter={"charged_kWh": {"mode":"markers"}})
+    plots["tmp_json"] = generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})
 
-    return render_template('index.html', **render_kwargs)
+    return render_template('index.html', plots=plots)
 
 
 @app.route('/config/')
@@ -390,17 +390,8 @@ def edit(id=None):
 
 @app.route('/data/')
 def data():
-    #return render_template('data.html')
-    df = pd.DataFrame({
-        'Fruit': ['Apples', 'Oranges', 'Bananas', 'Apples', 'Oranges', 
-        'Bananas'],
-        'Amount': [4, 1, 2, 2, 4, 5],
-        'City': ['SF', 'SF', 'SF', 'Montreal', 'Montreal', 'Montreal']
-    })
-    fig = px.bar(df, x='Fruit', y='Amount', color='City', barmode='group')
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('data.html', graphJSON=graphJSON)
-
+    return render_template('data.html')
+    
 
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
