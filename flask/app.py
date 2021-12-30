@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import json, logging, math, os, threading
+import pandas as pd
+import numpy as np
 import plotly
 import plotly.express as px
 import plotly.graph_objs as go  
 import datetime as dt
-import numpy as np
-import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
-from wtforms.fields.html5 import IntegerField, DateField, TimeField
+from wtforms.fields import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
 from sensors.sensors import SensorInterface
 
