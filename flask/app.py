@@ -396,4 +396,4 @@ def data():
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
     capture_timer = CaptureTimer(sensor_interface)
-    app.run(debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
