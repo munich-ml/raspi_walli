@@ -254,7 +254,6 @@ class CaptureTimer():
         self.update_timer()
         
     
-    
 @app.route('/')
 def index():
     
@@ -301,8 +300,8 @@ def index():
         
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     
-    kwh, wks, tmp = calc_walli_stats(dt.date.today().year)
-
+    #kwh, wks, tmp = calc_walli_stats(dt.date.today().year)
+    kwh, wks, tmp = calc_walli_stats(2021)
     
     fig = px.imshow(wks, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
     fig.update_layout(width=770, height=190, 
@@ -396,4 +395,4 @@ def data():
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
     capture_timer = CaptureTimer(sensor_interface)
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=True)

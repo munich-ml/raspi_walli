@@ -1,4 +1,4 @@
-SIMULATION = True      # Sensors are simulated if True
+
 
 
 # configure logging
