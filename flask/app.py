@@ -124,6 +124,17 @@ class WalliStat(db.Model):
             print("Exception:", e, series.datetime)
             return cls(datetime = series.datetime)
 
+    @classmethod
+    def commit(cls, dct):
+        """
+        Commits walli status (from the wallbox) to the database incl. campaign_id as reference.
+        """
+        ws = cls.from_series(pd.Series(dct))
+        # Commit new data-point to the (global) database 
+        logger.debug(f"Committing {ws}")
+        db.session.add(ws)   
+        db.session.commit()    
+        
     def to_series(self):
         """ Converts a WalliStat object into a Pandas Series """
         keys = ["id", "datetime", "charging_state", "I_L1", "I_L2", "I_L3", "temperature", "V_L1", "V_L2", "V_L3", 
@@ -230,20 +241,21 @@ class CaptureTimer():
            
     def capture(self, campaign):
         """
-        Generates capture tasks for the campaign and sends them to the appropriate sensors via
-        
-        Args:
-            campaign (Campaign): [description]
+        Generates capture tasks for the campaign and sends them to the appropriate sensors 
+        Args: 
+            campaign (Campaign): Campain which to capture
         """
         logger.debug(campaign)
-        # send task(s) to the sensor_interface for capturing        
-        task = {"func": "capture",
-                "campaign_id": campaign.id, 
-                "callback": LuxValue.commit}
-        
-        if campaign.measure_light:
-            task["sensor"] = "light"
-            self.sensor_interface.do_task(task)
+        # send task(s) to the sensor_interface for capturing                
+        for flag, sensor, callback in zip([campaign.measure_light, campaign.measure_walli],
+                                          ["light",                "walli"               ],
+                                          [LuxValue.commit,        WalliStat.commit      ]):
+            if flag:
+                task = {"func": "capture", 
+                        "campaign_id": campaign.id,
+                        "sensor": sensor,
+                        "callback": callback}
+                self.sensor_interface.do_task(task)
             
         # set campaign.previous to now
         now = dt.datetime.now()
@@ -256,7 +268,7 @@ class CaptureTimer():
     
 @app.route('/')
 def index():
-    
+    """ View function for index page """
     def calc_walli_stats(year):
         UNUSED = ['I_L1', 'I_L2', 'I_L3', 'V_L1', 'V_L2', 'V_L3', 'extern_lock_state', 'charging_state', 
                 'energy_pwr_on', 'I_max_cfg', 'I_min_cfg', 'modbus_watchdog_timeout', 'power_kW', 
@@ -281,6 +293,7 @@ def index():
         kwh["mean"] = [kwh.charged_kWh.mean()] * kwh.shape[0]
         
         return kwh, wks, temps
+    
     
     def generate_plotly_fig(df, **kwargs):
         # Generate the plotly figure
@@ -322,6 +335,7 @@ def index():
 
 @app.route('/config/')
 def config():
+    """ View function for config page """
     # load register table from .json file and create a pandas DataFrame from it
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
@@ -336,6 +350,7 @@ def config():
 
 @app.route('/campaigns/')
 def campaigns():
+    """ View function for campaigns page """
     campaigns = db.session.query(Campaign).all()
     return render_template('campaigns.html', campaigns=campaigns)
 
@@ -343,6 +358,7 @@ def campaigns():
 @app.route('/campaigns/edit/', methods=['GET', 'POST'], defaults={"id": None})
 @app.route('/campaigns/edit/<id>/', methods=['GET', 'POST'])
 def edit(id=None):   
+    """ View function for campaigns edit page """
     if request.method == "GET": 
         form = CampaignForm()    
         if id is not None:
@@ -389,6 +405,7 @@ def edit(id=None):
 
 @app.route('/data/')
 def data():
+    """ View function for data page """
     return render_template('data.html')
     
 
