@@ -1,9 +1,10 @@
-import logging, threading, time
+import logging, random, threading, time
 import time
 import datetime as dt
 from queue import Queue
-from constants import SIMULATION
 
+LIGHT_SENSOR_SIMULATED = True      # True for debugging mode if no sensor is connected
+WALLI_SIMULATED = True             # True for debugging mode if no sensor is connected
 logger = logging.getLogger(__name__)
 
 
@@ -68,7 +69,7 @@ class LightSensor(SensorBase):
         super().__init__(*args, **kwargs)
         
     def _connect(self):
-        if not SIMULATION:
+        if not LIGHT_SENSOR_SIMULATED:
             from smbus import SMBus
             self.sensor = SMBus(1)  # Rev 2 Pi uses 1
         self.connected = True
@@ -76,7 +77,7 @@ class LightSensor(SensorBase):
         
     def _capture(self):
         """Returns light level in Lux"""
-        if SIMULATION:
+        if LIGHT_SENSOR_SIMULATED:
             time.sleep(0.01)
             t = dt.datetime.now() 
             lux = float(t.hour + t.minute/100)   
@@ -91,16 +92,48 @@ class LightSensor(SensorBase):
 
 
 class Wallbox(SensorBase):
+    """Heidelberg Wallbox Energy Control"""
     def __init__(self, *args, **kwargs):
         self.type = "Heidelberg Wallbox Energy Control"
         super().__init__(*args, **kwargs)
         
     def _connect(self):
-        logger.warning(f"{self.type} has no 'connect' method, yet!")
+        if WALLI_SIMULATED:
+            self.writeable_regs = {
+                'watchdog': 10000,
+                'standby': 4,
+                'remote_lock': 1,
+                'max_I_cmd': 100,
+                'FailSafe_I': 100}
+            
+        self.connected = True
+        logger.debug(f"{self.type} connected")
 
     def _capture(self):
-        logger.warning(f"{self.type} has no 'capture' method, yet!")
-        return {}
+        if WALLI_SIMULATED:
+            voltage = random.randint(200, 210)     # 200..210V, easy to distinguish from real voltage samples
+            charge_state = random.choice([2, 7])   # 2=idle, 7=charging
+            power = 0
+            if charge_state == 7:
+                power = 10000
+            current = int(power / voltage / 3 * 10)   
+            sim = {'datetime': dt.datetime.now(),
+                'ver': 99,
+                'charge_state': charge_state,
+                'I_L1': current, 'I_L2': current, 'I_L3': current,
+                'Temp': random.randint(200, 400),  # 20..40°C
+                'V_L1': voltage, 'V_L2': voltage, 'V_L3': voltage,
+                'ext_lock': 1,
+                'P': power,
+                'E_cyc_hb': 0, 'E_cyc_lb': 40000,
+                'E_hb': 3, 'E_lb': 0,
+                'I_max': 10, 'I_min': 7}
+            sim.update(self.writeable_regs)
+            return sim
+        
+        else:
+            logger.warning(f"{self.type} has no 'capture' method, yet!")
+            return {}
                 
 
 class Camera(SensorBase):
@@ -142,13 +175,10 @@ class SensorInterface(dict):
         
     
 if __name__ == '__main__':
-    """
-    
     def process_return_data(data):
-        logger.info(f"process_return_data: {data}")
+        print(f"process_return_data: {data}")
 
-    sensor = LightSensor()
-    sensor.start()
+    sensor = Wallbox()
     sensor.task_queue.put({"func": "connect"})
     for i in range(6):
         task = {"func": "capture",
@@ -158,5 +188,4 @@ if __name__ == '__main__':
         time.sleep(1)
     sensor.task_queue.put({"func": "exit"})
     sensor.join()
-    logger.debug("finished")
-    """
+    print("finished")

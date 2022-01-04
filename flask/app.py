@@ -1,18 +1,30 @@
 # -*- coding: utf-8 -*-
 
 import json, logging, math, os, threading
+import pandas as pd
+import numpy as np
 import plotly
 import plotly.express as px
+import plotly.graph_objs as go  
 import datetime as dt
-import pandas as pd
 from flask import Flask, render_template, flash, redirect, request, session, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
-from wtforms.fields.html5 import IntegerField, DateField, TimeField
+from wtforms.fields import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
 from sensors.sensors import SensorInterface
 
+# configure plotly
+plotly.io.templates.default = "plotly_white" # available templates "plotly_dark" "plotly_white" 
+
+# configure logging
+logging.getLogger().setLevel(logging.NOTSET)
+handler = logging.StreamHandler()
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s | %(levelname)-7s | %(funcName)s() %(filename)s line=%(lineno)s thread=%(thread)s | %(message)s')
+handler.setFormatter(formatter)
+logging.getLogger().addHandler(handler)
 logger = logging.getLogger(__name__)
 
 
@@ -68,13 +80,82 @@ class CampaignForm(FlaskForm):
 class WalliStat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.DateTime)
-    Temp = db.Column(db.Float)
-    Power = db.Column(db.Integer)
-    campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
+    charging_state = db.Column(db.Integer) 
+    I_L1 = db.Column(db.Float)
+    I_L2 = db.Column(db.Float)
+    I_L3 = db.Column(db.Float)
+    temperature = db.Column(db.Float)
+    V_L1 = db.Column(db.Integer)
+    V_L2 = db.Column(db.Integer)
+    V_L3 = db.Column(db.Integer)
+    extern_lock_state = db.Column(db.Integer)
+    power_kW = db.Column(db.Float)
+    energy_pwr_on = db.Column(db.Float)
+    energy_kWh = db.Column(db.Float)
+    I_max_cfg = db.Column(db.Integer)
+    I_min_cfg = db.Column(db.Integer)
+    modbus_watchdog_timeout = db.Column(db.Integer)
+    remote_lock = db.Column(db.Integer)
+    I_max_cmd = db.Column(db.Float)
+    I_fail_safe = db.Column(db.Float)
+    campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'))
     
     def __repr__(self):
-        return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.Temp}°C, {self.Power}W)"
+        return f"WalliStat(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.temperature}°C, {self.power_kW}kW)"
 
+    @classmethod
+    def from_series(cls, series):
+        """ Creates a WalliStat from a Pandas Series """
+        try:
+            ws = cls(datetime = series.datetime,
+                    charging_state = int(series.charge_state), 
+                    I_L1 = series.I_L1 / 10.,
+                    I_L2 = series.I_L2 / 10.,
+                    I_L3 = series.I_L3 / 10.,
+                    temperature = series.Temp / 10.,
+                    V_L1 = int(series.V_L1),
+                    V_L2 = int(series.V_L2),
+                    V_L3 = int(series.V_L3),
+                    extern_lock_state = int(series.ext_lock),
+                    power_kW = series.P / 1000.,
+                    energy_pwr_on = ((int(series.E_cyc_hb) << 16) + series.E_cyc_lb) / 1000.,
+                    energy_kWh = ((int(series.E_hb) << 16) + series.E_lb) / 1000.,
+                    I_max_cfg = int(series.I_max),
+                    I_min_cfg = int(series.I_max),
+                    modbus_watchdog_timeout = int(series.watchdog),
+                    remote_lock = int(series.remote_lock),
+                    I_max_cmd = series.max_I_cmd / 10.,
+                    I_fail_safe = series.FailSafe_I / 10., 
+                    campaign_id = int(series.campaign_id))
+            return ws
+        
+        except Exception as e:
+            print("Exception:", e, series.datetime)
+            return cls(datetime = series.datetime)
+
+    @classmethod
+    def commit(cls, dct):
+        """
+        Commits walli status (from the wallbox) to the database incl. campaign_id as reference.
+        """
+        ws = cls.from_series(pd.Series(dct))
+        # Commit new data-point to the (global) database 
+        logger.debug(f"Committing {ws}")
+        db.session.add(ws)   
+        db.session.commit()    
+        
+    def to_series(self):
+        """ Converts a WalliStat object into a Pandas Series """
+        keys = ["id", "datetime", "charging_state", "I_L1", "I_L2", "I_L3", "temperature", "V_L1", "V_L2", "V_L3", 
+                "extern_lock_state", "power_kW", "energy_pwr_on", "energy_kWh", "I_max_cfg", "I_min_cfg", 
+                "modbus_watchdog_timeout", "remote_lock", "I_max_cmd", "I_fail_safe", "campaign_id"]       
+        return pd.Series({key: getattr(self, key) for key in keys})
+     
+    @staticmethod
+    def to_dataframe(list_of_wallistat):
+        """ Converts a list of WalliStat objects into a Pandas DataFrame """
+        return pd.concat([WalliStat.to_series(ws) for ws in list_of_wallistat], axis=1).T.set_index("id")
+        
 
 class LuxValue(db.Model):
     """Database Model class for storing light sensor data"""
@@ -169,20 +250,21 @@ class CaptureTimer():
            
     def capture(self, campaign):
         """
-        Generates capture tasks for the campaign and sends them to the appropriate sensors via
-        
-        Args:
-            campaign (Campaign): [description]
+        Generates capture tasks for the campaign and sends them to the appropriate sensors 
+        Args: 
+            campaign (Campaign): Campain which to capture
         """
         logger.debug(campaign)
-        # send task(s) to the sensor_interface for capturing        
-        task = {"func": "capture",
-                "campaign_id": campaign.id, 
-                "callback": LuxValue.commit}
-        
-        if campaign.measure_light:
-            task["sensor"] = "light"
-            self.sensor_interface.do_task(task)
+        # send task(s) to the sensor_interface for capturing                
+        for flag, sensor, callback in zip([campaign.measure_light, campaign.measure_walli],
+                                          ["light",                "walli"               ],
+                                          [LuxValue.commit,        WalliStat.commit      ]):
+            if flag:
+                task = {"func": "capture", 
+                        "campaign_id": campaign.id,
+                        "sensor": sensor,
+                        "callback": callback}
+                self.sensor_interface.do_task(task)
             
         # set campaign.previous to now
         now = dt.datetime.now()
@@ -193,14 +275,76 @@ class CaptureTimer():
         self.update_timer()
         
     
-    
 @app.route('/')
 def index():
-    return render_template('index.html')
+    """ View function for index page """
+    def calc_walli_stats(year):
+        UNUSED = ['I_L1', 'I_L2', 'I_L3', 'V_L1', 'V_L2', 'V_L3', 'extern_lock_state', 'charging_state', 
+                'energy_pwr_on', 'I_max_cfg', 'I_min_cfg', 'modbus_watchdog_timeout', 'power_kW', 
+                'remote_lock', 'I_max_cmd', 'I_fail_safe', 'campaign_id']
+        ws_list = db.session.query(WalliStat).filter(WalliStat.campaign_id==0,
+                                                     WalliStat.datetime>=dt.date(year,1,1),
+                                                     WalliStat.datetime< dt.date(year,12,31)).all()
+        df = WalliStat.to_dataframe(ws_list).drop(UNUSED, axis=1).set_index("datetime") 
+        df["charged_kWh"] = df["energy_kWh"].diff()
+        df["date"] = [idx.date() for idx in df.index]
+        df["weekday"] = [idx.day_of_week for idx in df.index]
+        df["week"] = [idx.weekofyear for idx in df.index]
+
+        zeros = pd.DataFrame(columns=np.arange(1, 53, dtype=int), data=np.zeros(shape=(7, 52)))
+        wks = df.pivot_table(index="weekday", columns="week", values="charged_kWh", aggfunc="sum") + zeros
+
+        temps = df[["temperature", "date"]].groupby(by="date").agg(["max", "mean", "min"])
+        temps.columns = [f"temperature {c}" for c in temps.columns.droplevel()]
+
+        kwh = df[["date", "charged_kWh"]].groupby("date").agg("sum")
+        kwh["rolling_mean"] = kwh["charged_kWh"].rolling(10, win_type="triang", center=True).mean()
+        kwh["mean"] = [kwh.charged_kWh.mean()] * kwh.shape[0]
+        
+        return kwh, wks, temps
+    
+    
+    def generate_plotly_fig(df, **kwargs):
+        # Generate the plotly figure
+        fig = go.Figure()
+        for col in df.columns:
+            scatter_kwargs = dict(mode="lines")  # scatter defaults
+            if "scatter" in kwargs:
+                if col in kwargs["scatter"]:
+                    scatter_kwargs.update(kwargs["scatter"][col])
+            fig.add_trace(go.Scatter(x=df.index, y=df[col], name=col, **scatter_kwargs))
+        
+        # Layout modifications
+        layout_kwargs = dict(width=770, height=190, margin=dict(l=0, r=0, b=10, t=15)) # defaults
+        if "layout" in kwargs:
+            layout_kwargs.update(kwargs["layout"])    
+        fig.update_layout(**layout_kwargs)
+        
+        return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    
+    #kwh, wks, tmp = calc_walli_stats(dt.date.today().year)
+    kwh, wks, tmp = calc_walli_stats(2021)
+    
+    fig = px.imshow(wks, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
+    fig.update_layout(width=770, height=190, 
+                      margin=dict(l=0, r=0, b=0, t=0),
+                      xaxis={"title": "calender week"},
+                      yaxis={"tickmode": 'array',
+                             "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
+                             "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
+    
+    plots = {"wks_json": json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)}
+
+    plots["kwh_json"] = generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
+                                            scatter={"charged_kWh": {"mode":"markers"}})
+    plots["tmp_json"] = generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})
+
+    return render_template('index.html', plots=plots)
 
 
 @app.route('/config/')
 def config():
+    """ View function for config page """
     # load register table from .json file and create a pandas DataFrame from it
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
@@ -215,6 +359,7 @@ def config():
 
 @app.route('/campaigns/')
 def campaigns():
+    """ View function for campaigns page """
     campaigns = db.session.query(Campaign).all()
     return render_template('campaigns.html', campaigns=campaigns)
 
@@ -222,6 +367,7 @@ def campaigns():
 @app.route('/campaigns/edit/', methods=['GET', 'POST'], defaults={"id": None})
 @app.route('/campaigns/edit/<id>/', methods=['GET', 'POST'])
 def edit(id=None):   
+    """ View function for campaigns edit page """
     if request.method == "GET": 
         form = CampaignForm()    
         if id is not None:
@@ -256,6 +402,7 @@ def edit(id=None):
 
         elif request.form["todo"] == "delete" and id != "": 
             cmp = db.session.query(Campaign).get(id)
+            logger.debug(f"{id=}, {request.method=}, {cmp=}")
             db.session.delete(cmp)
             db.session.commit()
             capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
@@ -268,19 +415,11 @@ def edit(id=None):
 
 @app.route('/data/')
 def data():
-    #return render_template('data.html')
-    df = pd.DataFrame({
-        'Fruit': ['Apples', 'Oranges', 'Bananas', 'Apples', 'Oranges', 
-        'Bananas'],
-        'Amount': [4, 1, 2, 2, 4, 5],
-        'City': ['SF', 'SF', 'SF', 'Montreal', 'Montreal', 'Montreal']
-    })
-    fig = px.bar(df, x='Fruit', y='Amount', color='City', barmode='group')
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
-    return render_template('data.html', graphJSON=graphJSON)
-
+    """ View function for data page """
+    return render_template('data.html')
+    
 
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
     capture_timer = CaptureTimer(sensor_interface)
-    app.run(debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
