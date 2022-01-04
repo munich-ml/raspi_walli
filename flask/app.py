@@ -45,8 +45,8 @@ class Campaign(db.Model):
     interval = db.Column(db.Interval, nullable=False)
     measure_walli = db.Column(db.Boolean, default=True)
     measure_light = db.Column(db.Boolean, default=True)
-    walli_stats = db.relationship('WalliStat', backref='campaign', lazy=True)
-    lux_values = db.relationship('LuxValue', backref='campaign', lazy=True)
+    walli_stats = db.relationship('WalliStat', backref='campaign', lazy=True, cascade="all, delete")
+    lux_values = db.relationship('LuxValue', backref='campaign', lazy=True, cascade="all, delete")
 
     def __repr__(self):
         return f"Campaign(id:{self.id} '{self.title}' act={self.is_active} start={self.start}, end={self.end}, int={self.interval})"
