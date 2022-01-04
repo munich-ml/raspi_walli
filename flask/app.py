@@ -15,7 +15,16 @@ from wtforms.fields import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
 from sensors.sensors import SensorInterface
 
+# configure plotly
 plotly.io.templates.default = "plotly_white" # available templates "plotly_dark" "plotly_white" 
+
+# configure logging
+logging.getLogger().setLevel(logging.NOTSET)
+handler = logging.StreamHandler()
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s | %(levelname)-7s | %(funcName)s() %(filename)s line=%(lineno)s thread=%(thread)s | %(message)s')
+handler.setFormatter(formatter)
+logging.getLogger().addHandler(handler)
 logger = logging.getLogger(__name__)
 
 
@@ -393,6 +402,7 @@ def edit(id=None):
 
         elif request.form["todo"] == "delete" and id != "": 
             cmp = db.session.query(Campaign).get(id)
+            logger.debug(f"{id=}, {request.method=}, {cmp=}")
             db.session.delete(cmp)
             db.session.commit()
             capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
@@ -412,4 +422,4 @@ def data():
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
     capture_timer = CaptureTimer(sensor_interface)
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
