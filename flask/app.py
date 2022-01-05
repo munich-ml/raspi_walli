@@ -165,7 +165,7 @@ class LuxValue(db.Model):
     campaign_id = db.Column(db.Integer, db.ForeignKey('campaign.id'), nullable=False)
     
     def __repr__(self):
-        return f"LuxValue(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.lux} lux"
+        return f"LuxValue(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.lux} lux)"
 
     @classmethod
     def commit(cls, dct):
