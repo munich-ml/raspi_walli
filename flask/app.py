@@ -315,7 +315,7 @@ def index():
             fig.add_trace(go.Scatter(x=df.index, y=df[col], name=col, **scatter_kwargs))
         
         # Layout modifications
-        layout_kwargs = dict(width=770, height=190, margin=dict(l=0, r=0, b=10, t=15)) # defaults
+        layout_kwargs = dict(width=800, height=190, margin=dict(l=0, r=0, b=10, t=15)) # defaults
         if "layout" in kwargs:
             layout_kwargs.update(kwargs["layout"])    
         fig.update_layout(**layout_kwargs)
@@ -326,7 +326,7 @@ def index():
     kwh, wks, tmp = calc_walli_stats(2021)
     
     fig = px.imshow(wks, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
-    fig.update_layout(width=770, height=190, 
+    fig.update_layout(width=800, height=180, 
                       margin=dict(l=0, r=0, b=0, t=0),
                       xaxis={"title": "calender week"},
                       yaxis={"tickmode": 'array',
@@ -351,7 +351,7 @@ def config():
         regs = json.load(file)
 
     df = pd.DataFrame(columns=regs["columns"], data=regs["data"])
-    desired_cols = ['Bus-Adr.', 'R/W', 'Description', 'Range', 'Values / examples']
+    desired_cols = ['Adr', 'R/W', 'Description', 'Range', 'Values / examples']
     df = df[desired_cols]
 
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))

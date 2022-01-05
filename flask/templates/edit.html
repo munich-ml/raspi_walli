@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Edit campaign</h2>
 
-<form method="POST" action="">
+<form method="POST" action="" onSubmit="return confirm('Are you sure you wish commit the changes to the database? \nIn case of delete, associated data will be deleted as well!');">
     {{form.hidden_tag()}}
     <p>id {{ form.id }}</p>
     <p>active {{ form.active }}</p>

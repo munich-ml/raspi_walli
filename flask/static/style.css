@@ -16,7 +16,7 @@ nav ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: rgb(99, 110, 250);
 }
 
 nav li {
@@ -36,7 +36,7 @@ nav li a:hover {
 }
 
 main {
-    padding: 10px 20px;
+    padding: 0;
 }
 
 footer {
@@ -46,8 +46,31 @@ footer {
     margin-top: 25px;
     text-align: center;
     padding: 10px;
-
 }
+
+th {
+    border: 0px;
+    padding: 7px;
+    font-weight: normal;
+    text-align: center;
+    color:  white;
+    background-color: rgb(99, 110, 250);
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    text-align: left;
+}
+
+tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: rgb(204, 207, 253);
+}
+  
 
 .alert {
     position: relative;
