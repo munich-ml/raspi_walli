@@ -276,8 +276,25 @@ class CaptureTimer():
         
     
 @app.route('/')
-def index():
-    """ View function for index page """
+@app.route('/home/')
+@app.route('/home/<year>/')
+def home(year=None):
+    """ View function for home page 
+    
+    Args:
+        year <int>: Year of which statistics are shown on the home page.
+    """
+    available_years = [2021, 2022]
+    default_year = 2021 # dt.date.today().year
+    if year is None:
+        year = default_year
+    elif year.isdecimal():
+        year = int(year)
+        if year not in available_years:
+            year = default_year
+    else:
+        year = default_year
+        
     def calc_walli_stats(year):
         UNUSED = ['I_L1', 'I_L2', 'I_L3', 'V_L1', 'V_L2', 'V_L3', 'extern_lock_state', 'charging_state', 
                 'energy_pwr_on', 'I_max_cfg', 'I_min_cfg', 'modbus_watchdog_timeout', 'power_kW', 
@@ -303,9 +320,8 @@ def index():
         
         return kwh, wks, temps
     
-    
     def generate_plotly_fig(df, **kwargs):
-        # Generate the plotly figure
+        """ Generate the plotly figure """
         fig = go.Figure()
         for col in df.columns:
             scatter_kwargs = dict(mode="lines")  # scatter defaults
@@ -318,28 +334,29 @@ def index():
         layout_kwargs = dict(width=800, height=190, margin=dict(l=0, r=0, b=10, t=15)) # defaults
         if "layout" in kwargs:
             layout_kwargs.update(kwargs["layout"])    
-        fig.update_layout(**layout_kwargs)
-        
+        fig.update_layout(**layout_kwargs)      
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     
-    #kwh, wks, tmp = calc_walli_stats(dt.date.today().year)
-    kwh, wks, tmp = calc_walli_stats(2021)
-    
-    fig = px.imshow(wks, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
-    fig.update_layout(width=800, height=180, 
-                      margin=dict(l=0, r=0, b=0, t=0),
-                      xaxis={"title": "calender week"},
-                      yaxis={"tickmode": 'array',
-                             "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
-                             "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
-    
-    plots = {"wks_json": json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)}
+    def generate_plotly_weekly(df):
+        """ Generate the plotly image of daily/weekly charged_kWh """
+        fig = px.imshow(df, labels=dict(color="charged_kWh"), color_continuous_scale='Greens')
+        fig.update_layout(width=800, height=180, 
+                        margin=dict(l=0, r=0, b=0, t=0),
+                        xaxis={"title": "calender week"},
+                        yaxis={"tickmode": 'array',
+                                "tickvals": [ 0,    1,    2,    3,    4,    5,    6  ],
+                                "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
+        return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    plots["kwh_json"] = generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
-                                            scatter={"charged_kWh": {"mode":"markers"}})
-    plots["tmp_json"] = generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})
-
-    return render_template('index.html', plots=plots)
+    kwh, wks, tmp = calc_walli_stats(year)
+    
+    plots = {"wks_json": generate_plotly_weekly(wks),
+             "kwh_json": generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
+                                            scatter={"charged_kWh": {"mode":"markers"}}),
+             "tmp_json": generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})}
+    
+    available_years.pop(available_years.index(year))
+    return render_template('home.html', plots=plots, year=year, other_years=available_years)
 
 
 @app.route('/config/')
