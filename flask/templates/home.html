@@ -4,7 +4,11 @@
 <h2>Walli home</h2>
 <hr>
 <h2>Hourly statistics of {{year}}</h2>
-<p> Also available for {% for y in other_years %}{{y}} {% endfor %}</p>
+<p> Also available for 
+    {% for y in other_years %}
+        <a href={{ url_for("home") }}{{y}}>{{y}}</a>    
+    {% endfor %}
+</p>
 
 {% for plot_name, plot_json in plots.items() %}
     <div id={{plot_name}}></div>
