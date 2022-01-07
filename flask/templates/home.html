@@ -4,8 +4,8 @@
 <h2>Walli home</h2>
 <hr>
 <h2>Hourly statistics of {{year}}</h2>
-<p> Also available for 
-    {% for y in other_years %}
+<p> The statistics are available for 
+    {% for y in avail %}
         <a href={{ url_for("home") }}{{y}}>{{y}}</a>    
     {% endfor %}
 </p>

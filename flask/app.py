@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json, logging, math, os, threading
+import json, logging, math, os, pickle, threading
 import pandas as pd
 import numpy as np
 import plotly
@@ -283,25 +283,14 @@ def home(year=None):
     
     Args:
         year <int>: Year of which statistics are shown on the home page.
-    """
-    available_years = [2021, 2022]
-    default_year = 2021 # dt.date.today().year
-    if year is None:
-        year = default_year
-    elif year.isdecimal():
-        year = int(year)
-        if year not in available_years:
-            year = default_year
-    else:
-        year = default_year
-        
+    """ 
     def calc_walli_stats(year):
         UNUSED = ['I_L1', 'I_L2', 'I_L3', 'V_L1', 'V_L2', 'V_L3', 'extern_lock_state', 'charging_state', 
                 'energy_pwr_on', 'I_max_cfg', 'I_min_cfg', 'modbus_watchdog_timeout', 'power_kW', 
                 'remote_lock', 'I_max_cmd', 'I_fail_safe', 'campaign_id']
         ws_list = db.session.query(WalliStat).filter(WalliStat.campaign_id==0,
-                                                     WalliStat.datetime>=dt.date(year,1,1),
-                                                     WalliStat.datetime< dt.date(year,12,31)).all()
+                                                     WalliStat.datetime>=dt.date(int(year),1,1),
+                                                     WalliStat.datetime< dt.date(int(year),12,31)).all()
         df = WalliStat.to_dataframe(ws_list).drop(UNUSED, axis=1).set_index("datetime") 
         df["charged_kWh"] = df["energy_kWh"].diff()
         df["date"] = [idx.date() for idx in df.index]
@@ -348,15 +337,67 @@ def home(year=None):
                                 "ticktext": ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']})
         return json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
 
-    kwh, wks, tmp = calc_walli_stats(year)
+    def generate_fresh_plots(year):
+        logger.info(f"generating fresh plots for {year}")
+        kwh, wks, tmp = calc_walli_stats(year)
+        plots = {"wks_json": generate_plotly_weekly(wks),
+                "kwh_json": generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
+                                                scatter={"charged_kWh": {"mode":"markers"}}),
+                "tmp_json": generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})}
+        return plots
     
-    plots = {"wks_json": generate_plotly_weekly(wks),
-             "kwh_json": generate_plotly_fig(kwh, layout={"yaxis":{"title":"[kWh]"}},
-                                            scatter={"charged_kWh": {"mode":"markers"}}),
-             "tmp_json": generate_plotly_fig(tmp, layout={"yaxis":{"title":"Temp [°C]"}})}
+    def load_cached_plots(fn):
+        logger.info(f"Loading cached plots '{fn}'")
+        with open(os.path.join("cache", fn), "rb") as file:
+            plots = pickle.load(file)  
+        return plots      
     
-    available_years.pop(available_years.index(year))
-    return render_template('home.html', plots=plots, year=year, other_years=available_years)
+    def store_cached_plots(plots, fn):
+        logger.info(f"Storing cached plots to '{fn}'")
+        with open(os.path.join("cache", fn), "wb") as file:
+            pickle.dump(plots, file)
+            
+    today = dt.datetime.now().date()  #.strftime("%Y-%m-%d")
+    
+    # create a dictionary 'cached_plots' with items like ('2021': '2021-12-01_home-plotly-cache.json')
+    cached_plots = dict()
+    for fn in os.listdir("cache"):
+        if fn.endswith('home-plotly-cache.pkl'):
+            cached_plots[fn[:4]] = fn
+    logger.info(f"cached_plots: {cached_plots}")
+        
+    # allow evalutaion for all years in 'available'
+    first_year_of_logging = 2021
+    available = [str(y) for y in range(first_year_of_logging, today.year+1)]
+    
+    # error checking of user input of year
+    default_year = str(dt.date.today().year)
+    year = str(year)
+    if year is None:
+        year = default_year
+    elif year.isdecimal():
+        if year not in available:
+            year = default_year
+    else:
+        year = default_year    
+
+    # use cached plots data or generate fresh plots    
+    if year == default_year:
+        desired_fn = today.strftime("%Y-%m-%d") + "_home-plotly-cache.pkl"  # cache of today?
+    else:
+        desired_fn = year + "-12-31" + "_home-plotly-cache.pkl"  # create cache with all the data of a year
+
+    if year in cached_plots.keys():
+        if desired_fn == cached_plots[year]:
+            plots = load_cached_plots(cached_plots[year])
+    
+    if "plots" not in dir():
+        plots = generate_fresh_plots(year)
+        logger.warning("delete existing cache als thread ausführen")
+        logger.warning("write cached file als thread ausführen")
+        store_cached_plots(plots, desired_fn)
+            
+    return render_template('home.html', plots=plots, year=year, avail=sorted(available))
 
 
 @app.route('/config/')
