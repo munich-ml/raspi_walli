@@ -273,7 +273,7 @@ class CaptureTimer():
         
         # update capture_timer
         self.update_timer()
-        
+      
     
 @app.route('/')
 @app.route('/home/')
@@ -356,6 +356,24 @@ def home(year=None):
         logger.info(f"Storing cached plots to '{fn}'")
         with open(os.path.join("cache", fn), "wb") as file:
             pickle.dump(plots, file)
+    
+    def remove_expired_caches():
+        """ 
+        Removes expired 'home-plotly-cache.pkl' files from the 'cache' directory.
+        A .pkl file is expired if a later .pkl file exsists from the same year.
+        """
+        caches = dict()
+        for fn in os.listdir("cache"):
+            if fn.endswith('home-plotly-cache.pkl'):
+                year = fn[:4]
+                if year in caches.keys():
+                    caches[year].append(fn)
+                else:
+                    caches[year] = [fn]
+        latest = [sorted(fns)[-1] for fns in caches.values()]
+        expired = set(os.listdir("cache")).difference(set(latest))
+        for fn in expired:
+            os.remove(os.path.join("cache", fn))
             
     today = dt.datetime.now().date()  #.strftime("%Y-%m-%d")
     
@@ -393,9 +411,10 @@ def home(year=None):
     
     if "plots" not in dir():
         plots = generate_fresh_plots(year)
-        logger.warning("delete existing cache als thread ausführen")
-        logger.warning("write cached file als thread ausführen")
-        store_cached_plots(plots, desired_fn)
+        
+        # Store new cache and remove expired caches after serving the client 
+        threading.Timer(interval=1., function=store_cached_plots, args=(plots, desired_fn)).start()
+        threading.Timer(interval=2., function=remove_expired_caches).start()
             
     return render_template('home.html', plots=plots, year=year, avail=sorted(available))
 
