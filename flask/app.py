@@ -167,6 +167,11 @@ class LuxValue(db.Model):
     def __repr__(self):
         return f"LuxValue(id:{self.id}-->campaign.id:{self.campaign_id}, {self.datetime}: {self.lux} lux)"
 
+    def to_dict(self):
+        return {'datetime': self.datetime,
+                "lux": self.lux}
+        
+
     @classmethod
     def commit(cls, dct):
         """
@@ -493,7 +498,14 @@ def edit(id=None):
 @app.route('/data/')
 def data():
     """ View function for data page """
-    return render_template('data.html')
+    return render_template('data.html', title="Holger")
+
+
+@app.route('/api/data')
+def api_data():
+    return {'data': [lv.to_dict() for lv in LuxValue.query]}
+
+
     
 
 if __name__ == "__main__":    

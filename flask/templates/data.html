@@ -1,7 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
 <p>data page</p>
+<table id="data" class="table table-striped">
+    <thead>
+        <tr>
+            <th>datetime</th>
+            <th>lux</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+{% endblock %}
 
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $('#data').DataTable({
+            ajax: '/api/data',
+            columns: [
+                {data: 'datetime'},
+                {data: 'lux'}
+            ],
+        });
+    });
+</script>
 {% endblock %}
