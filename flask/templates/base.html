@@ -1,28 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {% block head %}
-        {% block metas %}
-            <meta charset="utf-8">
-        {% endblock metas %}
-
-        <title>{% block title %}Walli{% endblock %}</title>
-        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-        {% block styles %}
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css' ) }}">
-        {% endblock styles %}
-    {% endblock head %}
+    <meta charset="utf-8">
+    <title>{% block title %}Walli{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css' ) }}">
 </head>
 <body>
 <nav>
-    {% block nav %}
-        <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('config') }}">Config</a></li>
-            <li><a href="{{ url_for('campaigns') }}">Campaigns</a></li>
-            <li><a href="{{ url_for('data') }}">Data</a></li>
-        </ul>
-    {% endblock %}
+    <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('config') }}">Config</a></li>
+        <li><a href="{{ url_for('campaigns') }}">Campaigns</a></li>
+        <li><a href="{{ url_for('data') }}">Data</a></li>
+    </ul>
 </nav>
 
 <main>
@@ -32,11 +23,9 @@
     {% block content %}{% endblock %}
 </main>
 <footer>
-    {% block footer %}
-        <small> find Raspi_Walli on 
-            <a href="https://github.com/munich-ml/raspi_walli/">GitHub</a>
-        </small>
-    {% endblock %}
+    <small> find Raspi_Walli on 
+        <a href="https://github.com/munich-ml/raspi_walli/">GitHub</a>
+    </small>
 </footer>
 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
