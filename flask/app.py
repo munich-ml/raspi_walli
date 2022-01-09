@@ -495,13 +495,10 @@ def edit(id=None):
         logger.warning(f"Unsupported '{request.method=}'!")
 
 
-@app.route('/data/', methods=['GET'], defaults={"campaign_id": None})
+@app.route('/data/', methods=['GET'], defaults={"campaign_id": 0})
 @app.route('/data/<campaign_id>/', methods=['GET'])
-def data(campaign_id=None):
+def data(campaign_id=0):
     """ View function for data page """
-    if campaign_id is None:
-        campaign_id = 0
-        
     return render_template('data.html', campaign_id=campaign_id)
 
 
