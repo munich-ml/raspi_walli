@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>data page for campaign_id={{campaign_id}}</p>
+<p>data page for campaign_id={{id}}</p>
 <hr>
 <h2>Light sensor data</h2>
 <table id="light" class="table table-striped">
@@ -23,7 +23,7 @@
 <script>
     $(document).ready(function () {
         $('#light').DataTable({
-            ajax: '/api/data/light/' + {{campaign_id}},
+            ajax: '/api/data/light/' + {{id}},
             columns: [
                 {'data': 'datetime'},
                 {'data': 'lux'}

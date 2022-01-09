@@ -495,17 +495,17 @@ def edit(id=None):
         logger.warning(f"Unsupported '{request.method=}'!")
 
 
-@app.route('/data/', methods=['GET'], defaults={"campaign_id": 0})
-@app.route('/data/<campaign_id>/', methods=['GET'])
-def data(campaign_id=0):
+@app.route('/data/', methods=['GET'], defaults={"id": 0})
+@app.route('/data/<id>/', methods=['GET'])
+def data(id=0):
     """ View function for data page """
-    return render_template('data.html', campaign_id=campaign_id)
+    return render_template('data.html', id=id)
 
 
-@app.route('/api/data/light/<campaign_id>/', methods=['GET'])
-def api_get_light_data(campaign_id):
+@app.route('/api/data/light/<id>/', methods=['GET'])
+def api_get_light_data(id):
     """provides sensor data for ajax DataTable"""
-    query = db.session.query(LuxValue).filter(LuxValue.campaign_id==campaign_id)
+    query = db.session.query(LuxValue).filter(LuxValue.campaign_id==id)
     return {'data': [item.to_dict() for item in query]}
 
 
