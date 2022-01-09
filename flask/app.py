@@ -77,6 +77,10 @@ class CampaignForm(FlaskForm):
         self.measure_light.data = cpn.measure_light
         
 
+class DataForm(FlaskForm):
+    id = IntegerField(validators=[DataRequired()], default=0)
+
+
 class WalliStat(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     datetime = db.Column(db.DateTime)
@@ -454,7 +458,6 @@ def edit(id=None):
         form = CampaignForm()    
         if id is not None:
             cmp = db.session.query(Campaign).get(id)
-            print("campaigns.GET", cmp)
             form.populate(cmp)
         return render_template('edit.html', form=form)    
     
@@ -495,11 +498,15 @@ def edit(id=None):
         logger.warning(f"Unsupported '{request.method=}'!")
 
 
-@app.route('/data/', methods=['GET'], defaults={"id": 0})
-@app.route('/data/<id>/', methods=['GET'])
+@app.route('/data/', methods=['GET', 'POST'], defaults={"id": 0})
+@app.route('/data/<id>/', methods=['GET', 'POST'])
 def data(id=0):
     """ View function for data page """
-    return render_template('data.html', id=id)
+    if request.method == "POST":    
+        id = request.form["id"]
+    form = DataForm()
+    form.id.data = id
+    return render_template('data.html', form=form)
 
 
 @app.route('/api/data/light/<id>/', methods=['GET'])

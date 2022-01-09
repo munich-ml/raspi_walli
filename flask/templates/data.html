@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>data page for campaign_id={{id}}</p>
+<form method="POST" action="">
+    {{form.hidden_tag()}}
+    <p>
+        Data page for campaign.id {{ form.id }}
+        <input type="submit" value="reload">
+    </p>
+</form>
+
 <hr>
 <h2>Light sensor data</h2>
 <table id="light" class="table table-striped">
@@ -11,9 +18,9 @@
             <th>lux</th>
         </tr>
     </thead>
-    <tbody>
-    </tbody>
+    <tbody></tbody>
 </table>
+
 <h2>Walli data</h2>
 <p>none</p>
 
@@ -23,7 +30,7 @@
 <script>
     $(document).ready(function () {
         $('#light').DataTable({
-            ajax: '/api/data/light/' + {{id}},
+            ajax: '/api/data/light/' + {{form.id.data}},
             columns: [
                 {'data': 'datetime'},
                 {'data': 'lux'}
