@@ -155,6 +155,9 @@ class WalliStat(db.Model):
                 "modbus_watchdog_timeout", "remote_lock", "I_max_cmd", "I_fail_safe", "campaign_id"]       
         return pd.Series({key: getattr(self, key) for key in keys})
      
+    def to_dict(self):
+         return self.to_series().to_dict()
+     
     @staticmethod
     def to_dataframe(list_of_wallistat):
         """ Converts a list of WalliStat objects into a Pandas DataFrame """
@@ -509,12 +512,16 @@ def data(id=0):
     return render_template('data.html', form=form)
 
 
-@app.route('/api/data/light/<id>/', methods=['GET'])
-def api_get_light_data(id):
+@app.route('/api/data/<sensor>/<id>/', methods=['GET'])
+def api_get_data(sensor, id):
     """provides sensor data for ajax DataTable"""
-    query = db.session.query(LuxValue).filter(LuxValue.campaign_id==id)
-    return {'data': [item.to_dict() for item in query]}
-
+    TABLES = {"walli": WalliStat, "light": LuxValue}
+    if sensor in TABLES:
+        table = TABLES[sensor]
+        query = db.session.query(table).filter(table.campaign_id==id)
+        return {'data': [item.to_dict() for item in query]}
+    else:
+        return {}
 
     
 
