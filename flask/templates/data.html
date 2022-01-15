@@ -22,7 +22,20 @@
 </table>
 
 <h2>Walli data</h2>
-<p>none</p>
+<table id="walli" class="table table-striped">
+    <thead>
+        <tr>
+            <th>datetime</th>
+            <th>temperature</th>
+            <th>charging_state</th>
+            <th>power_kW</th>
+            <th>energy_kWh</th>
+            <th>I_max_cmd</th>
+            <th>I_fail_safe</th>           
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
 
 {% endblock %}
 
@@ -38,4 +51,22 @@
         });
     });
 </script>
+<script>
+    $(document).ready(function () {
+        $('#walli').DataTable({
+            ajax: '/api/data/walli/' + {{form.id.data}},
+            columns: [
+                {'data': 'datetime'},
+                {'data': 'temperature'},
+                {'data': 'charging_state'},
+                {'data': 'power_kW'},
+                {'data': 'energy_kWh'},
+                {'data': 'I_max_cmd'},
+                {'data': 'I_fail_safe'}             
+            ],
+        });
+    });
+</script>
 {% endblock %}
+
+
