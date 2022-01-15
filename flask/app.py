@@ -7,7 +7,7 @@ import plotly
 import plotly.express as px
 import plotly.graph_objs as go  
 import datetime as dt
-from flask import Flask, render_template, flash, redirect, request, session, url_for
+from flask import Flask, render_template, flash, redirect, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
@@ -512,9 +512,29 @@ def data(id=0):
     return render_template('data.html', form=form)
 
 
+@app.route('/download/<sensor>/<id>/', methods=['GET'])
+def download(sensor, id):
+    """ Create a .csv file of requested sensor and id and delete it later 
+    """
+    # Get (list of dict) records from data_api    
+    records = api_get_data(sensor, id)['data']
+    
+    # Use Pandas for easy csv creation
+    df = pd.DataFrame.from_records(records)
+    if 'datetime' in df.columns:
+        df = df.set_index("datetime")
+    fn = f"{sensor}_data_campaign_{id}.csv"
+    df.to_csv(fn, sep=";", decimal=",")
+    
+    # delete .csv file later
+    threading.Timer(interval=10., function=lambda: os.remove(fn)).start()
+    return send_file(fn, as_attachment=True)
+    
+
 @app.route('/api/data/<sensor>/<id>/', methods=['GET'])
 def api_get_data(sensor, id):
-    """provides sensor data for ajax DataTable"""
+    """ provides sensor data for ajax DataTable
+    """
     TABLES = {"walli": WalliStat, "light": LuxValue}
     if sensor in TABLES:
         table = TABLES[sensor]
@@ -523,7 +543,6 @@ def api_get_data(sensor, id):
     else:
         return {}
 
-    
 
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     

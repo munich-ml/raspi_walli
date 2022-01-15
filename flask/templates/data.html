@@ -11,6 +11,7 @@
 
 <hr>
 <h2>Light sensor data</h2>
+<a href="{{ url_for('download', sensor='light', id=form.id.data) }}">download as .csv</a>
 <table id="light" class="table table-striped">
     <thead>
         <tr>
@@ -21,7 +22,9 @@
     <tbody></tbody>
 </table>
 
+<hr>
 <h2>Walli data</h2>
+<a href="{{ url_for('download', sensor='walli', id=form.id.data) }}">download as .csv</a>
 <table id="walli" class="table table-striped">
     <thead>
         <tr>
