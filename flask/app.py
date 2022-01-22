@@ -255,7 +255,7 @@ class CaptureTimer():
         """
         self.timer.cancel()  # cancal current timer
         t, campaign = self._get_next_capture()
-        logger.debug(f"Scheduling a Timer in {t=:.1f}s for {campaign}")
+        logger.debug(f"Scheduling a Timer in t={t:.1f}s for {campaign}")
         self.timer = threading.Timer(interval=t, function=self.capture, kwargs={"campaign":campaign})
         self.timer.start()
     
@@ -490,7 +490,7 @@ def edit(id=None):
 
         elif request.form["todo"] == "delete" and id != "": 
             cmp = db.session.query(Campaign).get(id)
-            logger.debug(f"{id=}, {request.method=}, {cmp=}")
+            logger.debug(f"id={id}, request.method={request.method}, cmp={cmp}")
             db.session.delete(cmp)
             db.session.commit()
             capture_timer.update_timer()  # necessary, because the deleted campaign could be scheduled for next capture.
@@ -498,7 +498,7 @@ def edit(id=None):
         return redirect('/campaigns/')
 
     else:
-        logger.warning(f"Unsupported '{request.method=}'!")
+        logger.warning(f"Unsupported request.method '{request.method}'!")
 
 
 @app.route('/data/', methods=['GET', 'POST'], defaults={"id": 0})
