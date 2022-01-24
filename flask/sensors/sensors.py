@@ -173,8 +173,6 @@ class Wallbox(SensorBase):
                     r = func()
                     if r.isError():
                         read_attempts += 1
-                        if self.verbose:
-                            print("Modbus read error, attempt", read_attempts)
                         if read_attempts > MAX_READ_ATTEMPTS:
                             raise ModbusReadError
                     else:
