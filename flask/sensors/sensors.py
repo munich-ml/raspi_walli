@@ -226,7 +226,7 @@ class SensorInterface(dict):
         sensor_key = task["sensor"]
         sensor = self[sensor_key]
         if sensor.task_queue.full():
-            logger.warning(f"Queue is full! Sipping {task}")
+            logger.warning(f"Queue is full! Skipping {task}")
         else:    
             sensor.task_queue.put(task, timeout=1)
         
