@@ -21,7 +21,7 @@ plotly.io.templates.default = "plotly_white" # available templates "plotly_dark"
 # configure logging
 logging.getLogger().setLevel(logging.NOTSET)
 handler = logging.StreamHandler()
-handler.setLevel(logging.DEBUG)
+handler.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s | %(levelname)-7s | %(funcName)s() %(filename)s line=%(lineno)s thread=%(thread)s | %(message)s')
 handler.setFormatter(formatter)
 logging.getLogger().addHandler(handler)
@@ -255,7 +255,7 @@ class CaptureTimer():
         """
         self.timer.cancel()  # cancal current timer
         t, campaign = self._get_next_capture()
-        logger.debug(f"Scheduling a Timer in t={t:.1f}s for {campaign}")
+        logger.info(f"Scheduling a Timer in t={t:.1f}s for {campaign}")
         self.timer = threading.Timer(interval=t, function=self.capture, kwargs={"campaign":campaign})
         self.timer.start()
     
