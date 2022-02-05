@@ -4,7 +4,7 @@ import datetime as dt
 from queue import Queue
 
 LIGHT_SENSOR_SIMULATED = True      # True for debugging mode if no sensor is connected
-WALLI_SIMULATED = True             # True for debugging mode if no sensor is connected
+WALLI_SIMULATED = False             # True for debugging mode if no sensor is connected
 PORT = '/dev/ttyAMA0'              # Serial port of Modbus interface
 BUS_ID = 1                         # Modbus ID
 MAX_READ_ATTEMPTS = 8              # Max number of attempts for a Modbus read
@@ -161,7 +161,7 @@ class Wallbox(SensorBase):
         
         else:  # Real Wallbox (not simulated)
             read_attempts = 0
-            regs = [dt.datetime.now().strftime("%H:%M:%S")]
+            regs = [dt.datetime.now()]
 
             funcs = [lambda: self.mb.read_input_registers(4, count=15, unit=BUS_ID),
                      lambda: self.mb.read_input_registers(100, count=2, unit=BUS_ID),
