@@ -15,8 +15,28 @@ if not WALLI_SIMULATED:
 if not LIGHT_SENSOR_SIMULATED:
     from smbus import SMBus
 
-logger = logging.getLogger(__name__)
+# configure logging
+def create_logger(fn='logging.txt', level_file_logger=logging.INFO, level_stream_logger=logging.INFO):
+    logger = logging.getLogger()
+    logger.setLevel(logging.NOTSET)
 
+    # create file handler and stream handler
+    handlers = [{"handler": lambda: logging.FileHandler(fn), 
+                 "level": level_file_logger,
+                 "formatter": logging.Formatter('%(asctime)s | %(levelname)-8s | %(funcName)s() %(filename)s line=%(lineno)s thread=%(thread)s | %(message)s')},
+                {"handler": logging.StreamHandler, 
+                 "level": level_stream_logger,
+                 "formatter": logging.Formatter('%(levelname)-8s | %(message)s')},            
+               ]
+    for h in handlers:
+        handler = h["handler"]()
+        handler.setLevel(h["level"])
+        handler.setFormatter(h["formatter"])
+        logger.addHandler(handler)
+  
+    return logger
+
+logger = create_logger()
 
 class SensorBase(threading.Thread):
     def __init__(self, *args, **kwargs):
