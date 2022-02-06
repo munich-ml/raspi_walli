@@ -30,3 +30,77 @@
 2022-02-06 10:47:42,190 | INFO     | _log() _internal.py line=225 thread=4264 | 127.0.0.1 - - [06/Feb/2022 10:47:42] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
 2022-02-06 10:47:42,366 | INFO     | store_cached_plots() app.py line=360 thread=7568 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
 2022-02-06 10:47:42,366 | INFO     | store_cached_plots() app.py line=360 thread=7568 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:48:27,347 | INFO     | run() sensors.py line=69 thread=2947511360 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 11:48:27,348 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 11:48:27,347 | INFO     | run() sensors.py line=69 thread=2947511360 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 11:48:27,348 | INFO     | __init__() sensors.py line=232 thread=3070142848 | SensorInterface initialized
+2022-02-06 11:48:27,348 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 11:48:27,348 | INFO     | __init__() sensors.py line=232 thread=3070142848 | SensorInterface initialized
+2022-02-06 11:48:27,349 | INFO     | __init__() sensors.py line=234 thread=3070142848 | - 'light': LightSensor BH1570, not connected
+2022-02-06 11:48:27,349 | INFO     | __init__() sensors.py line=234 thread=3070142848 | - 'light': LightSensor BH1570, not connected
+2022-02-06 11:48:27,349 | INFO     | __init__() sensors.py line=234 thread=3070142848 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 11:48:27,349 | INFO     | __init__() sensors.py line=234 thread=3070142848 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 11:48:27,408 | INFO     | update_timer() app.py line=250 thread=3070142848 | Scheduling a Timer in t=692.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 11:48:27,408 | INFO     | update_timer() app.py line=250 thread=3070142848 | Scheduling a Timer in t=692.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 11:48:27,414 | WARNING  | _log() _internal.py line=225 thread=3070142848 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 11:48:27,414 | WARNING  | _log() _internal.py line=225 thread=3070142848 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 11:48:27,414 | INFO     | _log() _internal.py line=225 thread=3070142848 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 11:48:27,414 | INFO     | _log() _internal.py line=225 thread=3070142848 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 11:48:30,213 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:48:30,213 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:48:30,214 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:48:30,214 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:48:30,288 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:48:30] "GET /home/ HTTP/1.1" 200 -
+2022-02-06 11:48:30,288 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:48:30] "GET /home/ HTTP/1.1" 200 -
+2022-02-06 11:48:30,361 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:48:30,361 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:48:34,711 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:48:34,711 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:48:34,712 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:48:34,712 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:48:34,718 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:48:34] "GET /home/ HTTP/1.1" 200 -
+2022-02-06 11:48:34,718 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:48:34] "GET /home/ HTTP/1.1" 200 -
+2022-02-06 11:48:34,764 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:48:34,764 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:48:35,191 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:35] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 11:48:35,191 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:48:35] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 11:50:07,696 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "[32mGET /home/2021 HTTP/1.1[0m" 308 -
+2022-02-06 11:50:07,696 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "[32mGET /home/2021 HTTP/1.1[0m" 308 -
+2022-02-06 11:50:07,715 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:07,715 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:07,716 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-06 11:50:07,716 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-06 11:50:07,729 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-06 11:50:07,729 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-06 11:50:07,790 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:50:07,790 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:50:17,433 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "[32mGET /home/2022 HTTP/1.1[0m" 308 -
+2022-02-06 11:50:17,433 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "[32mGET /home/2022 HTTP/1.1[0m" 308 -
+2022-02-06 11:50:17,457 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:17,457 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:17,458 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:50:17,458 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:50:17,463 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 11:50:17,463 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 11:50:17,526 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:50:17,526 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:50:20,233 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:20,233 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-06_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:50:20,234 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-06 11:50:20,234 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-06 11:50:20,240 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:20] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-06 11:50:20,240 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:50:20] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-06 11:50:20,311 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:50:20,311 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:50:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:51:00,633 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:51:00,633 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-06 11:51:00,634 | INFO     | generate_fresh_plots() app.py line=345 thread=2915038272 | generating fresh plots for 2022
+2022-02-06 11:51:00,634 | INFO     | generate_fresh_plots() app.py line=345 thread=2915038272 | generating fresh plots for 2022
+2022-02-06 11:51:04,601 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:51:04] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 11:51:04,601 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 11:51:04] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 11:51:04,810 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:51:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:51:04,810 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:51:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 11:51:05,598 | INFO     | store_cached_plots() app.py line=360 thread=2840589376 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 11:51:05,598 | INFO     | store_cached_plots() app.py line=360 thread=2840589376 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
