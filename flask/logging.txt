@@ -1,0 +1,32 @@
+2022-02-06 10:45:49,976 | INFO     | run() sensors.py line=69 thread=6792 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 10:45:49,976 | INFO     | run() sensors.py line=69 thread=7804 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 10:45:49,976 | INFO     | run() sensors.py line=69 thread=6792 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 10:45:49,976 | INFO     | __init__() sensors.py line=232 thread=13680 | SensorInterface initialized
+2022-02-06 10:45:49,976 | INFO     | run() sensors.py line=69 thread=7804 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 10:45:49,976 | INFO     | __init__() sensors.py line=232 thread=13680 | SensorInterface initialized
+2022-02-06 10:45:49,988 | INFO     | __init__() sensors.py line=234 thread=13680 | - 'light': LightSensor BH1570, not connected
+2022-02-06 10:45:49,988 | INFO     | __init__() sensors.py line=234 thread=13680 | - 'light': LightSensor BH1570, not connected
+2022-02-06 10:45:49,988 | INFO     | __init__() sensors.py line=234 thread=13680 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 10:45:49,988 | INFO     | __init__() sensors.py line=234 thread=13680 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 10:45:50,036 | INFO     | update_timer() app.py line=250 thread=13680 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 10:45:50,036 | INFO     | update_timer() app.py line=250 thread=13680 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 10:45:50,076 | INFO     | update_timer() app.py line=250 thread=13108 | Scheduling a Timer in t=849.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 10:45:50,076 | INFO     | update_timer() app.py line=250 thread=13108 | Scheduling a Timer in t=849.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 10:45:50,076 | WARNING  | _log() _internal.py line=225 thread=13680 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 10:45:50,076 | WARNING  | _log() _internal.py line=225 thread=13680 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 10:45:50,076 | INFO     | _log() _internal.py line=225 thread=13680 |  * Running on http://192.168.178.50:5000/ (Press CTRL+C to quit)
+2022-02-06 10:45:50,076 | INFO     | _log() _internal.py line=225 thread=13680 |  * Running on http://192.168.178.50:5000/ (Press CTRL+C to quit)
+2022-02-06 10:47:39,028 | INFO     | home() app.py line=389 thread=11068 | cached_plots: {'2021': '2021-12-31_home-plotly-cache.pkl', '2022': '2022-02-05_home-plotly-cache.pkl'}
+2022-02-06 10:47:39,028 | INFO     | home() app.py line=389 thread=11068 | cached_plots: {'2021': '2021-12-31_home-plotly-cache.pkl', '2022': '2022-02-05_home-plotly-cache.pkl'}
+2022-02-06 10:47:39,028 | INFO     | generate_fresh_plots() app.py line=345 thread=11068 | generating fresh plots for 2022
+2022-02-06 10:47:39,028 | INFO     | generate_fresh_plots() app.py line=345 thread=11068 | generating fresh plots for 2022
+2022-02-06 10:47:41,377 | INFO     | _log() _internal.py line=225 thread=11068 | 127.0.0.1 - - [06/Feb/2022 10:47:41] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 10:47:41,377 | INFO     | _log() _internal.py line=225 thread=11068 | 127.0.0.1 - - [06/Feb/2022 10:47:41] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-06 10:47:41,590 | INFO     | _log() _internal.py line=225 thread=10692 | 127.0.0.1 - - [06/Feb/2022 10:47:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 10:47:41,590 | INFO     | _log() _internal.py line=225 thread=10692 | 127.0.0.1 - - [06/Feb/2022 10:47:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 10:47:42,190 | INFO     | _log() _internal.py line=225 thread=4264 | 127.0.0.1 - - [06/Feb/2022 10:47:42] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2022-02-06 10:47:42,190 | INFO     | _log() _internal.py line=225 thread=4264 | 127.0.0.1 - - [06/Feb/2022 10:47:42] "[36mGET /static/favicon.ico HTTP/1.1[0m" 304 -
+2022-02-06 10:47:42,366 | INFO     | store_cached_plots() app.py line=360 thread=7568 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 10:47:42,366 | INFO     | store_cached_plots() app.py line=360 thread=7568 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'

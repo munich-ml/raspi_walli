@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import json, logging, math, os, pickle, threading
+import json, math, os, pickle, threading
 import pandas as pd
 import numpy as np
 import plotly
@@ -13,20 +13,12 @@ from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
 from wtforms.fields import IntegerField, DateField, TimeField
 from wtforms.validators import DataRequired
-from sensors.sensors import SensorInterface
+from sensors.sensors import SensorInterface, create_logger
 
 # configure plotly
 plotly.io.templates.default = "plotly_white" # available templates "plotly_dark" "plotly_white" 
 
-# configure logging
-logging.getLogger().setLevel(logging.NOTSET)
-handler = logging.StreamHandler()
-handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s | %(levelname)-7s | %(funcName)s() %(filename)s line=%(lineno)s thread=%(thread)s | %(message)s')
-handler.setFormatter(formatter)
-logging.getLogger().addHandler(handler)
-logger = logging.getLogger(__name__)
-
+logger = create_logger()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secure'
