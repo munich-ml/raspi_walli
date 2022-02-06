@@ -3,7 +3,7 @@ import time
 import datetime as dt
 from queue import Queue
 
-LIGHT_SENSOR_SIMULATED = True      # True for debugging mode if no sensor is connected
+LIGHT_SENSOR_SIMULATED = False      # True for debugging mode if no sensor is connected
 WALLI_SIMULATED = False             # True for debugging mode if no sensor is connected
 PORT = '/dev/ttyAMA0'              # Serial port of Modbus interface
 BUS_ID = 1                         # Modbus ID

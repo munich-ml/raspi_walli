@@ -104,3 +104,387 @@
 2022-02-06 11:51:04,810 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 11:51:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2022-02-06 11:51:05,598 | INFO     | store_cached_plots() app.py line=360 thread=2840589376 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
 2022-02-06 11:51:05,598 | INFO     | store_cached_plots() app.py line=360 thread=2840589376 | Storing cached plots to '2022-02-06_home-plotly-cache.pkl'
+2022-02-06 12:06:09,168 | INFO     | run() sensors.py line=69 thread=2947163200 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:06:09,169 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:06:09,168 | INFO     | run() sensors.py line=69 thread=2947163200 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:06:09,169 | INFO     | __init__() sensors.py line=232 thread=3069794688 | SensorInterface initialized
+2022-02-06 12:06:09,169 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:06:09,169 | INFO     | __init__() sensors.py line=232 thread=3069794688 | SensorInterface initialized
+2022-02-06 12:06:09,170 | INFO     | __init__() sensors.py line=234 thread=3069794688 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:06:09,170 | INFO     | __init__() sensors.py line=234 thread=3069794688 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:06:09,170 | INFO     | __init__() sensors.py line=234 thread=3069794688 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:06:09,170 | INFO     | __init__() sensors.py line=234 thread=3069794688 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:06:09,230 | INFO     | update_timer() app.py line=250 thread=3069794688 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:06:09,230 | INFO     | update_timer() app.py line=250 thread=3069794688 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:06:09,243 | WARNING  | _log() _internal.py line=225 thread=3069794688 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:06:09,243 | WARNING  | _log() _internal.py line=225 thread=3069794688 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:06:09,245 | INFO     | _log() _internal.py line=225 thread=3069794688 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:06:09,245 | INFO     | _log() _internal.py line=225 thread=3069794688 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:06:09,273 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3230.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:06:09,273 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3230.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:08:15,636 | INFO     | run() sensors.py line=69 thread=2946720832 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:08:15,637 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:08:15,636 | INFO     | run() sensors.py line=69 thread=2946720832 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:08:15,637 | INFO     | __init__() sensors.py line=232 thread=3069352320 | SensorInterface initialized
+2022-02-06 12:08:15,637 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:08:15,637 | INFO     | __init__() sensors.py line=232 thread=3069352320 | SensorInterface initialized
+2022-02-06 12:08:15,638 | INFO     | __init__() sensors.py line=234 thread=3069352320 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:08:15,638 | INFO     | __init__() sensors.py line=234 thread=3069352320 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:08:15,638 | INFO     | __init__() sensors.py line=234 thread=3069352320 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:08:15,638 | INFO     | __init__() sensors.py line=234 thread=3069352320 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:08:15,699 | INFO     | update_timer() app.py line=250 thread=3069352320 | Scheduling a Timer in t=3104.4s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:08:15,699 | INFO     | update_timer() app.py line=250 thread=3069352320 | Scheduling a Timer in t=3104.4s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:08:15,703 | WARNING  | _log() _internal.py line=225 thread=3069352320 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:08:15,703 | WARNING  | _log() _internal.py line=225 thread=3069352320 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:08:15,704 | INFO     | _log() _internal.py line=225 thread=3069352320 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:08:15,704 | INFO     | _log() _internal.py line=225 thread=3069352320 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:09:05,116 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:09:05,116 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:09:05,195 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:05,195 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:05,237 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:09:05,237 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:05] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:09:08,985 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:08] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:09:08,985 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:08] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:09:09,078 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:09,078 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:09,135 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:09] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:09:09,135 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:09] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:09:41,624 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=0.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:41,624 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=0.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:41,635 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "[32mPOST /campaigns/edit/ HTTP/1.1[0m" 302 -
+2022-02-06 12:09:41,635 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "[32mPOST /campaigns/edit/ HTTP/1.1[0m" 302 -
+2022-02-06 12:09:41,688 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=0.3s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:41,688 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=0.3s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:41,745 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:09:41,745 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:09:41,921 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:41,921 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:09:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:09:42,050 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:42,050 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:44,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:44,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:46,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:46,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:48,081 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:48,081 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:50,055 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:50,055 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:52,042 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:52,042 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:54,058 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:54,058 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:56,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:56,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:58,064 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:09:58,064 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:00,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:00,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:02,073 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:02,073 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:04,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:04,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:06,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:06,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:08,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:08,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:10,063 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:10,063 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:12,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:12,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:14,041 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:14,041 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:16,056 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:16,056 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:18,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:18,074 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:20,078 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:20,078 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:22,077 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:22,077 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:24,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:24,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:26,056 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:26,056 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:28,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:28,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:30,075 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:30,075 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:32,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:32,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:34,058 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:34,058 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:36,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:36,077 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:38,073 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:38,073 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:40,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:40,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:42,076 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:42,076 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:44,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:44,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:46,054 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:46,054 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:48,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:48,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:50,056 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:50,056 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:52,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:52,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:54,054 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:54,054 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:56,059 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:56,059 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:58,077 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:10:58,077 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:00,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:00,073 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:02,063 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:02,063 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:04,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:04,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:06,076 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:06,076 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:08,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:08,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:10,061 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:10,061 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:12,075 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:12,075 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:14,053 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:14,053 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:16,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:16,054 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:18,072 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:18,072 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:20,075 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:20,075 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:22,072 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:22,072 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:24,074 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:24,074 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:26,044 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:26] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:11:26,044 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:26] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:11:26,089 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:26,089 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:26,150 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:26,150 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:28,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:28,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:30,048 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:30,048 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:32,062 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:32,062 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:33,597 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:33] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:11:33,597 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:33] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:11:33,636 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:11:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:33,636 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:11:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:34,075 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:34,075 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:35,580 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:35] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:11:35,580 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:35] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:11:35,659 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:35,659 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:36,075 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:36,075 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:38,057 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:38,057 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:40,057 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:40,057 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:42,074 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:42,074 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'close the door' act=True start=2022-02-06 12:09:00, end=2022-02-06 12:12:00, int=0:00:02)
+2022-02-06 12:11:43,172 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2896.8s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:11:43,172 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2896.8s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:11:43,179 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:11:43,179 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:11:43,297 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:11:43,297 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:11:43,471 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:43,471 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:44,989 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:44] "GET /data/ HTTP/1.1" 200 -
+2022-02-06 12:11:44,989 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:44] "GET /data/ HTTP/1.1" 200 -
+2022-02-06 12:11:45,064 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:45,064 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:45,135 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[32mGET /api/data/light/0?_=1644145905123 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:45,137 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[32mGET /api/data/walli/0?_=1644145905124 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:45,135 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[32mGET /api/data/light/0?_=1644145905123 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:45,137 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "[32mGET /api/data/walli/0?_=1644145905124 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:45,198 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "GET /api/data/light/0/?_=1644145905123 HTTP/1.1" 200 -
+2022-02-06 12:11:45,198 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:45] "GET /api/data/light/0/?_=1644145905123 HTTP/1.1" 200 -
+2022-02-06 12:11:48,028 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/walli/0/?_=1644145905124 HTTP/1.1" 200 -
+2022-02-06 12:11:48,028 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/walli/0/?_=1644145905124 HTTP/1.1" 200 -
+2022-02-06 12:11:48,659 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:11:48,659 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:11:48,690 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:48,690 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:11:48,744 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[32mGET /api/data/light/1?_=1644145908748 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:48,744 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[32mGET /api/data/light/1?_=1644145908748 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:48,756 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[32mGET /api/data/walli/1?_=1644145908749 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:48,756 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "[32mGET /api/data/walli/1?_=1644145908749 HTTP/1.1[0m" 308 -
+2022-02-06 12:11:48,779 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/light/1/?_=1644145908748 HTTP/1.1" 200 -
+2022-02-06 12:11:48,779 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/light/1/?_=1644145908748 HTTP/1.1" 200 -
+2022-02-06 12:11:48,788 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/walli/1/?_=1644145908749 HTTP/1.1" 200 -
+2022-02-06 12:11:48,788 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:11:48] "GET /api/data/walli/1/?_=1644145908749 HTTP/1.1" 200 -
+2022-02-06 12:11:53,736 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:53] "GET /download/light/1/ HTTP/1.1" 200 -
+2022-02-06 12:11:53,736 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:11:53] "GET /download/light/1/ HTTP/1.1" 200 -
+2022-02-06 12:13:42,082 | INFO     | run() sensors.py line=69 thread=2947392576 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:13:42,082 | INFO     | run() sensors.py line=69 thread=2947392576 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 12:13:42,083 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:13:42,083 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 12:13:42,083 | INFO     | __init__() sensors.py line=232 thread=3070024064 | SensorInterface initialized
+2022-02-06 12:13:42,083 | INFO     | __init__() sensors.py line=232 thread=3070024064 | SensorInterface initialized
+2022-02-06 12:13:42,084 | INFO     | __init__() sensors.py line=234 thread=3070024064 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:13:42,084 | INFO     | __init__() sensors.py line=234 thread=3070024064 | - 'light': LightSensor BH1570, not connected
+2022-02-06 12:13:42,084 | INFO     | __init__() sensors.py line=234 thread=3070024064 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:13:42,084 | INFO     | __init__() sensors.py line=234 thread=3070024064 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 12:13:42,142 | INFO     | update_timer() app.py line=250 thread=3070024064 | Scheduling a Timer in t=2777.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:13:42,142 | INFO     | update_timer() app.py line=250 thread=3070024064 | Scheduling a Timer in t=2777.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:13:42,146 | WARNING  | _log() _internal.py line=225 thread=3070024064 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:13:42,146 | WARNING  | _log() _internal.py line=225 thread=3070024064 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 12:13:42,146 | INFO     | _log() _internal.py line=225 thread=3070024064 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:13:42,146 | INFO     | _log() _internal.py line=225 thread=3070024064 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 12:13:48,586 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:48] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:13:48,586 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:48] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:13:48,651 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:48,651 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:52,143 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:52] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:13:52,143 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:52] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:13:52,228 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:52,228 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:54,735 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2765.3s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:13:54,735 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2765.3s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:13:54,740 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:13:54,740 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:13:54,764 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:13:54,764 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:13:54,847 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:54,847 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:56,796 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:56] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:13:56,796 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:13:56] "GET /campaigns/edit/ HTTP/1.1" 200 -
+2022-02-06 12:13:56,836 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:13:56,836 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:13:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:14:09,837 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=0.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:09,837 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=0.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:09,865 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "[32mPOST /campaigns/edit/ HTTP/1.1[0m" 302 -
+2022-02-06 12:14:09,865 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "[32mPOST /campaigns/edit/ HTTP/1.1[0m" 302 -
+2022-02-06 12:14:09,907 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=0.1s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:09,908 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:14:09,907 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=0.1s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:09,908 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:14:09,985 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:14:09,985 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:14:10,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:10,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:12,064 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:12,064 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:14,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:14,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:16,079 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:16,079 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:18,080 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:18,080 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:20,090 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:20,090 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:22,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:22,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:24,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:24,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:26,045 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:26,045 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:28,045 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:28,045 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:30,044 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:30,044 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:32,068 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:32,068 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:34,086 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:34,086 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:36,087 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:36,087 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:38,066 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:38,066 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:40,058 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:40,058 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:42,089 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:42,089 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:44,066 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:44,066 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:46,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:46,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:48,044 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:48,044 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:50,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:50,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:52,087 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:52,087 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:52,514 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "GET /data/ HTTP/1.1" 200 -
+2022-02-06 12:14:52,514 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "GET /data/ HTTP/1.1" 200 -
+2022-02-06 12:14:52,607 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:14:52,607 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:14:52,674 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[32mGET /api/data/light/0?_=1644146092671 HTTP/1.1[0m" 308 -
+2022-02-06 12:14:52,681 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[32mGET /api/data/walli/0?_=1644146092672 HTTP/1.1[0m" 308 -
+2022-02-06 12:14:52,674 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[32mGET /api/data/light/0?_=1644146092671 HTTP/1.1[0m" 308 -
+2022-02-06 12:14:52,681 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "[32mGET /api/data/walli/0?_=1644146092672 HTTP/1.1[0m" 308 -
+2022-02-06 12:14:52,723 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "GET /api/data/light/0/?_=1644146092671 HTTP/1.1" 200 -
+2022-02-06 12:14:52,723 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:14:52] "GET /api/data/light/0/?_=1644146092671 HTTP/1.1" 200 -
+2022-02-06 12:14:54,090 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:54,090 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:55,446 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:55] "GET /api/data/walli/0/?_=1644146092672 HTTP/1.1" 200 -
+2022-02-06 12:14:55,446 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [06/Feb/2022 12:14:55] "GET /api/data/walli/0/?_=1644146092672 HTTP/1.1" 200 -
+2022-02-06 12:14:56,080 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:56,080 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=1.9s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:58,048 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:14:58,048 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=2.0s for Campaign(id:1 'door' act=True start=2022-02-06 12:13:00, end=2022-02-06 12:15:00, int=0:00:02)
+2022-02-06 12:15:00,052 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2700.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:15:00,052 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2700.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:15:05,574 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:15:05,574 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:15:05,637 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:15:05,637 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:15:05,708 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[32mGET /api/data/light/1?_=1644146105708 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:05,708 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[32mGET /api/data/light/1?_=1644146105708 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:05,727 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[32mGET /api/data/walli/1?_=1644146105709 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:05,727 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "[32mGET /api/data/walli/1?_=1644146105709 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:05,751 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "GET /api/data/light/1/?_=1644146105708 HTTP/1.1" 200 -
+2022-02-06 12:15:05,751 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "GET /api/data/light/1/?_=1644146105708 HTTP/1.1" 200 -
+2022-02-06 12:15:05,766 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "GET /api/data/walli/1/?_=1644146105709 HTTP/1.1" 200 -
+2022-02-06 12:15:05,766 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:05] "GET /api/data/walli/1/?_=1644146105709 HTTP/1.1" 200 -
+2022-02-06 12:15:22,970 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:22] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:15:22,970 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:22] "POST /data/ HTTP/1.1" 200 -
+2022-02-06 12:15:23,029 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:15:23,029 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:15:23,120 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:15:23,122 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[32mGET /api/data/walli/1?_=1644146123101 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:23,120 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-06 12:15:23,122 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[32mGET /api/data/walli/1?_=1644146123101 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:23,128 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[32mGET /api/data/light/1?_=1644146123100 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:23,128 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "[32mGET /api/data/light/1?_=1644146123100 HTTP/1.1[0m" 308 -
+2022-02-06 12:15:23,170 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "GET /api/data/walli/1/?_=1644146123101 HTTP/1.1" 200 -
+2022-02-06 12:15:23,170 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "GET /api/data/walli/1/?_=1644146123101 HTTP/1.1" 200 -
+2022-02-06 12:15:23,184 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "GET /api/data/light/1/?_=1644146123100 HTTP/1.1" 200 -
+2022-02-06 12:15:23,184 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:15:23] "GET /api/data/light/1/?_=1644146123100 HTTP/1.1" 200 -
+2022-02-06 12:15:55,330 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:55] "GET /download/light/1/ HTTP/1.1" 200 -
+2022-02-06 12:15:55,330 | INFO     | _log() _internal.py line=225 thread=2887513152 | 192.168.178.50 - - [06/Feb/2022 12:15:55] "GET /download/light/1/ HTTP/1.1" 200 -
+2022-02-06 12:16:43,296 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:43] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:16:43,296 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:43] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:16:43,459 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:16:43,459 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:16:44,922 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:44] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:16:44,922 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:44] "GET /campaigns/edit/1/ HTTP/1.1" 200 -
+2022-02-06 12:16:44,960 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:16:44,960 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:16:59,083 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2580.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:16:59,083 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=2580.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 12:16:59,088 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:16:59,088 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "[32mPOST /campaigns/edit/1/ HTTP/1.1[0m" 302 -
+2022-02-06 12:16:59,117 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:16:59,117 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "GET /campaigns/ HTTP/1.1" 200 -
+2022-02-06 12:16:59,226 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-06 12:16:59,226 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [06/Feb/2022 12:16:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
