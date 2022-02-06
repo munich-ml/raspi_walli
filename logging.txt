@@ -1,0 +1,18 @@
+2022-02-06 11:43:59,805 | INFO     | run() sensors.py line=69 thread=2946876480 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 11:43:59,806 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 11:43:59,805 | INFO     | run() sensors.py line=69 thread=2946876480 | Sensor thread started for 'LightSensor BH1570'
+2022-02-06 11:43:59,806 | INFO     | __init__() sensors.py line=232 thread=3069507968 | SensorInterface initialized
+2022-02-06 11:43:59,806 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-06 11:43:59,806 | INFO     | __init__() sensors.py line=232 thread=3069507968 | SensorInterface initialized
+2022-02-06 11:43:59,806 | INFO     | __init__() sensors.py line=234 thread=3069507968 | - 'light': LightSensor BH1570, not connected
+2022-02-06 11:43:59,806 | INFO     | __init__() sensors.py line=234 thread=3069507968 | - 'light': LightSensor BH1570, not connected
+2022-02-06 11:43:59,807 | INFO     | __init__() sensors.py line=234 thread=3069507968 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 11:43:59,807 | INFO     | __init__() sensors.py line=234 thread=3069507968 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-06 11:43:59,866 | INFO     | update_timer() app.py line=250 thread=3069507968 | Scheduling a Timer in t=960.2s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 11:43:59,866 | INFO     | update_timer() app.py line=250 thread=3069507968 | Scheduling a Timer in t=960.2s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-06 11:43:59,870 | WARNING  | _log() _internal.py line=225 thread=3069507968 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 11:43:59,870 | WARNING  | _log() _internal.py line=225 thread=3069507968 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-06 11:43:59,871 | INFO     | _log() _internal.py line=225 thread=3069507968 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-06 11:43:59,871 | INFO     | _log() _internal.py line=225 thread=3069507968 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
