@@ -1854,3 +1854,333 @@
 2022-02-08 15:29:56,401 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [08/Feb/2022 15:29:56] "GET /home/2022/ HTTP/1.1" 200 -
 2022-02-08 15:29:56,496 | INFO     | _log() _internal.py line=225 thread=2829055040 | 192.168.178.50 - - [08/Feb/2022 15:29:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2022-02-08 15:29:56,496 | INFO     | _log() _internal.py line=225 thread=2829055040 | 192.168.178.50 - - [08/Feb/2022 15:29:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:03:56,148 | INFO     | run() sensors.py line=69 thread=2946556992 | Sensor thread started for 'LightSensor BH1570'
+2022-02-08 16:03:56,149 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-08 16:03:56,148 | INFO     | run() sensors.py line=69 thread=2946556992 | Sensor thread started for 'LightSensor BH1570'
+2022-02-08 16:03:56,149 | INFO     | __init__() sensors.py line=232 thread=3069188480 | SensorInterface initialized
+2022-02-08 16:03:56,149 | INFO     | run() sensors.py line=69 thread=2937058368 | Sensor thread started for 'Heidelberg Wallbox Energy Control'
+2022-02-08 16:03:56,149 | INFO     | __init__() sensors.py line=232 thread=3069188480 | SensorInterface initialized
+2022-02-08 16:03:56,150 | INFO     | __init__() sensors.py line=234 thread=3069188480 | - 'light': LightSensor BH1570, not connected
+2022-02-08 16:03:56,150 | INFO     | __init__() sensors.py line=234 thread=3069188480 | - 'light': LightSensor BH1570, not connected
+2022-02-08 16:03:56,150 | INFO     | __init__() sensors.py line=234 thread=3069188480 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-08 16:03:56,150 | INFO     | __init__() sensors.py line=234 thread=3069188480 | - 'walli': Heidelberg Wallbox Energy Control, not connected
+2022-02-08 16:03:56,227 | INFO     | update_timer() app.py line=250 thread=3069188480 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 16:03:56,227 | INFO     | update_timer() app.py line=250 thread=3069188480 | Scheduling a Timer in t=0.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 16:03:56,245 | WARNING  | _log() _internal.py line=225 thread=3069188480 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-08 16:03:56,245 | WARNING  | _log() _internal.py line=225 thread=3069188480 |  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2022-02-08 16:03:56,246 | INFO     | _log() _internal.py line=225 thread=3069188480 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-08 16:03:56,246 | INFO     | _log() _internal.py line=225 thread=3069188480 |  * Running on http://192.168.178.44:5000/ (Press CTRL+C to quit)
+2022-02-08 16:03:56,257 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3363.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 16:03:56,257 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3363.7s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 16:04:36,389 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:36,389 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:36,390 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-08_home-plotly-cache.pkl'
+2022-02-08 16:04:36,390 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-08_home-plotly-cache.pkl'
+2022-02-08 16:04:36,463 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:36] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-08 16:04:36,463 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:36] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-08 16:04:36,546 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:04:36,546 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:04:37,335 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:37] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-08 16:04:37,335 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:37] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-08 16:04:44,165 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:44,165 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:44,166 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-08 16:04:44,166 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2021-12-31_home-plotly-cache.pkl'
+2022-02-08 16:04:44,179 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:44] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-08 16:04:44,179 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:44] "GET /home/2021/ HTTP/1.1" 200 -
+2022-02-08 16:04:44,277 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:04:44,277 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:04:48,464 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:48,464 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-08 16:04:48,466 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-08_home-plotly-cache.pkl'
+2022-02-08 16:04:48,466 | INFO     | load_cached_plots() app.py line=354 thread=2904552512 | Loading cached plots '2022-02-08_home-plotly-cache.pkl'
+2022-02-08 16:04:48,472 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:48] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-08 16:04:48,472 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [08/Feb/2022 16:04:48] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-08 16:04:48,517 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 16:04:48,517 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.50 - - [08/Feb/2022 16:04:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-08 17:00:00,043 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 17:00:00,043 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 18:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 18:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 19:00:00,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 19:00:00,055 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 20:00:00,050 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 20:00:00,050 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 21:00:00,039 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 21:00:00,039 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 22:00:00,060 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 22:00:00,060 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 23:00:00,071 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-08 23:00:00,071 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 00:00:00,052 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 00:00:00,052 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 01:00:00,059 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 01:00:00,059 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 02:00:00,076 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 02:00:00,076 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 03:00:00,060 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 03:00:00,060 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 04:00:00,058 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 04:00:00,058 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 05:00:00,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 05:00:00,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 06:00:00,040 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 06:00:00,040 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 07:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 07:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 08:00:00,056 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 08:00:00,056 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 09:00:00,066 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 09:00:00,066 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 10:00:00,065 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 10:00:00,065 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 11:00:00,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 11:00:00,069 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 12:00:00,043 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 12:00:00,043 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 13:00:00,038 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 13:00:00,038 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 14:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 14:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 15:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 15:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 16:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 16:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 17:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 17:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 18:00:00,050 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 18:00:00,050 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 19:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 19:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 20:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 20:00:00,047 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 21:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 21:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 22:00:00,039 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 22:00:00,039 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 23:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-09 23:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 00:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 00:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 00:18:07,217 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.23 - - [10/Feb/2022 00:18:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 00:18:07,217 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.23 - - [10/Feb/2022 00:18:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 00:18:21,183 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 00:18:21,183 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-08_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 00:18:21,184 | INFO     | generate_fresh_plots() app.py line=345 thread=2904552512 | generating fresh plots for 2022
+2022-02-10 00:18:21,184 | INFO     | generate_fresh_plots() app.py line=345 thread=2904552512 | generating fresh plots for 2022
+2022-02-10 00:18:25,143 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.23 - - [10/Feb/2022 00:18:25] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 00:18:25,143 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.23 - - [10/Feb/2022 00:18:25] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 00:18:25,328 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.23 - - [10/Feb/2022 00:18:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 00:18:25,328 | INFO     | _log() _internal.py line=225 thread=2925343808 | 192.168.178.23 - - [10/Feb/2022 00:18:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 00:18:26,140 | INFO     | store_cached_plots() app.py line=360 thread=2836919360 | Storing cached plots to '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 00:18:26,140 | INFO     | store_cached_plots() app.py line=360 thread=2836919360 | Storing cached plots to '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 00:18:26,712 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.23 - - [10/Feb/2022 00:18:26] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-10 00:18:26,712 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.23 - - [10/Feb/2022 00:18:26] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-10 01:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 01:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 02:00:00,053 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 02:00:00,053 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 03:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 03:00:00,050 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 04:00:00,065 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 04:00:00,065 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 05:00:00,065 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 05:00:00,065 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 06:00:00,046 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 06:00:00,046 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 07:00:00,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 07:00:00,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 08:00:00,064 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 08:00:00,064 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 09:00:00,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 09:00:00,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 10:00:00,071 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 10:00:00,071 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 11:00:00,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 11:00:00,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 12:00:00,065 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 12:00:00,065 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 13:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 13:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 14:00:00,046 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 14:00:00,046 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 15:00:00,039 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 15:00:00,039 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 16:00:00,052 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 16:00:00,052 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 17:00:00,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 17:00:00,063 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 18:00:00,070 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 18:00:00,070 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 19:00:00,065 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 19:00:00,065 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 20:00:00,070 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 20:00:00,070 | INFO     | update_timer() app.py line=250 thread=2826957888 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 21:00:00,053 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 21:00:00,053 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 21:33:15,204 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:15,204 | INFO     | home() app.py line=389 thread=2915038272 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:15,205 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:15,205 | INFO     | load_cached_plots() app.py line=354 thread=2915038272 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:15,211 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:15] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 21:33:15,211 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:15] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 21:33:15,553 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:15,553 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:17,637 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:17] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-10 21:33:17,637 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:17] "[36mGET /static/walli.ico HTTP/1.1[0m" 304 -
+2022-02-10 21:33:23,181 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:23,181 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:23,183 | INFO     | load_cached_plots() app.py line=354 thread=2826957888 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:23,183 | INFO     | load_cached_plots() app.py line=354 thread=2826957888 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:23,190 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:23] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 21:33:23,190 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:23] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-10 21:33:23,297 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:23,297 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:33,522 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:33] "GET /config/ HTTP/1.1" 200 -
+2022-02-10 21:33:33,522 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:33] "GET /config/ HTTP/1.1" 200 -
+2022-02-10 21:33:33,660 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:33,660 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:34,950 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:34,950 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-10 21:33:34,951 | INFO     | load_cached_plots() app.py line=354 thread=2826957888 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:34,951 | INFO     | load_cached_plots() app.py line=354 thread=2826957888 | Loading cached plots '2022-02-10_home-plotly-cache.pkl'
+2022-02-10 21:33:34,957 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:34] "GET /home/ HTTP/1.1" 200 -
+2022-02-10 21:33:34,957 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [10/Feb/2022 21:33:34] "GET /home/ HTTP/1.1" 200 -
+2022-02-10 21:33:35,035 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 21:33:35,035 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [10/Feb/2022 21:33:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-10 22:00:00,078 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 22:00:00,078 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 23:00:00,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-10 23:00:00,061 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 00:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 00:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 01:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 01:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 02:00:00,052 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 02:00:00,052 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 03:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 03:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 04:00:00,040 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 04:00:00,040 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 05:00:00,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 05:00:00,058 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 06:00:00,071 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 06:00:00,071 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 07:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 07:00:00,046 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 08:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 08:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 09:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 09:00:00,047 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 10:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 10:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 11:00:00,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 11:00:00,064 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 12:00:00,058 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 12:00:00,058 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 13:00:00,048 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 13:00:00,048 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 14:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 14:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 15:00:00,051 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 15:00:00,051 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 16:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 16:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 17:00:00,053 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 17:00:00,053 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 18:00:00,049 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 18:00:00,049 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 19:00:00,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 19:00:00,057 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 20:00:00,072 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 20:00:00,072 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 21:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 21:00:00,049 | INFO     | update_timer() app.py line=250 thread=2915038272 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 21:42:40,453 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [11/Feb/2022 21:42:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-11 21:42:40,453 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [11/Feb/2022 21:42:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-11 21:42:45,549 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-11 21:42:45,549 | INFO     | home() app.py line=389 thread=2826957888 | cached_plots: {'2022': '2022-02-10_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-11 21:42:45,553 | INFO     | generate_fresh_plots() app.py line=345 thread=2826957888 | generating fresh plots for 2022
+2022-02-11 21:42:45,553 | INFO     | generate_fresh_plots() app.py line=345 thread=2826957888 | generating fresh plots for 2022
+2022-02-11 21:42:46,646 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [11/Feb/2022 21:42:46] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-11 21:42:46,646 | INFO     | _log() _internal.py line=225 thread=2826957888 | 192.168.178.23 - - [11/Feb/2022 21:42:46] "GET /home/2022/ HTTP/1.1" 200 -
+2022-02-11 21:42:46,777 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [11/Feb/2022 21:42:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-11 21:42:46,777 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.23 - - [11/Feb/2022 21:42:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-11 21:42:47,644 | INFO     | store_cached_plots() app.py line=360 thread=2925343808 | Storing cached plots to '2022-02-11_home-plotly-cache.pkl'
+2022-02-11 21:42:47,644 | INFO     | store_cached_plots() app.py line=360 thread=2925343808 | Storing cached plots to '2022-02-11_home-plotly-cache.pkl'
+2022-02-11 22:00:00,045 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 22:00:00,045 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 23:00:00,045 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-11 23:00:00,045 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 00:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 00:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 01:00:00,052 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 01:00:00,052 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 02:00:00,056 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 02:00:00,056 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 03:00:00,042 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 03:00:00,042 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 04:00:00,041 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 04:00:00,041 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 05:00:00,041 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 05:00:00,041 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 06:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 06:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 07:00:00,049 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 07:00:00,049 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 08:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 08:00:00,050 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 09:00:00,046 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 09:00:00,046 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 10:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 10:00:00,051 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 11:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 11:00:00,051 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 12:00:00,058 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 12:00:00,058 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 13:00:00,078 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 13:00:00,078 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 14:00:00,052 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 14:00:00,052 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 15:00:00,053 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 15:00:00,053 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 16:00:00,056 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 16:00:00,056 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 17:00:00,061 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 17:00:00,061 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 18:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 18:00:00,048 | INFO     | update_timer() app.py line=250 thread=2836919360 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 18:52:27,117 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:27] "GET /data/ HTTP/1.1" 200 -
+2022-02-12 18:52:27,117 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:27] "GET /data/ HTTP/1.1" 200 -
+2022-02-12 18:52:28,067 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-12 18:52:28,067 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-12 18:52:28,203 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[32mGET /api/data/light/0?_=1644688351444 HTTP/1.1[0m" 308 -
+2022-02-12 18:52:28,205 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[32mGET /api/data/walli/0?_=1644688351445 HTTP/1.1[0m" 308 -
+2022-02-12 18:52:28,203 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[32mGET /api/data/light/0?_=1644688351444 HTTP/1.1[0m" 308 -
+2022-02-12 18:52:28,205 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "[32mGET /api/data/walli/0?_=1644688351445 HTTP/1.1[0m" 308 -
+2022-02-12 18:52:28,282 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "GET /api/data/light/0/?_=1644688351444 HTTP/1.1" 200 -
+2022-02-12 18:52:28,282 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:28] "GET /api/data/light/0/?_=1644688351444 HTTP/1.1" 200 -
+2022-02-12 18:52:31,063 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 18:52:31] "GET /api/data/walli/0/?_=1644688351445 HTTP/1.1" 200 -
+2022-02-12 18:52:31,063 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 18:52:31] "GET /api/data/walli/0/?_=1644688351445 HTTP/1.1" 200 -
+2022-02-12 18:52:37,829 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:37] "GET /download/walli/0/ HTTP/1.1" 200 -
+2022-02-12 18:52:37,829 | INFO     | _log() _internal.py line=225 thread=2836919360 | 192.168.178.50 - - [12/Feb/2022 18:52:37] "GET /download/walli/0/ HTTP/1.1" 200 -
+2022-02-12 19:00:00,059 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 19:00:00,059 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 20:00:00,061 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 20:00:00,061 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 21:00:00,064 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 21:00:00,064 | INFO     | update_timer() app.py line=250 thread=2925343808 | Scheduling a Timer in t=3600.0s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 22:00:00,079 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 22:00:00,079 | INFO     | update_timer() app.py line=250 thread=2904552512 | Scheduling a Timer in t=3599.9s for Campaign(id:0 'hourly' act=True start=2022-02-05 20:00:00, end=2050-01-01 00:00:00, int=1:00:00)
+2022-02-12 22:18:56,491 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-11_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-12 22:18:56,491 | INFO     | home() app.py line=389 thread=2904552512 | cached_plots: {'2022': '2022-02-11_home-plotly-cache.pkl', '2021': '2021-12-31_home-plotly-cache.pkl'}
+2022-02-12 22:18:56,492 | INFO     | generate_fresh_plots() app.py line=345 thread=2904552512 | generating fresh plots for 2022
+2022-02-12 22:18:56,492 | INFO     | generate_fresh_plots() app.py line=345 thread=2904552512 | generating fresh plots for 2022
+2022-02-12 22:18:57,731 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 22:18:57] "GET /home/ HTTP/1.1" 200 -
+2022-02-12 22:18:57,731 | INFO     | _log() _internal.py line=225 thread=2904552512 | 192.168.178.50 - - [12/Feb/2022 22:18:57] "GET /home/ HTTP/1.1" 200 -
+2022-02-12 22:18:57,836 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [12/Feb/2022 22:18:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-12 22:18:57,836 | INFO     | _log() _internal.py line=225 thread=2915038272 | 192.168.178.50 - - [12/Feb/2022 22:18:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2022-02-12 22:18:58,729 | INFO     | store_cached_plots() app.py line=360 thread=2836919360 | Storing cached plots to '2022-02-12_home-plotly-cache.pkl'
+2022-02-12 22:18:58,729 | INFO     | store_cached_plots() app.py line=360 thread=2836919360 | Storing cached plots to '2022-02-12_home-plotly-cache.pkl'
