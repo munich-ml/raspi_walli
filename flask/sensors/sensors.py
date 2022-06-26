@@ -86,8 +86,11 @@ class SensorBase(threading.Thread):
                 
                 if "callback" in task.keys():
                     return_dct["exec time"] = time.time() - start_time
-                    return_dct["campaign_id"] = task["campaign_id"]   
-                    task["callback"](return_dct)
+                    return_dct["campaign_id"] = task["campaign_id"]  
+                    try: 
+                        task["callback"](return_dct)
+                    except Exception as e:
+                        logger.error(e)
                     
         logger.info(f"Sensor thread exiting for '{self.type}'")
 
