@@ -223,7 +223,7 @@ class Wallbox(SensorBase):
                     if read_attempts > MAX_READ_ATTEMPTS:
                         raise ModbusReadError
                 else:
-                    read_vals.append(adr, r.registers)
+                    read_vals.append((adr, r.registers))
                     break            
         
         return {"_reg_write": f"{read_regs=}, {read_vals=}, {write_reg=}, {write_val=}"}
