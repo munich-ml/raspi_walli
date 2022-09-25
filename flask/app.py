@@ -440,7 +440,7 @@ def config():
     task = {"func": "reg_write", 
             "campaign_id": None,
             "sensor": "walli",
-            "callback": lambda: print("### this is the callback ***")}
+            "callback": lambda arg: print("### this is the callback ***", arg)}
     sensor_interface.do_task(task)
     # ######################################################################################
 
