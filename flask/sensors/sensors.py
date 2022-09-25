@@ -229,7 +229,7 @@ class Wallbox(SensorBase):
                         vals.append((adr, r.registers[0]))
                         break            
         
-        return {"_reg_read": f"{vals=}"}
+        return {"reg_read": vals}
     
 
     def _reg_write(self, read_regs: list, write_reg: str, write_val: int):

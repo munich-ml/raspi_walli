@@ -437,14 +437,20 @@ def config():
 
     # ######################################################################################
     # new code
-    input_regs = df[df["R/W"] == "R"]["Adr"].to_list()  # list of all input registers 
-    holding_regs = df[df["R/W"] == "R/W"]["Adr"].to_list()
+    event = threading.Event()    # event pauses main thread until Walli read finished
+    def save_to_global_cache(data):
+        global_cache["reg_read"] = data
+        event.set()
+
     task = {"func": "reg_read",
             "sensor": "walli",
-            "kwargs": {"input_regs": input_regs,
-                       "holding_regs": holding_regs},
-            "callback": lambda arg: print("### this is the callback ***", arg)}
+            "kwargs": {"input_regs": df[df["R/W"] == "R"]["Adr"].to_list(),  # list of all input registers ,
+                       "holding_regs": df[df["R/W"] == "R/W"]["Adr"].to_list()},
+            "callback": save_to_global_cache}
     sensor_interface.do_task(task)
+    
+    event.wait()
+    print(f"### {global_cache=} +++")
     # ######################################################################################
 
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
@@ -551,4 +557,5 @@ def api_get_data(sensor, id):
 if __name__ == "__main__":    
     sensor_interface = SensorInterface()     
     capture_timer = CaptureTimer(sensor_interface)
+    global_cache = {}
     app.run(host="0.0.0.0", port=5000, debug=False)
