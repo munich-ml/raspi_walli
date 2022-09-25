@@ -211,9 +211,9 @@ class Wallbox(SensorBase):
             dct = {k: v for k, v in zip(keys, regs)}
             return dct
         
-    def _reg_write(self):
+    def _reg_write(self, read_regs: list, write_reg: str, write_val: int):
         print("### Walli._reg_write was called +++")
-        return {"_reg_write": "return data"}
+        return {"_reg_write": f"{read_regs=}, {write_reg=}, {write_val=}"}
     
 
     def _exit(self):

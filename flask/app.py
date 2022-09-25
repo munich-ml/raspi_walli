@@ -437,9 +437,12 @@ def config():
 
     # ######################################################################################
     # new code
-    task = {"func": "reg_write", 
-            "campaign_id": None,
+    read_regs = df[df["R/W"] == "R/W"]["Adr"].to_list() 
+    task = {"func": "reg_write",
             "sensor": "walli",
+            "kwargs": {"read_regs": read_regs,
+                       "write_reg": "42",
+                       "write_val": "88"},
             "callback": lambda arg: print("### this is the callback ***", arg)}
     sensor_interface.do_task(task)
     # ######################################################################################
