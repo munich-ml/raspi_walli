@@ -87,7 +87,9 @@ class SensorBase(threading.Thread):
                 
                 if "callback" in task.keys():
                     return_dct["exec time"] = time.time() - start_time
-                    return_dct["campaign_id"] = task["campaign_id"]  
+                    if "campaign_id" in task:
+                        return_dct["campaign_id"] = task["campaign_id"]
+                          
                     try: 
                         task["callback"](return_dct)
                     except Exception as e:
@@ -211,7 +213,8 @@ class Wallbox(SensorBase):
         
     def _reg_write(self):
         print("### Walli._reg_write was called +++")
-        pass
+        return {"_reg_write": "return data"}
+    
 
     def _exit(self):
         """ Overwrite _exit method of base class to support Modbus closing
