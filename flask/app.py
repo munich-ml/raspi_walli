@@ -437,10 +437,12 @@ def config():
 
     # ######################################################################################
     # new code
-    read_regs = df[df["R/W"] != "W"]["Adr"].to_list()  # list of all readable regs 
+    input_regs = df[df["R/W"] == "R"]["Adr"].to_list()  # list of all input registers 
+    holding_regs = df[df["R/W"] == "R/W"]["Adr"].to_list()
     task = {"func": "reg_read",
             "sensor": "walli",
-            "kwargs": {"read_regs": read_regs},
+            "kwargs": {"input_regs": input_regs,
+                       "holding_regs": holding_regs},
             "callback": lambda arg: print("### this is the callback ***", arg)}
     sensor_interface.do_task(task)
     # ######################################################################################
