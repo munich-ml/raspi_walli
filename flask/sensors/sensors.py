@@ -213,7 +213,19 @@ class Wallbox(SensorBase):
         
     def _reg_write(self, read_regs: list, write_reg: str, write_val: int):
         print("### Walli._reg_write was called +++")
-        read_vals = [self.mb.read_holding_registers(int(adr), count=1, unit=BUS_ID) for adr in read_regs]
+        read_vals = []
+        read_attempts = 0
+        for adr in read_regs:
+            while True:
+                r = self.mb.read_holding_registers(int(adr), count=1, unit=BUS_ID)
+                if r.isError():
+                    read_attempts += 1
+                    if read_attempts > MAX_READ_ATTEMPTS:
+                        raise ModbusReadError
+                else:
+                    read_vals.append(adr, r.registers)
+                    break            
+        
         return {"_reg_write": f"{read_regs=}, {read_vals=}, {write_reg=}, {write_val=}"}
     
 
