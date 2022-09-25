@@ -64,6 +64,7 @@ class SensorBase(threading.Thread):
     def run(self):
         TASK_FUNCS = {"connect": self._connect,
                       "capture": self._capture,
+                      "reg_write": self._reg_write,     # walli specifig register write funciton
                       "exit": self._exit}
         
         logger.info(f"Sensor thread started for '{self.type}'")
@@ -208,6 +209,10 @@ class Wallbox(SensorBase):
             dct = {k: v for k, v in zip(keys, regs)}
             return dct
         
+    def _reg_write(self):
+        print("### Walli._reg_write was called +++")
+        pass
+
     def _exit(self):
         """ Overwrite _exit method of base class to support Modbus closing
         """

@@ -435,6 +435,15 @@ def config():
     desired_cols = ['Adr', 'R/W', 'Description', 'Range', 'Values / examples']
     df = df[desired_cols]
 
+    # ######################################################################################
+    # new code
+    task = {"func": "reg_write", 
+            "campaign_id": None,
+            "sensor": "walli",
+            "callback": lambda: print("### this is the callback ***")}
+    sensor_interface.do_task(task)
+    # ######################################################################################
+
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
 
 
