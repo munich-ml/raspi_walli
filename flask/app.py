@@ -426,14 +426,12 @@ def home(year=None):
 @app.route('/config/')
 def config():
     """ View function for config page """
-    # load register table from .json file and create a pandas DataFrame from it
+    # load register table from .json file, add current register readings from the wallbox and create a pandas DataFrame from it
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
         regs = json.load(file)
 
     df = pd.DataFrame(columns=regs["columns"], data=regs["data"])
-    desired_cols = ['Adr', 'R/W', 'Description', 'Range', 'Values / examples']
-    df = df[desired_cols]
 
     # ######################################################################################
     # new code
@@ -451,6 +449,13 @@ def config():
     
     event.wait()
     print(f"### {global_cache=} +++")
+    
+    values = pd.DataFrame.from_records(global_cache['reg_read']['reg_read'], columns=["Adr", "Value"])
+    df = pd.merge(df, values, how="outer", on="Adr")
+
+    desired_cols = ['Adr', 'R/W', 'Description', 'Value', 'Range', 'Values / examples']
+    df["Value"] = df["Value"].astype("Int64")
+    df = df[desired_cols]
     # ######################################################################################
 
     return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
