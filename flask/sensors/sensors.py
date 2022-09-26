@@ -212,7 +212,7 @@ class Wallbox(SensorBase):
             dct = {k: v for k, v in zip(keys, regs)}
             return dct
         
-    def _reg_read(self, input_regs: list, holding_regs: list) -> list[tuple[str, int]]:
+    def _reg_read(self, input_regs: list, holding_regs: list) -> dict[str, list[tuple[str, int]]]:
         vals = []
         read_attempts = 0
         for regs, read_func in zip((input_regs, holding_regs),
@@ -228,7 +228,7 @@ class Wallbox(SensorBase):
                         vals.append((adr, r.registers[0]))
                         break            
         
-        return vals
+        return {"reg_read": vals}
     
 
     def _reg_write(self, read_regs: list, write_reg: str, write_val: int):

@@ -437,7 +437,7 @@ def config():
     # new code
     event = threading.Event()    # event pauses main thread until Walli read finished
     def save_to_global_cache(data):
-        global_cache["reg_read"] = data
+        global_cache["reg_read"] = data["reg_read"]
         event.set()
 
     task = {"func": "reg_read",
