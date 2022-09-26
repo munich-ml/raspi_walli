@@ -212,7 +212,17 @@ class Wallbox(SensorBase):
             dct = {k: v for k, v in zip(keys, regs)}
             return dct
         
+        
     def _reg_read(self, input_regs: list, holding_regs: list) -> dict[str, list[tuple[str, int]]]:
+        """Reads current data from the wallbox
+
+        Args:
+            input_regs (list): Register addresses of the input registers to be read
+            holding_regs (list): Register addresses of the holding registers to be read
+
+        Returns:
+            dict[str, list[tuple[str, int]]]: (adr, value) tuples in a list in a dict with just one item
+        """
         vals = []
         read_attempts = 0
         for regs, read_func in zip((input_regs, holding_regs),
@@ -231,22 +241,8 @@ class Wallbox(SensorBase):
         return {"reg_read": vals}
     
 
-    def _reg_write(self, read_regs: list, write_reg: str, write_val: int):
-        print("### Walli._reg_write was called +++")
-        read_vals = []
-        read_attempts = 0
-        for adr in read_regs:
-            while True:
-                r = self.mb.read_holding_registers(int(adr), count=1, unit=BUS_ID)
-                if r.isError():
-                    read_attempts += 1
-                    if read_attempts > MAX_READ_ATTEMPTS:
-                        raise ModbusReadError
-                else:
-                    read_vals.append((adr, r.registers))
-                    break            
-        
-        return {"_reg_write": f"{read_regs=}, {read_vals=}, {write_reg=}, {write_val=}"}
+    def _reg_write(self, write_reg: str, write_val: int):
+        print("### Walli._reg_write was called +++")        
     
 
     def _exit(self):

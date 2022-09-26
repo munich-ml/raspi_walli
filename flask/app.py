@@ -425,40 +425,40 @@ def home(year=None):
 
 @app.route('/config/')
 def config():
-    """ View function for config page """
-    # load register table from .json file, add current register readings from the wallbox and create a pandas DataFrame from it
+    """ View function for config page 
+    """
+    # Load register table from .json file
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
         regs = json.load(file)
 
     df = pd.DataFrame(columns=regs["columns"], data=regs["data"])
 
-    # ######################################################################################
-    # new code
-    event = threading.Event()    # event pauses main thread until Walli read finished
-    def save_to_global_cache(data):
-        global_cache["reg_read"] = data["reg_read"]
+    # Read current register values from the wallbox and store it to the global_cache
+    event = threading.Event()         # event pauses main thread until Walli read finished
+    def save_to_global_cache(data, key):
+        """Callback function that stores datat to the global cache"""
+        global_cache[key] = data[key]
         event.set()
 
     task = {"func": "reg_read",
             "sensor": "walli",
-            "kwargs": {"input_regs": df[df["R/W"] == "R"]["Adr"].to_list(),  # list of all input registers ,
-                       "holding_regs": df[df["R/W"] == "R/W"]["Adr"].to_list()},
-            "callback": save_to_global_cache}
+            "kwargs": {"input_regs": df[df["R/W"] == "R"]["Adr"].to_list(),        # list of all input registers 
+                       "holding_regs": df[df["R/W"] == "R/W"]["Adr"].to_list()},   # list of all holding registers
+            "callback": lambda data: save_to_global_cache(data, key="reg_read")}
+    
     sensor_interface.do_task(task)
+    event.wait()    # pause the main thread here, until the event is set at the callback end
     
-    event.wait()
-    print(f"### {global_cache=} +++")
-    
+    # Load current data from the global cache
     values = pd.DataFrame.from_records(global_cache['reg_read'], columns=["Adr", "Value"])
     df = pd.merge(df, values, how="outer", on="Adr")
 
     desired_cols = ['Adr', 'R/W', 'Description', 'Value', 'Range', 'Values / examples']
-    df["Value"] = df["Value"].astype("Int64")
+    df["Value"] = df["Value"].astype("Int64")  
     df = df[desired_cols]
-    # ######################################################################################
 
-    return render_template('config.html', columns=df.columns, data=list(df.values.tolist()))
+    return render_template('config.html', columns=df.columns, data=df.values.tolist())
 
 
 @app.route('/campaigns/')
