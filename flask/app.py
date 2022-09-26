@@ -450,7 +450,7 @@ def config():
     event.wait()
     print(f"### {global_cache=} +++")
     
-    values = pd.DataFrame.from_records(global_cache['reg_read']['reg_read'], columns=["Adr", "Value"])
+    values = pd.DataFrame.from_records(global_cache['reg_read'], columns=["Adr", "Value"])
     df = pd.merge(df, values, how="outer", on="Adr")
 
     desired_cols = ['Adr', 'R/W', 'Description', 'Value', 'Range', 'Values / examples']
