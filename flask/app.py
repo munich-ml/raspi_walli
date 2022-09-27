@@ -74,7 +74,11 @@ class DataForm(FlaskForm):
 
 
 class AdrForm(FlaskForm):
-    adr = SelectField(u'Adr', choices=[('257', '257'), ('259', '259')])
+    adr = SelectField(u'Adr', choices=[('261 Maximal Current', '261'), 
+                                       ('262 FailSafe Current', '262'), 
+                                       ('257 WatchDog Timeout', '257'), 
+                                       ('259 Remote lock', '259')])
+    val = IntegerField(validators=[DataRequired()], default=0)
 
 
 class WalliStat(db.Model):
@@ -432,8 +436,9 @@ def config():
     """ View function for config page 
     """
     if request.method == "POST":    
-        adr = request.form["adr"]
-        print("View function config with POST adr=", adr)
+        write_adr = request.form["adr"]
+        write_val = request.form["val"]
+        print("View function config with POST adr=", write_adr, ", val=", write_val)
     form = AdrForm()
     
     # Load register table from .json file

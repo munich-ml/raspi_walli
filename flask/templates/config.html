@@ -22,10 +22,11 @@
 </table>
 
 <hr>
+<h2>Overwrite Wallbox registers</h2>
 <form method="POST" action="">
     {{form.hidden_tag()}}
     <p>
-        Overwrite register adr {{ form.adr }} to value XXX
+        Overwrite register adr {{ form.adr }} to value {{ form.val }} - 
         <input type="submit" value="write">
     </p>
 </form>
