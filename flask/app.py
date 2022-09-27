@@ -74,10 +74,10 @@ class DataForm(FlaskForm):
 
 
 class AdrForm(FlaskForm):
-    adr = SelectField(u'Adr', choices=[('261 Maximal Current', '261'), 
-                                       ('262 FailSafe Current', '262'), 
-                                       ('257 WatchDog Timeout', '257'), 
-                                       ('259 Remote lock', '259')])
+    adr = SelectField(u'Adr', choices=[('261', '261 Maximal Current'), 
+                                       ('262', '262 FailSafe Current'), 
+                                       ('257', '257 WatchDog Timeout'), 
+                                       ('259', '259 Remote lock')])
     val = IntegerField(validators=[DataRequired()], default=0)
 
 
