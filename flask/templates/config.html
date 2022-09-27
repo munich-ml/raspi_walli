@@ -20,4 +20,14 @@
         {% endfor %}
     </tbody>
 </table>
+
+<hr>
+<form method="POST" action="">
+    {{form.hidden_tag()}}
+    <p>
+        Overwrite register adr {{ form.adr }} to value XXX
+        <input type="submit" value="write">
+    </p>
+</form>
+
 {% endblock %}

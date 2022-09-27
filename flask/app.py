@@ -11,7 +11,7 @@ from flask import Flask, render_template, flash, redirect, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import TextAreaField, BooleanField
-from wtforms.fields import IntegerField, DateField, TimeField
+from wtforms.fields import IntegerField, DateField, TimeField, SelectField
 from wtforms.validators import DataRequired
 from sensors.sensors import SensorInterface, create_logger
 
@@ -71,6 +71,10 @@ class CampaignForm(FlaskForm):
 
 class DataForm(FlaskForm):
     id = IntegerField(validators=[DataRequired()], default=0)
+
+
+class AdrForm(FlaskForm):
+    adr = SelectField(u'Adr', choices=[('257', '257'), ('259', '259')])
 
 
 class WalliStat(db.Model):
@@ -423,10 +427,15 @@ def home(year=None):
     return render_template('home.html', plots=plots, year=year, avail=sorted(available))
 
 
-@app.route('/config/')
+@app.route('/config/', methods=['GET', 'POST'])
 def config():
     """ View function for config page 
     """
+    if request.method == "POST":    
+        adr = request.form["adr"]
+        print("View function config with POST adr=", adr)
+    form = AdrForm()
+    
     # Load register table from .json file
     p = os.path.join("..", "modbus", "docs", "HeidelbergWallboxEnergyControl_ModbusRegisterTable.json")
     with open(p, "r") as file:
@@ -458,7 +467,7 @@ def config():
     df["Value"] = df["Value"].astype("Int64")  
     df = df[desired_cols]
 
-    return render_template('config.html', columns=df.columns, data=df.values.tolist())
+    return render_template('config.html', columns=df.columns, data=df.values.tolist(), form=form)
 
 
 @app.route('/campaigns/')
