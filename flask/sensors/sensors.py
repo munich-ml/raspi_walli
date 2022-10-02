@@ -243,6 +243,7 @@ class Wallbox(SensorBase):
 
     def _reg_write(self, adr: str, val: int):
         self.mb.write_register(int(adr), int(val), unit=BUS_ID)       
+        return {}
     
 
     def _exit(self):
