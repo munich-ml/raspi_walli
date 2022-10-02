@@ -241,8 +241,8 @@ class Wallbox(SensorBase):
         return {"reg_read": vals}
     
 
-    def _reg_write(self, write_reg: str, write_val: int):
-        print("### Walli._reg_write was called +++")        
+    def _reg_write(self, adr: str, val: int):
+        self.mb.write_register(int(adr), int(val), unit=BUS_ID)       
     
 
     def _exit(self):

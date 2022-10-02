@@ -435,10 +435,21 @@ def home(year=None):
 def config():
     """ View function for config page 
     """
-    if request.method == "POST":    
-        write_adr = request.form["adr"]
-        write_val = request.form["val"]
-        print("View function config with POST adr=", write_adr, ", val=", write_val)
+    if request.method == "POST":  
+        # Write register values of the wallbox  
+
+        print("View function config with POST")
+        event = threading.Event()         # event pauses main thread until Walli write finished
+        task = {"func": "reg_write",
+                "sensor": "walli",
+                "kwargs": {"adr": request.form["adr"], 
+                           "val": request.form["val"]},   
+                "callback": event.set}
+        print("task:", task)
+        sensor_interface.do_task(task)
+        event.wait()    # pause the main thread here, until the event is set at the end by the callback
+        print("continouing")
+        
     form = AdrForm()
     
     # Load register table from .json file
@@ -462,7 +473,7 @@ def config():
             "callback": lambda data: save_to_global_cache(data, key="reg_read")}
     
     sensor_interface.do_task(task)
-    event.wait()    # pause the main thread here, until the event is set at the callback end
+    event.wait()    # pause the main thread here, until the event is set at the end of the callback
     
     # Load current data from the global cache
     values = pd.DataFrame.from_records(global_cache['reg_read'], columns=["Adr", "Value"])
