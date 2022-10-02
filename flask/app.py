@@ -444,7 +444,7 @@ def config():
                 "sensor": "walli",
                 "kwargs": {"adr": request.form["adr"], 
                            "val": request.form["val"]},   
-                "callback": event.set}
+                "callback": lambda _: event.set()}
         print("task:", task)
         sensor_interface.do_task(task)
         event.wait()    # pause the main thread here, until the event is set at the end by the callback
