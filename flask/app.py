@@ -437,18 +437,14 @@ def config():
     """
     if request.method == "POST":  
         # Write register values of the wallbox  
-
-        print("View function config with POST")
         event = threading.Event()         # event pauses main thread until Walli write finished
         task = {"func": "reg_write",
                 "sensor": "walli",
                 "kwargs": {"adr": request.form["adr"], 
                            "val": request.form["val"]},   
                 "callback": lambda _: event.set()}
-        print("task:", task)
         sensor_interface.do_task(task)
         event.wait()    # pause the main thread here, until the event is set at the end by the callback
-        print("continouing")
         
     form = AdrForm()
     
