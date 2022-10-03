@@ -14,8 +14,8 @@ This **modbus** folder is dedicated to the **Modbus RTU**. **RTU** stands for *R
 
 ## PyModbus simple rtu server and client
 [PyModbus](https://pymodbus.readthedocs.io/) is a Python package that implements the Modbus protocol stack. A simple Modbus server and client have been implemented:
-- [simple_modbus_rtu_server.ipynb](simple_modbus_rtu_server.ipynb)
-- [simple_modbus_rtu_client.ipynb](simple_modbus_rtu_client.ipynb)
+- [modbus/simple_modbus_rtu_server.ipynb](modbus/simple_modbus_rtu_server.ipynb)
+- [modbus/simple_modbus_rtu_client.ipynb](modbus/simple_modbus_rtu_client.ipynb)
 
 The server and client have successfully been tested with [com0com Null Modem Emulator](http://com0com.sourceforge.net/) as well as with two USB-RS485 sticks and a loop cable. 
 
@@ -26,7 +26,7 @@ It took me quite some trial-and-error, to get the communication running. In summ
 - Set ``holding_register 261`` to the desired current limit. Otherwise ``262`` shows ``error state``. The current limt can't be set higher than the hardware switch current. 
 - Disable the Standby function by writing at ``4`` to the ``holding_register 258``. Otherwise the wallbox stops responding after about 12 minutes.  
 
-The notebook [read_from_walli.ipynb](read_from_walli.ipynb) demonstrates successful communication and this is how it looks like
+The notebook [modbus/read_from_walli.ipynb](modbus/read_from_walli.ipynb) demonstrates successful communication and this is how it looks like
 ![successful_wallbox_read_2021-07-18.png](modbus/imgs/successful_wallbox_read_2021-07-18.png)
 
 
