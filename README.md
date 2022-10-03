@@ -25,15 +25,19 @@ It took me quite some trial-and-error, to get the communication running. In summ
 - Disable the Standby function by writing at ``4`` to the ``holding_register 258``. Otherwise the wallbox stops responding after about 12 minutes.  
 
 The notebook [modbus/read_from_walli.ipynb](modbus/read_from_walli.ipynb) demonstrates successful communication and this is how it looks like
-![successful_wallbox_read_2021-07-18.png](modbus/imgs/successful_wallbox_read_2021-07-18.png)
+[<img src="modbus/imgs/successful_wallbox_read_2021-07-18.png" width="1000"/>](modbus/imgs/successful_wallbox_read_2021-07-18.png)
 
 # Flask app
 The actual (productive) application is implemented using [Flask](https://flask.palletsprojects.com/) in the **flask** folder. This is how it look:
 
-![](imgs/app_home.png)
-![](imgs/app_config.png)
-![](imgs/app_campaigns.png)
-![](imgs/app_data.png)
+[<img src="imgs/app_home.png" width="500"/>](imgs/app_home.png)
+
+[<img src="imgs/app_config.png" width="500"/>](imgs/app_config.png)
+
+[<img src="imgs/app_campaigns.png" width="500"/>](imgs/app_campaigns.png)
+
+[<img src="imgs/app_data.png" width="500"/>](imgs/app_data.png)
+
 
 
 The top-level block diagram looks like this:
