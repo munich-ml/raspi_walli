@@ -1,12 +1,10 @@
-# raspi_walli
-Raspberry Pi controlling Heidelberger wallbox
-
-# Heidelberger Wallbox control via ModBus RS485
-Within this project, a Raspberry Pi will be connected to a **Heidelbert Wallbox Energy Control** via **Modbus RTU**. Here is how the wallbox looks like: 
+# Heidelberger Wallbox control
+The main objective of this project is to control and monitor a **Heidelbert Wallbox Energy Control** with a **Raspberry Pi**.  
 
 ![Heidelberg Wallbox Energy Control image](modbus/imgs/Heidelberg-Wallbox-Energy-Control.jpg)
 
-This **modbus** folder is dedicated to the **Modbus RTU**. **RTU** stands for *Remote Terminal Unit* and is serial communication over RS485 (or even RS232) in contrast to **Modbus TCP** over Ethernet.
+# ModBus RS485
+Raspberry Pi controlls the Heidelberger wallbox via **Modbus RTU**. There is a **modbus** folder dedicated to the topic. **RTU** stands for *Remote Terminal Unit* and is serial communication over RS485 (or even RS232) in contrast to **Modbus TCP** over Ethernet.
 
 ## General Modbus info resources
 - [Modbus 101 - Introduction to Modbus](https://www.csimn.com/CSI_pages/Modbus101.html)
@@ -29,8 +27,20 @@ It took me quite some trial-and-error, to get the communication running. In summ
 The notebook [modbus/read_from_walli.ipynb](modbus/read_from_walli.ipynb) demonstrates successful communication and this is how it looks like
 ![successful_wallbox_read_2021-07-18.png](modbus/imgs/successful_wallbox_read_2021-07-18.png)
 
+# Flask app
+The actual (productive) application is implemented using [Flask](https://flask.palletsprojects.com/) in the **flask** folder. This is how it look:
 
-# Mutli-threading
+![](imgs/app_home.png)
+![](imgs/app_config.png)
+![](imgs/app_campaigns.png)
+![](imgs/app_data.png)
+
+
+The top-level block diagram looks like this:
+
+![](flask/doc/sw_concept.drawio.svg)
+
+## Mutli-threading
 The **raspi_walli** webserver project requires concurrent operations. It need to serve the Webpage and do sensor polling (e.g. the wallbox) at the same time. I considered two libraries for this task:
 - **`threading`**, Pythons stardard concurrency library with **preemptive scheduling**, meaning the os pauses a thread at any time, putting its state on the stack and continuous with another thread.
 - **`asyncio`**, the modern library with **cooperative scheduling**. Each thread is assumed to be cooperative, meaning each thread gives back the CPU voluntarily, reducing the task switching overhead.
