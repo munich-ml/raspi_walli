@@ -304,7 +304,7 @@ def home(year=None):
                                                      WalliStat.datetime>=dt.date(int(year),1,1),
                                                      WalliStat.datetime< dt.date(int(year),12,31)).all()
         df = WalliStat.to_dataframe(ws_list).drop(UNUSED, axis=1).set_index("datetime") 
-        df["charged_kWh"] = df["energy_kWh"].diff()
+        df["charged_kWh"] = [max(0., v) for v in df["energy_kWh"].diff().values]  # limit to 0 because of wrong total power data in the wallbox
         df["date"] = [idx.date() for idx in df.index]
         df["weekday"] = [idx.day_of_week for idx in df.index]
         df["week"] = [idx.weekofyear for idx in df.index]
