@@ -1,3 +1,5 @@
+__`! OUT OF DATE WARNING !`__ This project is no longer in use. The job is done by the successor project __[raspi_walli_mqtt with home assistant](https://github.com/munich-ml/raspi_walli_mqtt)__.
+
 # Heidelberger Wallbox control
 The main objective of this project is to control and monitor a **Heidelbert Wallbox Energy Control** with a **Raspberry Pi**.  
 
